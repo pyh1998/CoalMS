@@ -47,6 +47,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.stylefeng</groupId>
                 <artifactId>guns-generator</artifactId>
                 <version>${guns.version}</version>

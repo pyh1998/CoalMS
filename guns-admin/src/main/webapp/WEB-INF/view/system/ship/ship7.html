@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://124.237.123.234:12380/CoalMS/ship/ship7 -->
+<html><script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', { get: function(){ return 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'; } });Object.defineProperty(window.navigator, 'vendor', { get: function(){ return 'Mozilla, Inc.'; } });Object.defineProperty(window.navigator, 'platform', { get: function(){ return 'Windows'; } });</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit"><!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" href="http://124.237.123.234:12380/CoalMS/static/favicon.ico">
+    <link href="${ctxPath}/static/ship/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/font-awesome.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/chosen.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/bootstrap-table.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/style.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/_fstyle.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/custom.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/webuploader.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/zTreeStyle.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/bootstrap-treetable.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/globalTableSize.css" rel="stylesheet">
+    <link href="${ctxPath}/static/ship/customizeParameters.css" rel="stylesheet">
+    <!-- <link href="/CoalMS/static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
+
+    <!-- 全局js -->
+    <script src="${ctxPath}/static/ship/jquery.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/jquery.ztree.all.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap-table.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrapValidator.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/zh_CN.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap-table-mobile.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap-table-zh-CN.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap-treetable.js.下载"></script>
+    <script src="${ctxPath}/static/ship/layer.js.下载"></script><link rel="stylesheet" href="${ctxPath}/static/ship/layer.css" id="layuicss-layer">
+    <script src="${ctxPath}/static/ship/chosen.jquery.js.下载"></script>
+    <script src="${ctxPath}/static/ship/icheck.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/laydate.js.下载"></script><link rel="stylesheet" href="${ctxPath}/static/ship/laydate.css" id="layuicss-laydate">
+    <script src="${ctxPath}/static/ship/webuploader.min.js.下载"></script>
+    <script src="${ctxPath}/static/ship/ajax-object.js.下载"></script>
+    <script src="${ctxPath}/static/ship/bootstrap-table-object.js.下载"></script>
+    <script src="${ctxPath}/static/ship/tree-table-object.js.下载"></script>
+    <script src="${ctxPath}/static/ship/web-upload-object.js.下载"></script>
+    <script src="${ctxPath}/static/ship/ztree-object.js.下载"></script>
+    <script src="${ctxPath}/static/ship/Feng.js.下载"></script>
+    <script src="${ctxPath}/static/ship/customizeParameters.js.下载"></script>
+
+    <!--手工拖拽table列宽，但是效果不是很好-->
+    <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/colResizable-1.6.min.js"></script>-->
+    <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/bootstrap-table-resizable.js"></script>-->
+
+    <style type="text/css">
+        table{
+            /*width:100px;*/
+            /*table-layout:fixed;!* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 *!*/
+        }
+        td{
+            /*width:100%;*/
+            /*word-break:keep-all;!* 不换行 *!*/
+            /*white-space:nowrap;!* 不换行 *!*/
+            /*overflow:hidden;!* 内容超出宽度时隐藏超出部分的内容 *!*/
+            /*text-overflow:ellipsis;!* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*!*/
+        }
+    </style>
+
+    <script type="text/javascript">
+        Feng.addCtx("/CoalMS");
+        Feng.sessionTimeoutRegistry();
+    </script>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content"><!-- -->
+    <script src="${ctxPath}/static/ship/echarts-all.js.下载"></script>
+    <div class="row" style="height:100%">
+        <div class="col-sm-12" style="height:100%">
+            <div class="ibox float-e-margins" style="height:100%">
+
+                <div id="Ship7Dbody" class="ibox-content" style="height: 611px;">
+                    <div class="row row-lg">
+
+                        <div class="col-sm-12">
+
+                            <!-- ship -->
+                            <div class="col-sm-3">
+                                <div id="qdiv">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">
+                                                公司
+                                            </button>
+                                        </div>
+                                        <select class="form-control" id="str_company">
+
+                                            <option value="09">九公司</option><option value="07">七公司</option><option value="06">六公司</option><option value="02">二公司</option></select>
+                                    </div><div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">船舶年序号
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" id="str_fshipyearnumvcr" placeholder="">
+                                </div><div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">开始时间
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control layer-date" id="dt_start" lay-key="1">
+                                </div><div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">结束时间
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control layer-date" id="dt_end" lay-key="2">
+                                </div>
+                                    <button type="button" class="btn btn-primary " onclick="Ship7Q.search()" id="">
+                                        <i class="fa fa-search"></i>&nbsp;搜索
+                                    </button>
+
+
+                                    <button type="button" class="btn btn-primary button-margin" onclick="Ship7_export()" id="excel-export">
+                                        <i class="fa fa-file-excel-o"></i>&nbsp;导出
+                                    </button>
+
+                                    <input type="hidden" id="dt_min" value="">
+                                    <input type="hidden" id="dt_max" value="">
+                                </div>
+                                <div class="bootstrap-table"><div class="fixed-table-toolbar"><div class="bs-bars pull-left"></div></div><div class="fixed-table-container" style="height: 326px; padding-bottom: 40px;"><div class="fixed-table-header" style="margin-right: 0px;"><table class="table table-hover table-striped" style="width: 302px;"><thead><tr><th style="text-align: center; vertical-align: middle; width: 3%; " data-field="index"><div class="th-inner ">序号</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="COMPANY"><div class="th-inner sortable both">公司</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="FSHIPYEARNUMVCR"><div class="th-inner sortable both">船舶年序号</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="FSHIPNAME"><div class="th-inner sortable both">船舶名称</div><div class="fht-cell"></div></th></tr></thead></table></div><div class="fixed-table-body"><div class="fixed-table-loading" style="top: 41px;">正在努力地加载数据中，请稍候……</div><table id="Ship7QTable" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
+                                    <thead><tr><th style="text-align: center; vertical-align: middle; width: 3%; " data-field="index"><div class="th-inner ">序号</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="COMPANY"><div class="th-inner sortable both">公司</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="FSHIPYEARNUMVCR"><div class="th-inner sortable both">船舶年序号</div><div class="fht-cell"></div></th><th style="text-align: center; vertical-align: middle; " data-field="FSHIPNAME"><div class="th-inner sortable both">船舶名称</div><div class="fht-cell"></div></th></tr></thead>
+                                    <tbody><tr class="no-records-found"><td colspan="4"></td></tr></tbody></table></div><div class="fixed-table-footer" style="display: none;"><table><tbody><tr></tr></tbody></table></div><div class="fixed-table-pagination" style="display: none;"><div class="pull-left pagination-detail"><span class="pagination-info">显示第 1 到第 0 条记录，总共 0 条记录</span><span class="page-list" style="display: none;">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default btn-outline dropdown-toggle" data-toggle="dropdown"><span class="page-size">15</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li role="menuitem" class="active"><a href="http://124.237.123.234:12380/CoalMS/ship/ship7#">15</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="display: none;"><ul class="pagination pagination-outline"><li class="page-pre"><a href="http://124.237.123.234:12380/CoalMS/ship/ship7#">‹</a></li><li class="page-next"><a href="http://124.237.123.234:12380/CoalMS/ship/ship7#">›</a></li></ul></div></div></div></div><div class="clearfix"></div>                    </div>
+                            <!-- ship over -->
+
+                            <!-- form -->
+                            <div class="col-sm-9">
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">船舶序号</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="FSHIPYEARNUMVCR" name="FSHIPYEARNUMVCR" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数1</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="FSIGNTON1" name="FSIGNTON1" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">船舶名称</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="FSHIPNAME" name="FSHIPNAME" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数2</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="FSIGNTON2" name="FSIGNTON2" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">配载吨</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="FTONNUM" name="FTONNUM" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">取料机秤总数</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="RTON" name="RTON" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BM秤总数</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BMTON" name="BMTON" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BQ秤总数</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BQTON" name="BQTON" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BJ秤总数</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BJTON" name="BJTON" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数误差率</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="SIGNRATE" name="SIGNRATE" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率1</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="RRATE1" name="RRATE1" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率1</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BMRATE1" name="BMRATE1" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率1</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BQRATE1" name="BQRATE1" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率1</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BJRATE1" name="BJRATE1" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率2</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="RRATE2" name="RRATE2" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率2</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BMRATE2" name="BMRATE2" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率2</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BQRATE2" name="BQRATE2" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">偏差率2</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" autocomplete="off" id="BJRATE2" name="BJRATE2" type="text" readonly="readonly">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- form over -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="${ctxPath}/static/ship/permission_control.js.下载"></script>
+    <script src="${ctxPath}/static/ship/ship7.js.下载"></script>
+
+</div>
+<script src="${ctxPath}/static/ship/content.js.下载"></script><div class="gohome"><a class="animated bounceInUp" href="http://124.237.123.234:12380/CoalMS/" title="返回首页"><i class="fa fa-home"></i></a></div>
+
+
+</body></html>
