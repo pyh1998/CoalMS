@@ -3,7 +3,7 @@ var Train1 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train1"
+    bootstrapTableUrl: "/train/search1"
 };
 
 Train1.initColumn = function () {
@@ -220,25 +220,62 @@ Train1.initColumn = function () {
     ];
 };
 
+
+
+
+
+$(function () {
+    var defaultColunms = Train1.initColumn();
+    var table = new BSTable(Train1.id, "/train/search1", defaultColunms);
+    table.setPaginationType("client");
+    table.init();
+    Train1.table = table;
+});
+/*搜索*/
 Train1.search = function () {
+
+    console.log("AAAAAAAAAAAAAAAA");
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
     queryData['dt_end'] = $("#dt_end").val();
-    queryData['str_first'] = "1";
-
-    //控制自动查询
-    if (!CustomizeParameters.autoSearch_switch) {
-        Train1.table.refresh({
-            query: queryData,
-            url: Feng.ctxPath + Train1.bootstrapTableUrl
-        });
-    } else {
-        Train1.table.refresh({query: queryData});
-    }
-    this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
-    $("#Train1Table").bootstrapTable('selectPage', 1);
+    console.log(queryData);
+    console.log(queryData['str_company']);
+    console.log(queryData['dt_start']);
+    Train1.table.refresh({query: queryData});
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Train1.search = function () {
+//     var queryData = {};
+//     queryData['str_company'] = $("#str_company").val();
+//     queryData['dt_start'] = $("#dt_start").val();
+//     queryData['dt_end'] = $("#dt_end").val();
+//     queryData['str_first'] = "1";
+//
+//     //控制自动查询
+//     if (!CustomizeParameters.autoSearch_switch) {
+//         Train1.table.refresh({
+//             query: queryData,
+//             url: Feng.ctxPath + Train1.bootstrapTableUrl
+//         });
+//     } else {
+//         Train1.table.refresh({query: queryData});
+//     }
+//     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
+//     $("#Train1Table").bootstrapTable('selectPage', 1);
+// };
 
 Train1.export = function () {
     Feng.confirm("是否按现查询条件导出excel?", function () {
@@ -250,28 +287,29 @@ Train1.export = function () {
 
 };
 
-//临时修改了table url 别忘了
-$(function () {
-    var bodyheight = ($(document).height() - 20) + 'px';
-    document.getElementById("Train1Dbody").style.height = bodyheight;
-
-    var oddheight = document.getElementById("qdiv").offsetHeight + 36;
-    var tableheight = $(document).height() - oddheight;
-    var defaultColunms = Train1.initColumn();
-
-    var table = new BSTable(Train1.id, Train1.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
-    var queryData = {};
-    queryData['str_company'] = $("#str_company").val();
-    queryData['dt_start'] = $("#dt_start").val();
-    queryData['dt_end'] = $("#dt_end").val();
-    queryData['str_first'] = "1";
-    table.queryParams = queryData;
-    table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
-    table.setPaginationType("client");
-    //控制自动查询
-    if (!CustomizeParameters.autoSearch_switch) {
-        table.url = "";
-    }
+// //临时修改了table url 别忘了
+// $(function () {
+//     var bodyheight = ($(document).height() - 20) + 'px';
+//     document.getElementById("Train1Dbody").style.height = bodyheight;
+//
+//     var oddheight = document.getElementById("qdiv").offsetHeight + 36;
+//     var tableheight = $(document).height() - oddheight;
+//     var defaultColunms = Train1.initColumn();
+//     var table = new BSTable(Train1.id, "/train/search2", defaultColunms);
+//
+//     //var table = new BSTable(Train1.id, Train1.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
+//     var queryData = {};
+//     queryData['str_company'] = $("#str_company").val();
+//     queryData['dt_start'] = $("#dt_start").val();
+//     queryData['dt_end'] = $("#dt_end").val();
+//     queryData['str_first'] = "1";
+//     table.queryParams = queryData;
+//     table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
+//     table.setPaginationType("client");
+//     //控制自动查询
+//     if (!CustomizeParameters.autoSearch_switch) {
+//         table.url = "/train/search1";
+//     }
 
     //页面跳转
     table.onClickCell = function (field, value, row, $element) {

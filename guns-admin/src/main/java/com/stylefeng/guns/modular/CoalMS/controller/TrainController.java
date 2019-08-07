@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.system.controller;
+package com.stylefeng.guns.modular.CoalMS.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.Tip;
@@ -19,7 +19,9 @@ import com.stylefeng.guns.modular.system.model.Role;
 import com.stylefeng.guns.modular.system.model.User;
 import com.stylefeng.guns.modular.system.service.IRoleService;
 import com.stylefeng.guns.modular.system.service.IUserService;
+import com.stylefeng.guns.modular.system.service.TrainService;
 import com.stylefeng.guns.modular.system.warpper.RoleWarpper;
+import com.stylefeng.guns.modular.system.warpper.TrainWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +46,7 @@ import java.util.Map;
 @RequestMapping("/train")
 public class TrainController extends BaseController {
 
-    private static String PREFIX = "/system/train/";
+    private static String PREFIX = "/CoalMS/train/";
 
     @RequestMapping(value="/train1")
     public String train1() {
@@ -79,6 +81,20 @@ public class TrainController extends BaseController {
     @RequestMapping(value="/train7")
     public String train7() {
         return PREFIX + "train7.html";
+    }
+
+    @Autowired
+    private TrainService TrainService;
+
+    /**
+     * 轨道衡功能1：列车过衡数据汇总
+     */
+    @RequestMapping(value = "/search1")
+    @ResponseBody
+    public Object list(String str_company,String dt_start,String dt_end) {
+        List<Map<String, Object>> list = this.TrainService.list(str_company,dt_start,dt_end);
+            return super.warpObject(new TrainWarpper(list));
+
     }
 
 

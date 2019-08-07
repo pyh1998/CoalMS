@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stylefeng.guns.modular.CoalMS.dao.TVShipMapper" >
+  <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.CoalMS.model.TVShip" >
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="FSHIPYEARNUMVCR" property="fshipyearnumvcr" jdbcType="VARCHAR" />
+    <result column="FSHIPORDERNUM" property="fshipordernum" jdbcType="DECIMAL" />
+    <result column="FARRIVETIMEDTM" property="farrivetimedtm" jdbcType="DATE" />
+    <result column="FSHIPCODENUM" property="fshipcodenum" jdbcType="DECIMAL" />
+    <result column="FSHIPNAME" property="fshipname" jdbcType="VARCHAR" />
+    <result column="FBERTHNUM" property="fberthnum" jdbcType="DECIMAL" />
+    <result column="FBERTHNAME" property="fberthname" jdbcType="VARCHAR" />
+    <result column="FSIGNTONNUM" property="fsigntonnum" jdbcType="DECIMAL" />
+    <result column="FSHIPSTATEVCR" property="fshipstatevcr" jdbcType="VARCHAR" />
+    <result column="FCOUNTTIMEDTM" property="fcounttimedtm" jdbcType="DATE" />
+    <result column="FCABINNUMNUM" property="fcabinnumnum" jdbcType="DECIMAL" />
+    <result column="FMAXWEIGHNUM" property="fmaxweighnum" jdbcType="DECIMAL" />
+    <result column="FBERTHCODENUM" property="fberthcodenum" jdbcType="DECIMAL" />
+    <result column="FSTARTTIMEDTM" property="fstarttimedtm" jdbcType="DATE" />
+    <result column="FSTOPTIMEDTM" property="fstoptimedtm" jdbcType="DATE" />
+    <result column="FFLOWCODEVCR" property="fflowcodevcr" jdbcType="VARCHAR" />
+    <result column="FFLOWNAME" property="fflowname" jdbcType="VARCHAR" />
+    <result column="FCABINNUMNUMNO" property="fcabinnumnumno" jdbcType="DECIMAL" />
+    <result column="FCOALCODE1VCR" property="fcoalcode1vcr" jdbcType="VARCHAR" />
+    <result column="FCOALNAME1" property="fcoalname1" jdbcType="VARCHAR" />
+    <result column="FBATTLEMENTS1VCR" property="fbattlements1vcr" jdbcType="VARCHAR" />
+    <result column="FBATTLENAME1" property="fbattlename1" jdbcType="VARCHAR" />
+    <result column="FRTON1NUM" property="frton1num" jdbcType="DECIMAL" />
+    <result column="FBQTON1NUM" property="fbqton1num" jdbcType="DECIMAL" />
+    <result column="FCOALCODE2VCR" property="fcoalcode2vcr" jdbcType="VARCHAR" />
+    <result column="FCOALNAME2" property="fcoalname2" jdbcType="VARCHAR" />
+    <result column="FBATTLEMENTS2VCR" property="fbattlements2vcr" jdbcType="VARCHAR" />
+    <result column="FBATTLENAME2" property="fbattlename2" jdbcType="VARCHAR" />
+    <result column="FRTON2NUM" property="frton2num" jdbcType="DECIMAL" />
+    <result column="FBQBTON2NUM" property="fbqbton2num" jdbcType="DECIMAL" />
+    <result column="FBMTONNUM" property="fbmtonnum" jdbcType="DECIMAL" />
+    <result column="FBJTONNUM1" property="fbjtonnum1" jdbcType="DECIMAL" />
+    <result column="FBJTONNUM2" property="fbjtonnum2" jdbcType="DECIMAL" />
+    <result column="FDATEDTM" property="fdatedtm" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    COMPANY, FSHIPYEARNUMVCR, FSHIPORDERNUM, FARRIVETIMEDTM, FSHIPCODENUM, FSHIPNAME, 
+    FBERTHNUM, FBERTHNAME, FSIGNTONNUM, FSHIPSTATEVCR, FCOUNTTIMEDTM, FCABINNUMNUM, FMAXWEIGHNUM, 
+    FBERTHCODENUM, FSTARTTIMEDTM, FSTOPTIMEDTM, FFLOWCODEVCR, FFLOWNAME, FCABINNUMNUMNO, 
+    FCOALCODE1VCR, FCOALNAME1, FBATTLEMENTS1VCR, FBATTLENAME1, FRTON1NUM, FBQTON1NUM, 
+    FCOALCODE2VCR, FCOALNAME2, FBATTLEMENTS2VCR, FBATTLENAME2, FRTON2NUM, FBQBTON2NUM, 
+    FBMTONNUM, FBJTONNUM1, FBJTONNUM2, FDATEDTM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.stylefeng.guns.modular.CoalMS.model.TVShipExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_V_SHIP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.stylefeng.guns.modular.CoalMS.model.TVShipExample" >
+    delete from T_V_SHIP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.stylefeng.guns.modular.CoalMS.model.TVShip" >
+    insert into T_V_SHIP (COMPANY, FSHIPYEARNUMVCR, FSHIPORDERNUM, 
+      FARRIVETIMEDTM, FSHIPCODENUM, FSHIPNAME, 
+      FBERTHNUM, FBERTHNAME, FSIGNTONNUM, 
+      FSHIPSTATEVCR, FCOUNTTIMEDTM, FCABINNUMNUM, 
+      FMAXWEIGHNUM, FBERTHCODENUM, FSTARTTIMEDTM, 
+      FSTOPTIMEDTM, FFLOWCODEVCR, FFLOWNAME, 
+      FCABINNUMNUMNO, FCOALCODE1VCR, FCOALNAME1, 
+      FBATTLEMENTS1VCR, FBATTLENAME1, FRTON1NUM, 
+      FBQTON1NUM, FCOALCODE2VCR, FCOALNAME2, 
+      FBATTLEMENTS2VCR, FBATTLENAME2, FRTON2NUM, 
+      FBQBTON2NUM, FBMTONNUM, FBJTONNUM1, 
+      FBJTONNUM2, FDATEDTM)
+    values (#{company,jdbcType=VARCHAR}, #{fshipyearnumvcr,jdbcType=VARCHAR}, #{fshipordernum,jdbcType=DECIMAL}, 
+      #{farrivetimedtm,jdbcType=DATE}, #{fshipcodenum,jdbcType=DECIMAL}, #{fshipname,jdbcType=VARCHAR}, 
+      #{fberthnum,jdbcType=DECIMAL}, #{fberthname,jdbcType=VARCHAR}, #{fsigntonnum,jdbcType=DECIMAL}, 
+      #{fshipstatevcr,jdbcType=VARCHAR}, #{fcounttimedtm,jdbcType=DATE}, #{fcabinnumnum,jdbcType=DECIMAL}, 
+      #{fmaxweighnum,jdbcType=DECIMAL}, #{fberthcodenum,jdbcType=DECIMAL}, #{fstarttimedtm,jdbcType=DATE}, 
+      #{fstoptimedtm,jdbcType=DATE}, #{fflowcodevcr,jdbcType=VARCHAR}, #{fflowname,jdbcType=VARCHAR}, 
+      #{fcabinnumnumno,jdbcType=DECIMAL}, #{fcoalcode1vcr,jdbcType=VARCHAR}, #{fcoalname1,jdbcType=VARCHAR}, 
+      #{fbattlements1vcr,jdbcType=VARCHAR}, #{fbattlename1,jdbcType=VARCHAR}, #{frton1num,jdbcType=DECIMAL}, 
+      #{fbqton1num,jdbcType=DECIMAL}, #{fcoalcode2vcr,jdbcType=VARCHAR}, #{fcoalname2,jdbcType=VARCHAR}, 
+      #{fbattlements2vcr,jdbcType=VARCHAR}, #{fbattlename2,jdbcType=VARCHAR}, #{frton2num,jdbcType=DECIMAL}, 
+      #{fbqbton2num,jdbcType=DECIMAL}, #{fbmtonnum,jdbcType=DECIMAL}, #{fbjtonnum1,jdbcType=DECIMAL}, 
+      #{fbjtonnum2,jdbcType=DECIMAL}, #{fdatedtm,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.stylefeng.guns.modular.CoalMS.model.TVShip" >
+    insert into T_V_SHIP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="company != null" >
+        COMPANY,
+      </if>
+      <if test="fshipyearnumvcr != null" >
+        FSHIPYEARNUMVCR,
+      </if>
+      <if test="fshipordernum != null" >
+        FSHIPORDERNUM,
+      </if>
+      <if test="farrivetimedtm != null" >
+        FARRIVETIMEDTM,
+      </if>
+      <if test="fshipcodenum != null" >
+        FSHIPCODENUM,
+      </if>
+      <if test="fshipname != null" >
+        FSHIPNAME,
+      </if>
+      <if test="fberthnum != null" >
+        FBERTHNUM,
+      </if>
+      <if test="fberthname != null" >
+        FBERTHNAME,
+      </if>
+      <if test="fsigntonnum != null" >
+        FSIGNTONNUM,
+      </if>
+      <if test="fshipstatevcr != null" >
+        FSHIPSTATEVCR,
+      </if>
+      <if test="fcounttimedtm != null" >
+        FCOUNTTIMEDTM,
+      </if>
+      <if test="fcabinnumnum != null" >
+        FCABINNUMNUM,
+      </if>
+      <if test="fmaxweighnum != null" >
+        FMAXWEIGHNUM,
+      </if>
+      <if test="fberthcodenum != null" >
+        FBERTHCODENUM,
+      </if>
+      <if test="fstarttimedtm != null" >
+        FSTARTTIMEDTM,
+      </if>
+      <if test="fstoptimedtm != null" >
+        FSTOPTIMEDTM,
+      </if>
+      <if test="fflowcodevcr != null" >
+        FFLOWCODEVCR,
+      </if>
+      <if test="fflowname != null" >
+        FFLOWNAME,
+      </if>
+      <if test="fcabinnumnumno != null" >
+        FCABINNUMNUMNO,
+      </if>
+      <if test="fcoalcode1vcr != null" >
+        FCOALCODE1VCR,
+      </if>
+      <if test="fcoalname1 != null" >
+        FCOALNAME1,
+      </if>
+      <if test="fbattlements1vcr != null" >
+        FBATTLEMENTS1VCR,
+      </if>
+      <if test="fbattlename1 != null" >
+        FBATTLENAME1,
+      </if>
+      <if test="frton1num != null" >
+        FRTON1NUM,
+      </if>
+      <if test="fbqton1num != null" >
+        FBQTON1NUM,
+      </if>
+      <if test="fcoalcode2vcr != null" >
+        FCOALCODE2VCR,
+      </if>
+      <if test="fcoalname2 != null" >
+        FCOALNAME2,
+      </if>
+      <if test="fbattlements2vcr != null" >
+        FBATTLEMENTS2VCR,
+      </if>
+      <if test="fbattlename2 != null" >
+        FBATTLENAME2,
+      </if>
+      <if test="frton2num != null" >
+        FRTON2NUM,
+      </if>
+      <if test="fbqbton2num != null" >
+        FBQBTON2NUM,
+      </if>
+      <if test="fbmtonnum != null" >
+        FBMTONNUM,
+      </if>
+      <if test="fbjtonnum1 != null" >
+        FBJTONNUM1,
+      </if>
+      <if test="fbjtonnum2 != null" >
+        FBJTONNUM2,
+      </if>
+      <if test="fdatedtm != null" >
+        FDATEDTM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="fshipyearnumvcr != null" >
+        #{fshipyearnumvcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fshipordernum != null" >
+        #{fshipordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="farrivetimedtm != null" >
+        #{farrivetimedtm,jdbcType=DATE},
+      </if>
+      <if test="fshipcodenum != null" >
+        #{fshipcodenum,jdbcType=DECIMAL},
+      </if>
+      <if test="fshipname != null" >
+        #{fshipname,jdbcType=VARCHAR},
+      </if>
+      <if test="fberthnum != null" >
+        #{fberthnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fberthname != null" >
+        #{fberthname,jdbcType=VARCHAR},
+      </if>
+      <if test="fsigntonnum != null" >
+        #{fsigntonnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fshipstatevcr != null" >
+        #{fshipstatevcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fcounttimedtm != null" >
+        #{fcounttimedtm,jdbcType=DATE},
+      </if>
+      <if test="fcabinnumnum != null" >
+        #{fcabinnumnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fmaxweighnum != null" >
+        #{fmaxweighnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fberthcodenum != null" >
+        #{fberthcodenum,jdbcType=DECIMAL},
+      </if>
+      <if test="fstarttimedtm != null" >
+        #{fstarttimedtm,jdbcType=DATE},
+      </if>
+      <if test="fstoptimedtm != null" >
+        #{fstoptimedtm,jdbcType=DATE},
+      </if>
+      <if test="fflowcodevcr != null" >
+        #{fflowcodevcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fflowname != null" >
+        #{fflowname,jdbcType=VARCHAR},
+      </if>
+      <if test="fcabinnumnumno != null" >
+        #{fcabinnumnumno,jdbcType=DECIMAL},
+      </if>
+      <if test="fcoalcode1vcr != null" >
+        #{fcoalcode1vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fcoalname1 != null" >
+        #{fcoalname1,jdbcType=VARCHAR},
+      </if>
+      <if test="fbattlements1vcr != null" >
+        #{fbattlements1vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fbattlename1 != null" >
+        #{fbattlename1,jdbcType=VARCHAR},
+      </if>
+      <if test="frton1num != null" >
+        #{frton1num,jdbcType=DECIMAL},
+      </if>
+      <if test="fbqton1num != null" >
+        #{fbqton1num,jdbcType=DECIMAL},
+      </if>
+      <if test="fcoalcode2vcr != null" >
+        #{fcoalcode2vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fcoalname2 != null" >
+        #{fcoalname2,jdbcType=VARCHAR},
+      </if>
+      <if test="fbattlements2vcr != null" >
+        #{fbattlements2vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="fbattlename2 != null" >
+        #{fbattlename2,jdbcType=VARCHAR},
+      </if>
+      <if test="frton2num != null" >
+        #{frton2num,jdbcType=DECIMAL},
+      </if>
+      <if test="fbqbton2num != null" >
+        #{fbqbton2num,jdbcType=DECIMAL},
+      </if>
+      <if test="fbmtonnum != null" >
+        #{fbmtonnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fbjtonnum1 != null" >
+        #{fbjtonnum1,jdbcType=DECIMAL},
+      </if>
+      <if test="fbjtonnum2 != null" >
+        #{fbjtonnum2,jdbcType=DECIMAL},
+      </if>
+      <if test="fdatedtm != null" >
+        #{fdatedtm,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.stylefeng.guns.modular.CoalMS.model.TVShipExample" resultType="java.lang.Integer" >
+    select count(*) from T_V_SHIP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_V_SHIP
+    <set >
+      <if test="record.company != null" >
+        COMPANY = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fshipyearnumvcr != null" >
+        FSHIPYEARNUMVCR = #{record.fshipyearnumvcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fshipordernum != null" >
+        FSHIPORDERNUM = #{record.fshipordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.farrivetimedtm != null" >
+        FARRIVETIMEDTM = #{record.farrivetimedtm,jdbcType=DATE},
+      </if>
+      <if test="record.fshipcodenum != null" >
+        FSHIPCODENUM = #{record.fshipcodenum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fshipname != null" >
+        FSHIPNAME = #{record.fshipname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fberthnum != null" >
+        FBERTHNUM = #{record.fberthnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fberthname != null" >
+        FBERTHNAME = #{record.fberthname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsigntonnum != null" >
+        FSIGNTONNUM = #{record.fsigntonnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fshipstatevcr != null" >
+        FSHIPSTATEVCR = #{record.fshipstatevcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fcounttimedtm != null" >
+        FCOUNTTIMEDTM = #{record.fcounttimedtm,jdbcType=DATE},
+      </if>
+      <if test="record.fcabinnumnum != null" >
+        FCABINNUMNUM = #{record.fcabinnumnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fmaxweighnum != null" >
+        FMAXWEIGHNUM = #{record.fmaxweighnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fberthcodenum != null" >
+        FBERTHCODENUM = #{record.fberthcodenum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fstarttimedtm != null" >
+        FSTARTTIMEDTM = #{record.fstarttimedtm,jdbcType=DATE},
+      </if>
+      <if test="record.fstoptimedtm != null" >
+        FSTOPTIMEDTM = #{record.fstoptimedtm,jdbcType=DATE},
+      </if>
+      <if test="record.fflowcodevcr != null" >
+        FFLOWCODEVCR = #{record.fflowcodevcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fflowname != null" >
+        FFLOWNAME = #{record.fflowname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fcabinnumnumno != null" >
+        FCABINNUMNUMNO = #{record.fcabinnumnumno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fcoalcode1vcr != null" >
+        FCOALCODE1VCR = #{record.fcoalcode1vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fcoalname1 != null" >
+        FCOALNAME1 = #{record.fcoalname1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fbattlements1vcr != null" >
+        FBATTLEMENTS1VCR = #{record.fbattlements1vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fbattlename1 != null" >
+        FBATTLENAME1 = #{record.fbattlename1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frton1num != null" >
+        FRTON1NUM = #{record.frton1num,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbqton1num != null" >
+        FBQTON1NUM = #{record.fbqton1num,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fcoalcode2vcr != null" >
+        FCOALCODE2VCR = #{record.fcoalcode2vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fcoalname2 != null" >
+        FCOALNAME2 = #{record.fcoalname2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fbattlements2vcr != null" >
+        FBATTLEMENTS2VCR = #{record.fbattlements2vcr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fbattlename2 != null" >
+        FBATTLENAME2 = #{record.fbattlename2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frton2num != null" >
+        FRTON2NUM = #{record.frton2num,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbqbton2num != null" >
+        FBQBTON2NUM = #{record.fbqbton2num,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbmtonnum != null" >
+        FBMTONNUM = #{record.fbmtonnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbjtonnum1 != null" >
+        FBJTONNUM1 = #{record.fbjtonnum1,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbjtonnum2 != null" >
+        FBJTONNUM2 = #{record.fbjtonnum2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdatedtm != null" >
+        FDATEDTM = #{record.fdatedtm,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_V_SHIP
+    set COMPANY = #{record.company,jdbcType=VARCHAR},
+      FSHIPYEARNUMVCR = #{record.fshipyearnumvcr,jdbcType=VARCHAR},
+      FSHIPORDERNUM = #{record.fshipordernum,jdbcType=DECIMAL},
+      FARRIVETIMEDTM = #{record.farrivetimedtm,jdbcType=DATE},
+      FSHIPCODENUM = #{record.fshipcodenum,jdbcType=DECIMAL},
+      FSHIPNAME = #{record.fshipname,jdbcType=VARCHAR},
+      FBERTHNUM = #{record.fberthnum,jdbcType=DECIMAL},
+      FBERTHNAME = #{record.fberthname,jdbcType=VARCHAR},
+      FSIGNTONNUM = #{record.fsigntonnum,jdbcType=DECIMAL},
+      FSHIPSTATEVCR = #{record.fshipstatevcr,jdbcType=VARCHAR},
+      FCOUNTTIMEDTM = #{record.fcounttimedtm,jdbcType=DATE},
+      FCABINNUMNUM = #{record.fcabinnumnum,jdbcType=DECIMAL},
+      FMAXWEIGHNUM = #{record.fmaxweighnum,jdbcType=DECIMAL},
+      FBERTHCODENUM = #{record.fberthcodenum,jdbcType=DECIMAL},
+      FSTARTTIMEDTM = #{record.fstarttimedtm,jdbcType=DATE},
+      FSTOPTIMEDTM = #{record.fstoptimedtm,jdbcType=DATE},
+      FFLOWCODEVCR = #{record.fflowcodevcr,jdbcType=VARCHAR},
+      FFLOWNAME = #{record.fflowname,jdbcType=VARCHAR},
+      FCABINNUMNUMNO = #{record.fcabinnumnumno,jdbcType=DECIMAL},
+      FCOALCODE1VCR = #{record.fcoalcode1vcr,jdbcType=VARCHAR},
+      FCOALNAME1 = #{record.fcoalname1,jdbcType=VARCHAR},
+      FBATTLEMENTS1VCR = #{record.fbattlements1vcr,jdbcType=VARCHAR},
+      FBATTLENAME1 = #{record.fbattlename1,jdbcType=VARCHAR},
+      FRTON1NUM = #{record.frton1num,jdbcType=DECIMAL},
+      FBQTON1NUM = #{record.fbqton1num,jdbcType=DECIMAL},
+      FCOALCODE2VCR = #{record.fcoalcode2vcr,jdbcType=VARCHAR},
+      FCOALNAME2 = #{record.fcoalname2,jdbcType=VARCHAR},
+      FBATTLEMENTS2VCR = #{record.fbattlements2vcr,jdbcType=VARCHAR},
+      FBATTLENAME2 = #{record.fbattlename2,jdbcType=VARCHAR},
+      FRTON2NUM = #{record.frton2num,jdbcType=DECIMAL},
+      FBQBTON2NUM = #{record.fbqbton2num,jdbcType=DECIMAL},
+      FBMTONNUM = #{record.fbmtonnum,jdbcType=DECIMAL},
+      FBJTONNUM1 = #{record.fbjtonnum1,jdbcType=DECIMAL},
+      FBJTONNUM2 = #{record.fbjtonnum2,jdbcType=DECIMAL},
+      FDATEDTM = #{record.fdatedtm,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

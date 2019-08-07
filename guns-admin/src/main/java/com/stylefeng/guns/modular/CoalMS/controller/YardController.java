@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.system.controller;
+package com.stylefeng.guns.modular.CoalMS.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.Tip;
@@ -33,57 +33,24 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * 菜单控制器
  *
  * @author fengshuonan
  * @Date 2017年2月12日21:59:14
  */
-
 @Controller
-@RequestMapping("/ship")
-public class ShipController extends BaseController {
+@RequestMapping("/yard")
+public class YardController extends BaseController {
 
-    private static String PREFIX = "/system/ship/";
+    private static String PREFIX = "/CoalMS/yard/";
 
-    @RequestMapping(value="/ship1")
-    public String ship1() {
-        return PREFIX + "ship1.html";
+    @RequestMapping(value="/yard")
+    public String train1() {
+        return PREFIX + "yard.html";
     }
 
-    @RequestMapping(value="/ship2")
-    public String ship2() {
-        return PREFIX + "ship2.html";
-    }
 
-    @RequestMapping(value="/ship3")
-    public String ship3() {
-        return PREFIX + "ship3.html";
-    }
-
-    @RequestMapping(value="/ship4")
-    public String ship4() {
-        return PREFIX + "ship4.html";
-    }
-
-    @RequestMapping(value="/ship5")
-    public String ship5() {
-        return PREFIX + "ship5.html";
-    }
-
-    @RequestMapping(value="/ship6")
-    public String ship6() {
-        return PREFIX + "ship6.html";
-    }
-
-    @RequestMapping(value="/ship7")
-    public String ship7() {
-        return PREFIX + "ship7.html";
-    }
-
-    @RequestMapping(value="/ship8")
-    public String ship8() {
-        return PREFIX + "ship8.html";
-    }
 
 }
