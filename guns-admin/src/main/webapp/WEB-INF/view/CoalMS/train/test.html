@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>企业信息管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <select id="addCondition" style="height:34px;">
+                                    <option></option>
+                                    <option>浙江省杭州市滨江区网商路699号</option>
+                                    <option>河北省秦皇岛市海港区</option>
+                                    <option>美国洛杉矶</option>
+                                    <option>英国伦敦</option>
+                                    <option>法国巴黎</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Enterprise.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="EnterpriseTableToolbar" role="group">
+                            @if(shiro.hasPermission("/dept/add")){
+                            <#button name="添加" icon="fa-plus" clickFun="Dept.openAddDept()"/>
+                            @}
+                            @if(shiro.hasPermission("/dept/update")){
+                            <#button name="修改" icon="fa-plus" clickFun="Dept.openDeptDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/dept/delete")){
+                            <#button name="删除" icon="fa-plus" clickFun="Dept.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="EnterpriseTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="${ctxPath}/static/modular/webSys/Enterprise/Enterprise.js"></script>-->
+@}

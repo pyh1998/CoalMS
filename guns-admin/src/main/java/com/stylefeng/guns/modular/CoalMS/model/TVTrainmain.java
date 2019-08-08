@@ -1,5 +1,6 @@
 package com.stylefeng.guns.modular.CoalMS.model;
 
+
 import java.util.Date;
 
 public class TVTrainmain {

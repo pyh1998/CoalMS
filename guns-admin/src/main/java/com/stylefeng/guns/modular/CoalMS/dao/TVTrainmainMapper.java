@@ -1,22 +1,13 @@
 package com.stylefeng.guns.modular.CoalMS.dao;
-
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.stylefeng.guns.modular.CoalMS.model.TVTrainmain;
-import com.stylefeng.guns.modular.CoalMS.model.TVTrainmainExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface TVTrainmainMapper {
-    int countByExample(TVTrainmainExample example);
+import java.util.List;
+import java.util.Map;
 
-    int deleteByExample(TVTrainmainExample example);
+public interface TVTrainmainMapper extends BaseMapper<TVTrainmain> {
 
-    int insert(TVTrainmain record);
+    List<Map<String, Object>> search1(@Param("str_company") String str_company, @Param("dt_start")String dt_start, @Param("dt_end") String dt_end);
 
-    int insertSelective(TVTrainmain record);
-
-    List<TVTrainmain> selectByExample(TVTrainmainExample example);
-
-    int updateByExampleSelective(@Param("record") TVTrainmain record, @Param("example") TVTrainmainExample example);
-
-    int updateByExample(@Param("record") TVTrainmain record, @Param("example") TVTrainmainExample example);
 }

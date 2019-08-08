@@ -3,7 +3,7 @@ var Train1 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search1"
+    bootstrapTableUrl:"/train/search1"
 };
 
 Train1.initColumn = function () {
@@ -220,96 +220,61 @@ Train1.initColumn = function () {
     ];
 };
 
-
-
-
-
-$(function () {
-    var defaultColunms = Train1.initColumn();
-    var table = new BSTable(Train1.id, "/train/search1", defaultColunms);
-    table.setPaginationType("client");
-    table.init();
-    Train1.table = table;
-});
-/*搜索*/
 Train1.search = function () {
-
-    console.log("AAAAAAAAAAAAAAAA");
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
     queryData['dt_end'] = $("#dt_end").val();
+    queryData['str_first'] = "1";
     console.log(queryData);
-    console.log(queryData['str_company']);
-    console.log(queryData['dt_start']);
-    Train1.table.refresh({query: queryData});
+    console.log("按钮点击489856494966497895");
+    //控制自动查询
+    if (!CustomizeParameters.autoSearch_switch) {
+        Train1.table.refresh({
+            query: queryData,
+            url: Train1.bootstrapTableUrl
+        });
+    } else {
+        Train1.table.refresh({query: queryData});
+    }
+    this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
+    $("#Train1Table").bootstrapTable('selectPage', 1);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Train1.search = function () {
-//     var queryData = {};
-//     queryData['str_company'] = $("#str_company").val();
-//     queryData['dt_start'] = $("#dt_start").val();
-//     queryData['dt_end'] = $("#dt_end").val();
-//     queryData['str_first'] = "1";
-//
-//     //控制自动查询
-//     if (!CustomizeParameters.autoSearch_switch) {
-//         Train1.table.refresh({
-//             query: queryData,
-//             url: Feng.ctxPath + Train1.bootstrapTableUrl
-//         });
-//     } else {
-//         Train1.table.refresh({query: queryData});
-//     }
-//     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
-//     $("#Train1Table").bootstrapTable('selectPage', 1);
-// };
 
 Train1.export = function () {
     Feng.confirm("是否按现查询条件导出excel?", function () {
         var str_company = $("#str_company").val();
         var dt_start = $("#dt_start").val();
         var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/train/list_train1_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
+        window.location.href =  "/train/list_train1_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
     });
 
 };
 
-// //临时修改了table url 别忘了
-// $(function () {
-//     var bodyheight = ($(document).height() - 20) + 'px';
-//     document.getElementById("Train1Dbody").style.height = bodyheight;
-//
-//     var oddheight = document.getElementById("qdiv").offsetHeight + 36;
-//     var tableheight = $(document).height() - oddheight;
-//     var defaultColunms = Train1.initColumn();
-//     var table = new BSTable(Train1.id, "/train/search2", defaultColunms);
-//
-//     //var table = new BSTable(Train1.id, Train1.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
-//     var queryData = {};
-//     queryData['str_company'] = $("#str_company").val();
-//     queryData['dt_start'] = $("#dt_start").val();
-//     queryData['dt_end'] = $("#dt_end").val();
-//     queryData['str_first'] = "1";
-//     table.queryParams = queryData;
-//     table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
-//     table.setPaginationType("client");
-//     //控制自动查询
-//     if (!CustomizeParameters.autoSearch_switch) {
-//         table.url = "/train/search1";
-//     }
+//临时修改了table url 别忘了
+$(function () {
+    var bodyheight = ($(document).height() - 20) + 'px';
+    document.getElementById("Train1Dbody").style.height = bodyheight;
+
+    var oddheight = document.getElementById("qdiv").offsetHeight + 36;
+    var tableheight = $(document).height() - oddheight;
+    var defaultColunms = Train1.initColumn();
+    console.log(Train1.bootstrapTableUrl);
+    var table = new BSTable(Train1.id, Train1.bootstrapTableUrl,defaultColunms);
+    console.log("abcdasdadadasfafaf2222222222222222222");
+    var queryData = {};
+    queryData['str_company'] = $("#str_company").val();
+    queryData['dt_start'] = $("#dt_start").val();
+    queryData['dt_end'] = $("#dt_end").val();
+    queryData['str_first'] = "1";
+    console.log(queryData);
+    table.queryParams = queryData;
+    table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
+    table.setPaginationType("client");
+    //控制自动查询
+    if (!CustomizeParameters.autoSearch_switch) {
+        table.url = Train1.bootstrapTableUrl;
+    }
 
     //页面跳转
     table.onClickCell = function (field, value, row, $element) {
@@ -317,7 +282,7 @@ Train1.export = function () {
         if (field !== "FTRAINCODEVCR") {
             return;
         }
-        var url = Feng.ctxPath + "/train/train5";
+        var url =  "/train/train5";
         var title = "单车过衡数据分析";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");
