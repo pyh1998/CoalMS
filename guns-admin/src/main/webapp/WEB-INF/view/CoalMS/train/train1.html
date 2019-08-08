@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <!-- saved from url=(0048)http://124.237.123.234:12380/CoalMS/train/train1 -->
 <html>
-<script type="text/javascript">
-Object.defineProperty(window.navigator, 'userAgent', { get: function()
-{ return 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'; } });
-Object.defineProperty(window.navigator, 'vendor', { get: function()
-{ return 'Mozilla, Inc.'; } });Object.defineProperty(window.navigator, 'platform', { get: function()
-{ return 'Windows'; } });
-</script>
+<script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', {
+    get: function() {
+        return 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14';
+    }
+});
+Object.defineProperty(window.navigator, 'vendor', {
+    get: function() {
+        return 'Mozilla, Inc.';
+    }
+});
+Object.defineProperty(window.navigator, 'platform', {
+    get: function() {
+        return 'Windows';
+    }
+});</script>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit"><!-- 让360浏览器默认选择webkit内核 -->
-<!--adsasdas-->
+    <meta name="renderer" content="webkit">
+    <!-- 让360浏览器默认选择webkit内核 -->
+    <!--adsasdas-->
     <!-- 全局css -->
     <link rel="shortcut icon" href="http://124.237.123.234:12380/CoalMS/static/favicon.ico">
     <link href="${ctxPath}/static/train/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +39,6 @@ Object.defineProperty(window.navigator, 'vendor', { get: function()
     <link href="${ctxPath}/static/train/css/globalTableSize.css" rel="stylesheet">
     <link href="${ctxPath}/static/train/css/customizeParameters.css" rel="stylesheet">
     <!-- <link href="/CoalMS/static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
-
     <!-- 全局js -->
     <script src="${ctxPath}/static/train/js/jquery.min.js"></script>
     <script src="${ctxPath}/static/train/js/bootstrap.min.js"></script>
@@ -41,10 +49,12 @@ Object.defineProperty(window.navigator, 'vendor', { get: function()
     <script src="${ctxPath}/static/train/js/bootstrap-table-mobile.min.js"></script>
     <script src="${ctxPath}/static/train/js/bootstrap-table-zh-CN.min.js"></script>
     <script src="${ctxPath}/static/train/js/bootstrap-treetable.js"></script>
-    <script src="${ctxPath}/static/train/js/layer.js"></script><link rel="stylesheet" href="${ctxPath}/static/train/css/layer.css" id="layuicss-layer">
+    <script src="${ctxPath}/static/train/js/layer.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/static/train/css/layer.css" id="layuicss-layer">
     <script src="${ctxPath}/static/train/js/chosen.jquery.js"></script>
     <script src="${ctxPath}/static/train/js/icheck.min.js"></script>
-    <script src="${ctxPath}/static/train/js/laydate.js"></script><link rel="stylesheet" href="${ctxPath}/static/train/css/laydate.css" id="layuicss-laydate">
+    <script src="${ctxPath}/static/train/js/laydate.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/static/train/css/laydate.css" id="layuicss-laydate">
     <script src="${ctxPath}/static/train/js/webuploader.min.js"></script>
     <script src="${ctxPath}/static/train/js/ajax-object.js"></script>
     <script src="${ctxPath}/static/train/js/bootstrap-table-object.js"></script>
@@ -53,236 +63,186 @@ Object.defineProperty(window.navigator, 'vendor', { get: function()
     <script src="${ctxPath}/static/train/js/ztree-object.js"></script>
     <script src="${ctxPath}/static/train/js/Feng.js"></script>
     <script src="${ctxPath}/static/train/js/customizeParameters.js"></script>
-
     <!--手工拖拽table列宽，但是效果不是很好-->
     <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/colResizable-1.6.min.js"></script>-->
     <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/bootstrap-table-resizable.js"></script>-->
-
-    <style type="text/css">
-        table{
-            /*width:100px;*/
-            /*table-layout:fixed;!* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 *!*/
-        }
-        td{
-            /*width:100%;*/
-            /*word-break:keep-all;!* 不换行 *!*/
-            /*white-space:nowrap;!* 不换行 *!*/
-            /*overflow:hidden;!* 内容超出宽度时隐藏超出部分的内容 *!*/
-            /*text-overflow:ellipsis;!* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*!*/
-        }
-    </style>
-
-    <script type="text/javascript">
-        Feng.addCtx("/CoalMS");
-        Feng.sessionTimeoutRegistry();
-    </script>
+    <style type="text/css">table{ /*width:100px;*/ /*table-layout:fixed;!* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 *!*/ } td{ /*width:100%;*/ /*word-break:keep-all;!* 不换行 *!*/ /*white-space:nowrap;!* 不换行 *!*/ /*overflow:hidden;!* 内容超出宽度时隐藏超出部分的内容 *!*/ /*text-overflow:ellipsis;!* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*!*/ }</style>
+    <script type="text/javascript">Feng.addCtx("/CoalMS");
+    Feng.sessionTimeoutRegistry();</script>
 </head>
 
 <body class="gray-bg">
-<div class="wrapper wrapper-content"><!-- -->
+<div class="wrapper wrapper-content">
+    <!-- -->
     <div class="row" style="height:100%">
-    <div class="col-sm-12" style="height:100%">
-        <div class="ibox float-e-margins" style="height:100%">
-
-            <div id="Train1Dbody" class="ibox-content" style="height: 800px;">
-                <div class="row row-lg">
-                    <div class="col-sm-12">
-
-                        <div id="qdiv" class="row">
-                            <div class="col-sm-3">
-<div class="input-group">
-    <div class="input-group-btn">
-        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">
-            公司
-        </button>
-    </div>
-    <select class="form-control" id="str_company">
-        
-    <option value="09">九公司</option><option value="07">七公司</option><option value="06">六公司</option><option value="02">二公司</option></select>
-</div>                        </div>
-
-                        <div class="col-sm-3">
-<div class="input-group">
-    <div class="input-group-btn">
-        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">开始时间
-        </button>
-    </div>
-    <input type="text" class="form-control layer-date" id="dt_start" lay-key="1">
-</div>                        </div>
-                        <div class="col-sm-3">
-<div class="input-group">
-    <div class="input-group-btn">
-        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">结束时间
-        </button>
-    </div>
-    <input type="text" class="form-control layer-date" id="dt_end" lay-key="2">
-</div>                        </div>
-                        <div class="col-sm-3">
-<style>
-    .btn-backgroundColor-custom {
-        background-color: #bababa;
-        border-color: #bababa;
-    }
-
-    .btn-color-custom {
-        color: #ffffff;
-    }
-</style>
-
-
-<div class="btn-group" data-toggle="buttons" id="radio">
-    <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">
-        <i class="fa fa-toggle-on"></i>&nbsp;合计方式
-    </button>
-    <label class="btn btn-primary btn-backgroundColor-custom btn-color-custom active" onclick="CustomizeParameters.setRadioValue(1)">
-        <input type="radio" name="options" id="option1">
-        求和
-    </label>
-    <label class="btn btn-primary btn-backgroundColor-custom btn-color-custom" onclick="CustomizeParameters.setRadioValue(2)">
-        <input type="radio" name="options" id="option2">
-        平均值
-    </label>
-</div>                        </div>
-                        <div class="col-sm-3">
-
-<button type="button" class="btn btn-primary " onclick="Train1.search()" id="">
-    <i class="fa fa-search"></i>&nbsp;搜索
-</button>
-
-
-<button type="button" class="btn btn-primary button-margin" onclick="Train1.export()" id="excel-export">
-    <i class="fa fa-file-excel-o"></i>&nbsp;导出
-</button>
-
-                        </div>
-                        <input type="hidden" id="dt_min" value="">
-                        <input type="hidden" id="dt_max" value="">
-                    </div>
-
-                        <div class="bootstrap-table">
-                            <div class="fixed-table-container" style="height: 632px; padding-bottom: 8px;">
-                                <div class="fixed-table-body">
-                                    <div class="fixed-table-loading" style="top: 41px;">正在努力地加载数据中，请稍候……</div>
-                                    <table id="Train1Table" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
-                                        <thead>
-                                        <tr>
-                                            <th style="text-align: center; vertical-align: middle; width: 3%; " data-field="index">
-                                                <div class="th-inner ">序号</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="COMPANY">
-                                                <div class="th-inner sortable both">公司</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="FBELONGDATETIMEDTM">
-                                                <div class="th-inner sortable both">所属时间</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="FARRIVEPORTTIMEDTM">
-                                                <div class="th-inner sortable both">抵港时间</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 8%; " data-field="FTRAINCODEVCR">
-                                                <div class="th-inner sortable both">列车编号</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FTRAINORDERVCR">
-                                                <div class="th-inner sortable both">车次</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FSTATSTASTIONNAME">
-                                                <div class="th-inner sortable both">发站</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 8%; " data-field="FCOALNAME">
-                                                <div class="th-inner sortable both">煤种</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FDISBUTTNAME">
-                                                <div class="th-inner sortable both">垛位</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 15%; " data-field="FCONSIGNERNAME">
-                                                <div class="th-inner sortable both">发货人</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="TICKET_NO">
-                                                <div class="th-inner sortable both">翻车机</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="TRAINCOUNT">
-                                                <div class="th-inner sortable both">车厢数</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 10%; " data-field="FWEIGHTTONNUM">
-                                                <div class="th-inner sortable both">过衡吨</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="FCHECKTONNUM">
-                                                <div class="th-inner sortable both">货票吨</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="PROFITNUM">
-                                                <div class="th-inner sortable both">盈亏吨</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; " data-field="DEVIARATE">
-                                                <div class="th-inner sortable both">盈亏率%</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                            <th style="text-align: center; vertical-align: middle; width: 10%; " data-field="EMPTYRATE">
-                                                <div class="th-inner sortable both">翻净率%</div>
-                                                <div class="fht-cell"></div>
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="no-records-found">
-                                            <td colspan="17"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="fixed-table-pagination" style="display: none;">
-                                    <div class="pull-left pagination-detail">
-                                        <span class="pagination-info">显示第 1 到第 0 条记录，总共 0 条记录</span>
-                                        <span class="page-list" style="display: none;">每页显示
-          <span class="btn-group dropup">
-            <button type="button" class="btn btn-default btn-outline dropdown-toggle" data-toggle="dropdown">
-              <span class="page-size">15</span>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li role="menuitem" class="active">
-                <a href="http://124.237.123.234:12380/CoalMS/train/train1#">15</a></li>
-            </ul>
-          </span>条记录</span>
+        <div class="col-sm-12" style="height:100%">
+            <div class="ibox float-e-margins" style="height:100%">
+                <div id="Train1Dbody" class="ibox-content" style="height: 800px;">
+                    <div class="row row-lg">
+                        <div class="col-sm-12">
+                            <div id="qdiv" class="row">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">公司</button></div>
+                                        <select class="form-control" id="str_company">
+                                            <option value="09">九公司</option>
+                                            <option value="07">七公司</option>
+                                            <option value="06">六公司</option>
+                                            <option value="02">二公司</option></select>
                                     </div>
-                                    <div class="pull-right pagination" style="display: none;">
-                                        <ul class="pagination pagination-outline">
-                                            <li class="page-pre">
-                                                <a href="http://124.237.123.234:12380/CoalMS/train/train1#">‹</a></li>
-                                            <li class="page-next">
-                                                <a href="http://124.237.123.234:12380/CoalMS/train/train1#">›</a></li>
-                                        </ul>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">开始时间</button></div>
+                                        <input type="text" class="form-control layer-date" id="dt_start" lay-key="1"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">结束时间</button></div>
+                                        <input type="text" class="form-control layer-date" id="dt_end" lay-key="2"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <style>.btn-backgroundColor-custom { background-color: #bababa; border-color: #bababa; } .btn-color-custom { color: #ffffff; }</style>
+                                    <div class="btn-group" data-toggle="buttons" id="radio">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">
+                                            <i class="fa fa-toggle-on"></i>&nbsp;合计方式</button>
+                                        <label class="btn btn-primary btn-backgroundColor-custom btn-color-custom active" onclick="CustomizeParameters.setRadioValue(1)">
+                                            <input type="radio" name="options" id="option1">求和</label>
+                                        <label class="btn btn-primary btn-backgroundColor-custom btn-color-custom" onclick="CustomizeParameters.setRadioValue(2)">
+                                            <input type="radio" name="options" id="option2">平均值</label></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-primary " onclick="Train1.search()" id="">
+                                        <i class="fa fa-search"></i>&nbsp;搜索</button>
+                                    <button type="button" class="btn btn-primary button-margin" onclick="Train1.export()" id="excel-export">
+                                        <i class="fa fa-file-excel-o"></i>&nbsp;导出</button>
+                                </div>
+                                <input type="hidden" id="dt_min" value="">
+                                <input type="hidden" id="dt_max" value=""></div>
+                            <div class="bootstrap-table">
+                                <div class="fixed-table-container" style="height: 632px; padding-bottom: 8px;">
+                                    <div class="fixed-table-body">
+                                        <div class="fixed-table-loading" style="top: 41px;">正在努力地加载数据中，请稍候……</div>
+                                        <table id="Train1Table" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
+                                            <thead>
+                                            <tr>
+                                                <th style="text-align: center; vertical-align: middle; width: 3%; " data-field="index">
+                                                    <div class="th-inner ">序号</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="COMPANY">
+                                                    <div class="th-inner sortable both">公司</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="FBELONGDATETIMEDTM">
+                                                    <div class="th-inner sortable both">所属时间</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="FARRIVEPORTTIMEDTM">
+                                                    <div class="th-inner sortable both">抵港时间</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 8%; " data-field="FTRAINCODEVCR">
+                                                    <div class="th-inner sortable both">列车编号</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FTRAINORDERVCR">
+                                                    <div class="th-inner sortable both">车次</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FSTATSTASTIONNAME">
+                                                    <div class="th-inner sortable both">发站</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 8%; " data-field="FCOALNAME">
+                                                    <div class="th-inner sortable both">煤种</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FDISBUTTNAME">
+                                                    <div class="th-inner sortable both">垛位</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 15%; " data-field="FCONSIGNERNAME">
+                                                    <div class="th-inner sortable both">发货人</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="TICKET_NO">
+                                                    <div class="th-inner sortable both">翻车机</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="TRAINCOUNT">
+                                                    <div class="th-inner sortable both">车厢数</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 10%; " data-field="FWEIGHTTONNUM">
+                                                    <div class="th-inner sortable both">过衡吨</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="FCHECKTONNUM">
+                                                    <div class="th-inner sortable both">货票吨</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="PROFITNUM">
+                                                    <div class="th-inner sortable both">盈亏吨</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; " data-field="DEVIARATE">
+                                                    <div class="th-inner sortable both">盈亏率%</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                                <th style="text-align: center; vertical-align: middle; width: 10%; " data-field="EMPTYRATE">
+                                                    <div class="th-inner sortable both">翻净率%</div>
+                                                    <div class="fht-cell"></div>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="no-records-found">
+                                                <td colspan="17"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="fixed-table-pagination" style="display: none;">
+                                        <div class="pull-left pagination-detail">
+                                            <span class="pagination-info">显示第 1 到第 0 条记录，总共 0 条记录</span>
+                                            <span class="page-list" style="display: none;">每页显示
+                            <span class="btn-group dropup">
+                              <button type="button" class="btn btn-default btn-outline dropdown-toggle" data-toggle="dropdown">
+                                <span class="page-size">15</span>
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li role="menuitem" class="active">
+                                  <a href="http://124.237.123.234:12380/CoalMS/train/train1#">15</a></li>
+                              </ul>
+                            </span>条记录</span>
+                                        </div>
+                                        <div class="pull-right pagination" style="display: none;">
+                                            <ul class="pagination pagination-outline">
+                                                <li class="page-pre">
+                                                    <a href="http://124.237.123.234:12380/CoalMS/train/train1#">‹</a></li>
+                                                <li class="page-next">
+                                                    <a href="http://124.237.123.234:12380/CoalMS/train/train1#">›</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-
-<script src="${ctxPath}/static/train/js/permission_control.js"></script>
-<script src="${ctxPath}/static/train/js/train1.js"></script>
-
+    <script src="${ctxPath}/static/train/js/permission_control.js"></script>
+    <script src="${ctxPath}/static/train/js/train1.js"></script>
 </div>
 <script src="${ctxPath}/static/train/js/content.js"></script>
+</body>
 
-
-
-</body></html>
+</html>
