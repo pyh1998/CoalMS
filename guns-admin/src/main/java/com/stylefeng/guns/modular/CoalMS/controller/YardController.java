@@ -52,5 +52,4 @@ public class YardController extends BaseController {
     }
 
 
-
 }
