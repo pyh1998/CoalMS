@@ -26,7 +26,4 @@
       where COMPANY like CONCAT('%',#{str_company},'%')
     </if>
   </select>
-
-
-
 </mapper>
