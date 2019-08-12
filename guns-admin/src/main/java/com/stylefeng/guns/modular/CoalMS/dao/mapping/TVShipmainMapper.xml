@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stylefeng.guns.modular.CoalMS.dao.TVShipmainMapper" >
+  <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.CoalMS.model.TVShipmain" >
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="FSHIPYEARNUMVCR" property="fshipyearnumvcr" jdbcType="VARCHAR" />
+    <result column="FSHIPORDERNUM" property="fshipordernum" jdbcType="DECIMAL" />
+    <result column="FARRIVETIMEDTM" property="farrivetimedtm" jdbcType="DATE" />
+    <result column="FSHIPCODENUM" property="fshipcodenum" jdbcType="DECIMAL" />
+    <result column="FSHIPNAME" property="fshipname" jdbcType="VARCHAR" />
+    <result column="FBERTHNUM" property="fberthnum" jdbcType="DECIMAL" />
+    <result column="FBERTHNAME" property="fberthname" jdbcType="VARCHAR" />
+    <result column="FSIGNTONNUM" property="fsigntonnum" jdbcType="DECIMAL" />
+    <result column="FSHIPSTATEVCR" property="fshipstatevcr" jdbcType="VARCHAR" />
+    <result column="FCOUNTTIMEDTM" property="fcounttimedtm" jdbcType="DATE" />
+    <result column="FCABINNUMNUM" property="fcabinnumnum" jdbcType="DECIMAL" />
+    <result column="FMAXWEIGHNUM" property="fmaxweighnum" jdbcType="DECIMAL" />
+    <result column="FRTON1NUM" property="frton1num" jdbcType="DECIMAL" />
+    <result column="FBQTON1NUM" property="fbqton1num" jdbcType="DECIMAL" />
+    <result column="FRTON2NUM" property="frton2num" jdbcType="DECIMAL" />
+    <result column="FBQBTON2NUM" property="fbqbton2num" jdbcType="DECIMAL" />
+    <result column="FBMTONNUM" property="fbmtonnum" jdbcType="DECIMAL" />
+    <result column="FBJTONNUM1" property="fbjtonnum1" jdbcType="DECIMAL" />
+    <result column="FBJTONNUM2" property="fbjtonnum2" jdbcType="DECIMAL" />
+    <result column="LINERESULT" property="lineresult" jdbcType="VARCHAR" />
+    <result column="LINESTATE" property="linestate" jdbcType="VARCHAR" />
+    <result column="RTON" property="rton" jdbcType="DECIMAL" />
+    <result column="BMTON" property="bmton" jdbcType="DECIMAL" />
+    <result column="BQTON" property="bqton" jdbcType="DECIMAL" />
+    <result column="BJTON" property="bjton" jdbcType="DECIMAL" />
+    <result column="MAXTON" property="maxton" jdbcType="DECIMAL" />
+    <result column="MINTON" property="minton" jdbcType="DECIMAL" />
+    <result column="RRATE" property="rrate" jdbcType="DECIMAL" />
+    <result column="BMRATE" property="bmrate" jdbcType="DECIMAL" />
+    <result column="BQRATE" property="bqrate" jdbcType="DECIMAL" />
+    <result column="BJRATE" property="bjrate" jdbcType="DECIMAL" />
+    <result column="FCOALNAME1" property="fcoalname1" jdbcType="VARCHAR" />
+    <result column="FCOALNAME2" property="fcoalname2" jdbcType="VARCHAR" />
+    <result column="SIGNRESULT" property="signresult" jdbcType="VARCHAR" />
+    <result column="SIGNSTATE" property="signstate" jdbcType="VARCHAR" />
+    <result column="SIGNRRATE" property="signrrate" jdbcType="DECIMAL" />
+    <result column="SIGNBMRATE" property="signbmrate" jdbcType="DECIMAL" />
+    <result column="SIGNBQRATE" property="signbqrate" jdbcType="DECIMAL" />
+    <result column="SIGNBJRATE" property="signbjrate" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="list_ship3" resultType="map">
+    select *
+    from T_V_SHIPMAIN
+    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">
+      where COMPANY like CONCAT('%',#{str_company},'%')
+    </if>
+  </select>
+</mapper>

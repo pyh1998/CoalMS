@@ -1,11 +1,14 @@
 package com.stylefeng.guns.modular.CoalMS.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.core.util.ToolUtil;
 import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import com.stylefeng.guns.modular.CoalMS.warpper.TrainWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -74,8 +77,12 @@ public class TrainController extends BaseController {
      */
     @RequestMapping(value = "/search1")
     @ResponseBody
-    public Object search1(String str_company,String dt_start,String dt_end) {
+    public Object search1(String time, String str_company, String dt_start, String dt_end) {
+//        ^\d{4}\d{2}$
+//        ToolUtil.isEmpty()
+//        TrainService.selectList(new EntityWrapper<>());
 
+        System.out.println("aaaaaaaaaaaaaa");
         List<Map<String, Object>> list = this.TrainService.search1(str_company,dt_start,dt_end);
 
         return super.warpObject(new TrainWarpper(list));
@@ -105,4 +112,5 @@ public class TrainController extends BaseController {
         return super.warpObject(new TrainWarpper(list));
 
     }
+
 }

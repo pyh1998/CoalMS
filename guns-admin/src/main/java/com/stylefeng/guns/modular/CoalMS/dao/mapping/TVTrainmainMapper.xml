@@ -22,9 +22,14 @@
 
   <select id="search1" resultType="map">
     select * from T_V_TRAINMAIN
-    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">
-      where COMPANY like CONCAT('%',#{str_company},'%')
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
     </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+
   </select>
   <select id="search4" resultType="map">
     select * from T_V_TRAINMAIN

@@ -19,7 +19,7 @@ Ship3.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship3.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship3.bootstrapTableUrl
+            url: Ship3.bootstrapTableUrl
         });
     } else {
         Ship3.table.refresh({query: queryData});
@@ -33,14 +33,14 @@ Ship3.export = function () {
         var str_company = $("#str_company").val();
         var dt_start = $("#dt_start").val();
         var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship3_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
+        window.location.href = "/ship/list_ship3_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
     });
 };
 
 $(function () {
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship3Dbody").style.height = bodyheight;
-
+    console.log(Ship3.bootstrapTableUrl);
     var oddheight = document.getElementById("qdiv").offsetHeight + 36;
     var tableheight = $(document).height() - oddheight;
     var defaultColunms = Ship3.initColumn();
@@ -62,7 +62,7 @@ $(function () {
         if (field !== "FSHIPYEARNUMVCR") {
             return;
         }
-        var url = Feng.ctxPath + "/ship/ship8";
+        var url =  "/ship/ship8";
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

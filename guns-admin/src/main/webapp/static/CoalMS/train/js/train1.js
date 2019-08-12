@@ -18,15 +18,6 @@ Train1.initColumn = function () {
             valign: 'middle',
             width: '3%',
             formatter: function (value, row, index) {
-                /**
-                 *
-                 * 功能: 全局统一序列号
-                 *
-                 * @作者 Andy
-                 * @时间 2019/4/26 11:34
-                 * @return
-                 *
-                 */
                 if (me.table.getPaginationType() === "server") {
                     //server服务端分页
                     //通过表的#id 可以得到每页多少条
@@ -203,20 +194,20 @@ Train1.initColumn = function () {
                 }
             }
         },
-        {
-            title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
-            footerFormatter: function (value, row, index) {
-                if (!value) return;
-                var count = 0;
-                for (var i = 0; i < value.length; i++) {
-                    var number = parseInt(value[i]["EMPTYRATE"]);
-                    if (!Number.isNaN(number))
-                        count += number;
-                }
-                // return count;
-                return "";
-            }
-        }
+        // {
+        //     title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
+        //     footerFormatter: function (value, row, index) {
+        //         if (!value) return;
+        //         var count = 0;
+        //         for (var i = 0; i < value.length; i++) {
+        //             var number = parseInt(value[i]["EMPTYRATE"]);
+        //             if (!Number.isNaN(number))
+        //                 count += number;
+        //         }
+        //          return count;
+        //
+        //     }
+        // }
     ];
 };
 
@@ -279,7 +270,7 @@ $(function () {
         if (field !== "FTRAINCODEVCR") {
             return;
         }
-        var url =  "/train/train5";
+        var url =  "/train/train4";
         var title = "单车过衡数据分析";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");
