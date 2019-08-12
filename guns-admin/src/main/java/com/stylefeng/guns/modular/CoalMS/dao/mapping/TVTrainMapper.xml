@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stylefeng.guns.modular.CoalMS.dao.TVTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.CoalMS.model.TVTrain" >
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="FTRAINCODEVCR" property="ftraincodevcr" jdbcType="VARCHAR" />
+    <result column="FTRAINORDERVCR" property="ftrainordervcr" jdbcType="VARCHAR" />
+    <result column="FARRIVEPORTTIMEDTM" property="farriveporttimedtm" jdbcType="DATE" />
+    <result column="FTRAINNUMNUM" property="ftrainnumnum" jdbcType="VARCHAR" />
+    <result column="FUNLOADFLAGNUM" property="funloadflagnum" jdbcType="DECIMAL" />
+    <result column="FISWEIGHTNUM" property="fisweightnum" jdbcType="DECIMAL" />
+    <result column="FWEIGHTDTM" property="fweightdtm" jdbcType="DATE" />
+    <result column="FWEIGHTFLAG" property="fweightflag" jdbcType="VARCHAR" />
+    <result column="FBELONGDATETIMEDTM" property="fbelongdatetimedtm" jdbcType="DATE" />
+    <result column="ISVALID" property="isvalid" jdbcType="DECIMAL" />
+    <result column="FTRAINORDERNUM" property="ftrainordernum" jdbcType="DECIMAL" />
+    <result column="FTRAINNONUM" property="ftrainnonum" jdbcType="VARCHAR" />
+    <result column="FSTATSTASTIONCODENUM" property="fstatstastioncodenum" jdbcType="DECIMAL" />
+    <result column="FSTATSTASTIONNAME" property="fstatstastionname" jdbcType="VARCHAR" />
+    <result column="FCOALCODEVCR" property="fcoalcodevcr" jdbcType="VARCHAR" />
+    <result column="FCOALNAME" property="fcoalname" jdbcType="VARCHAR" />
+    <result column="FCONSIGNERNUM" property="fconsignernum" jdbcType="DECIMAL" />
+    <result column="FCONSIGNERNAME" property="fconsignername" jdbcType="VARCHAR" />
+    <result column="FCHECKTONNUM" property="fchecktonnum" jdbcType="DECIMAL" />
+    <result column="FWEIGHTTONNUM" property="fweighttonnum" jdbcType="DECIMAL" />
+    <result column="FISWEIGHTNUMD" property="fisweightnumd" jdbcType="DECIMAL" />
+    <result column="FDISBUTTCODEVCR" property="fdisbuttcodevcr" jdbcType="VARCHAR" />
+    <result column="FDISBUTTNAME" property="fdisbuttname" jdbcType="VARCHAR" />
+    <result column="FHEAVYTONNUM" property="fheavytonnum" jdbcType="DECIMAL" />
+    <result column="FEMPTYTONNUM" property="femptytonnum" jdbcType="DECIMAL" />
+    <result column="FEMPTYTIMEDTM" property="femptytimedtm" jdbcType="DATE" />
+    <result column="TICKET_NO" property="ticketNo" jdbcType="VARCHAR" />
+    <result column="FTRAINNONUM2" property="ftrainnonum2" jdbcType="VARCHAR" />
+    <result column="FVOLUME" property="fvolume" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="search1" resultType="map">
+  select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS DEVIARATE from T_V_TRAIN
+  where 1=1
+  <if test="str_company != null and str_company != '' ">
+    AND COMPANY = #{str_company}
+  </if>
+  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+  </if>
+  </select>
+
+</mapper>

@@ -54,10 +54,10 @@
 
         <!-- 指定数据库表 -->
         <table schema="" tableName="T_V_TRAIN"></table>
-        <table schema="" tableName="T_V_TRAINMAIN"></table>
-        <table schema="" tableName="T_V_TRAINSUM"></table>
-        <table schema="" tableName="T_V_SHIP"></table>
-        <table schema="" tableName="T_V_SHIPCOAL"></table>
-        <table schema="" tableName="T_V_SHIPMAIN"></table>
+        <!--<table schema="" tableName="T_V_TRAINMAIN"></table>-->
+        <!--<table schema="" tableName="T_V_TRAINSUM"></table>-->
+        <!--<table schema="" tableName="T_V_SHIP"></table>-->
+        <!--<table schema="" tableName="T_V_SHIPCOAL"></table>-->
+        <!--<table schema="" tableName="T_V_SHIPMAIN"></table>-->
     </context>
 </generatorConfiguration>
