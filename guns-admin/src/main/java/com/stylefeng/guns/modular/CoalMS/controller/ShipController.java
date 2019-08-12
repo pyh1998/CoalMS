@@ -1,6 +1,9 @@
 package com.stylefeng.guns.modular.CoalMS.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.modular.CoalMS.service.ShipService;
+import com.stylefeng.guns.modular.CoalMS.service.TrainService;
+import com.stylefeng.guns.modular.CoalMS.warpper.ShipWarpper;
 import com.stylefeng.guns.core.base.tips.Tip;
 import com.stylefeng.guns.core.cache.CacheKit;
 import com.stylefeng.guns.core.common.annotion.BussinessLog;
@@ -46,6 +49,9 @@ public class ShipController extends BaseController {
 
     private static String PREFIX = "/CoalMS/ship/";
 
+    @Autowired
+    private ShipService ShipService;
+
     @RequestMapping(value="/ship1")
     public String ship1() {
         return PREFIX + "ship1.html";
@@ -85,5 +91,18 @@ public class ShipController extends BaseController {
     public String ship8() {
         return PREFIX + "ship8.html";
     }
+    /**
+     * 皮带秤功能3：误差合格分析
+     */
+    @RequestMapping(value = "/list_ship3")
+    @ResponseBody
+    public Object list_ship3(String str_company,String dt_start,String dt_end) {
 
+        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
+        List<Map<String, Object>> list = this.ShipService.list_ship3(str_company,dt_start,dt_end);
+
+        return super.warpObject(new ShipWarpper(list));
+
+
+    }
 }
