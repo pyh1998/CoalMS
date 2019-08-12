@@ -1,11 +1,7 @@
 package com.stylefeng.guns.modular.CoalMS.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.stylefeng.guns.modular.CoalMS.model.TVTrainmain;
 import com.stylefeng.guns.modular.CoalMS.model.TVTrain;
-
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;

@@ -2,8 +2,6 @@ package com.stylefeng.guns.modular.CoalMS.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.stylefeng.guns.modular.CoalMS.dao.TVTrainMapper;
-import com.stylefeng.guns.modular.CoalMS.dao.TVTrainmainMapper;
-import com.stylefeng.guns.modular.CoalMS.model.TVTrainmain;
 import com.stylefeng.guns.modular.CoalMS.model.TVTrain;
 import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import org.springframework.stereotype.Service;
