@@ -259,15 +259,12 @@ $(function () {
     var oddheight = document.getElementById("qdiv").offsetHeight + 36;
     var tableheight = $(document).height() - oddheight;
     var defaultColunms = Train1.initColumn();
-    console.log(Train1.bootstrapTableUrl);
     var table = new BSTable(Train1.id, Train1.bootstrapTableUrl,defaultColunms);
-    console.log("abcdasdadadasfafaf2222222222222222222");
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
     queryData['dt_end'] = $("#dt_end").val();
     queryData['str_first'] = "1";
-    console.log(queryData);
     table.queryParams = queryData;
     table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     table.setPaginationType("client");

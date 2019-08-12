@@ -76,12 +76,33 @@ public class TrainController extends BaseController {
     @ResponseBody
     public Object search1(String str_company,String dt_start,String dt_end) {
 
-        System.out.println("aaaaaaaaaaaaaa");
         List<Map<String, Object>> list = this.TrainService.search1(str_company,dt_start,dt_end);
 
         return super.warpObject(new TrainWarpper(list));
 
+    }
+    @RequestMapping(value = "/search4")
+    @ResponseBody
+    public Object search4(String str_company,String dt_start,String dt_end,String str_ftraincodevcr) {
+        List<Map<String, Object>> list = this.TrainService.search4(str_company,dt_start,dt_end,str_ftraincodevcr);
+
+        return super.warpObject(new TrainWarpper(list));
 
     }
+    @RequestMapping(value = "/search6")
+    @ResponseBody
+    public Object search6(String str_company,String dt_start,String dt_end,String str_station,String str_first,String str_coalname) {
+        List<Map<String, Object>> list = this.TrainService.search6(str_company,dt_start,dt_end,str_station,str_first,str_coalname);
 
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+    @RequestMapping(value = "/Train5D")
+    @ResponseBody
+    public Object Train5D(String str_company,String dt_start,String dt_end,String str_trainno) {
+        List<Map<String, Object>> list = this.TrainService.Train5D(str_company,dt_start,dt_end,str_trainno);
+
+        return super.warpObject(new TrainWarpper(list));
+
+    }
 }

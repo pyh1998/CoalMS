@@ -26,7 +26,22 @@
       where COMPANY like CONCAT('%',#{str_company},'%')
     </if>
   </select>
-
-
-
+  <select id="search4" resultType="map">
+    select * from T_V_TRAINMAIN
+    <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')or(str_company != null and str_company != '') ">
+      where FTRAINCODEVCR like CONCAT('%',#{str_ftraincodevcr},'%')and COMPANY like CONCAT('%',#{str_company},'%')
+    </if>
+  </select>
+  <select id="search6" resultType="map">
+    select * from T_V_TRAIN
+    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')">
+      where COMPANY like CONCAT('%',#{str_company},'%')
+    </if>
+  </select>
+  <select id="Train5D" resultType="map">
+    select * from T_V_TRAIN
+    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')">
+      where FTRAINCODEVCR like CONCAT('%',#{str_trainno},'%')
+    </if>
+  </select>
 </mapper>

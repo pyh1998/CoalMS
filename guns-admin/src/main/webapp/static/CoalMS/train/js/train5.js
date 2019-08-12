@@ -1,11 +1,11 @@
-var gd_company = "";
+ var gd_company = "";
 var gd_trainno = "";
 var Train5 = {
     id: "Train5Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train5"
+    bootstrapTableUrl: "/train/search4"
 };
 
 Train5.initColumn = function () {
@@ -51,12 +51,12 @@ Train5.search = function () {
     queryData['dt_start'] = $("#dt_start").val();
     queryData['dt_end'] = $("#dt_end").val();
     queryData['str_first'] = "1";
-
+    console.log(queryData);
     //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
         Train5.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train5.bootstrapTableUrl
+            url: Train5.bootstrapTableUrl
         });
     } else {
         Train5.table.refresh({query: queryData});
@@ -313,7 +313,7 @@ Train5.export = function () {
         var str_ftraincodevcr = $("#str_ftraincodevcr").val();
         var dt_start = $("#dt_start").val();
         var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/train/list_train5_excel?str_company=" + str_company + "&str_ftraincodevcr=" + str_ftraincodevcr + "&dt_start=" + dt_start + "&dt_end=" + dt_end +
+        window.location.href =  "/train/list_train5_excel?str_company=" + str_company + "&str_ftraincodevcr=" + str_ftraincodevcr + "&dt_start=" + dt_start + "&dt_end=" + dt_end +
             "&str_company2=" + gd_company + "&str_trainno=" + gd_trainno;
     });
 };
@@ -336,6 +336,8 @@ $(function () {
     queryData['str_first'] = "1";
     table.queryParams = queryData;
     table.setPaginationType("client");
+    console.log(queryData);
+
     table.onClickCell = function (field, value, row, $element) {
         if (field !== "FTRAINCODEVCR") {
             return;
@@ -343,6 +345,8 @@ $(function () {
         var queryData = {};
         queryData['str_company'] = row.COMPANY;
         queryData['str_trainno'] = row.FTRAINCODEVCR;
+        queryData['dt_start'] = $("#dt_start").val();
+        queryData['dt_end'] = $("#dt_end").val();
         gd_company = row.COMPANY;
         gd_trainno = row.FTRAINCODEVCR;
         Train5D.table.refresh({query: queryData});
@@ -350,43 +354,43 @@ $(function () {
     };
     //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
-        table.url = "";
+        table.url = Train5.bootstrapTableUrl;
     }
-    table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
+    //table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
     Train5.table = table.init();
 
     var defaultColunmsD = Train5D.initColumn();
-    var tableD = new BSTable(Train5D.id, "/train/list_train5D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
-    tableD.setPaginationType("client");
-    tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
-    tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
+    var tableD = new BSTable(Train5D.id, "/train/Train5D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    //tableD.setPaginationType("client");
+    //tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
+    //tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
     Train5D.table = tableD.init();
 
     init_time();
 
     //获取当前Iframe URL
-    if ($("iframe[name='iframe10000']", parent.document) && $("iframe[name='iframe10000']", parent.document).last()) {
-        var iframe = $("iframe[name='iframe10000']", parent.document).last();
-        var cid = $(iframe).attr("cid");
-        var fid = $(iframe).attr("fid");
-        var ftime = $(iframe).attr("ftime");
-        if (cid !== undefined && cid !== null && cid !== "" && fid !== undefined && fid !== null && fid !== "" && ftime !== undefined && ftime !== null && ftime !== "") {
-            //执行点击方法
-            $("#str_company").val(cid);
-            $("#str_ftraincodevcr").val(fid);
-            $("#dt_start").val(ftime);
-            $("#dt_end").val(ftime);
-            $("#train5SearchButton").click();
-            var queryData = {};
-            queryData['str_company'] = cid;
-            queryData['str_trainno'] = fid;
-            gd_company = cid;
-            gd_trainno = fid;
-            Train5D.table.refresh({query: queryData});
-            Train5D.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
-            $("#Train5DTable").bootstrapTable('selectPage', 1);
-        }
-    }
+    // if ($("iframe[name='iframe10000']", parent.document) && $("iframe[name='iframe10000']", parent.document).last()) {
+    //     var iframe = $("iframe[name='iframe10000']", parent.document).last();
+    //     var cid = $(iframe).attr("cid");
+    //     var fid = $(iframe).attr("fid");
+    //     var ftime = $(iframe).attr("ftime");
+    //     if (cid !== undefined && cid !== null && cid !== "" && fid !== undefined && fid !== null && fid !== "" && ftime !== undefined && ftime !== null && ftime !== "") {
+    //         //执行点击方法
+    //         $("#str_company").val(cid);
+    //         $("#str_ftraincodevcr").val(fid);
+    //         $("#dt_start").val(ftime);
+    //         $("#dt_end").val(ftime);
+    //         $("#train5SearchButton").click();
+    //         var queryData = {};
+    //         queryData['str_company'] = cid;
+    //         queryData['str_trainno'] = fid;
+    //         gd_company = cid;
+    //         gd_trainno = fid;
+    //         Train5D.table.refresh({query: queryData});
+    //         Train5D.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
+    //         $("#Train5DTable").bootstrapTable('selectPage', 1);
+    //     }
+    // }
 
 });
 
