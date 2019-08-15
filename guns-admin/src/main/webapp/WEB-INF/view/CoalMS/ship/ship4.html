@@ -66,7 +66,6 @@
     </style>
 
     <script type="text/javascript">
-        Feng.addCtx("/CoalMS");
         Feng.sessionTimeoutRegistry();
     </script>
 </head>
@@ -153,119 +152,8 @@
                             </div>
 
                             <div class="bootstrap-table">
-                                <div class="fixed-table-toolbar">
-                                    <div class="bs-bars pull-left"></div>
-                                </div>
-                                <div class="fixed-table-container" style="height: 332px; padding-bottom: 8px;">
-
-                                    <div class="fixed-table-body">
-                                        <div class="fixed-table-loading" style="top: 41px;">正在努力地加载数据中，请稍候……</div>
-                                        <table id="Ship4Table" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
-                                            <thead>
-                                            <tr>
-                                                <th style="text-align: center; vertical-align: middle; width: 3%; " data-field="index">
-                                                    <div class="th-inner ">序号</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="COMPANY">
-                                                    <div class="th-inner sortable both">公司</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="FCOUNTTIMEDTM">
-                                                    <div class="th-inner sortable both">所属日期</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="FSHIPYEARNUMVCR">
-                                                    <div class="th-inner sortable both">船舶年序号</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="FSHIPNAME">
-                                                    <div class="th-inner sortable both">船舶名称</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FBERTHNAME">
-                                                    <div class="th-inner sortable both">泊位</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 20%; " data-field="COALS">
-                                                    <div class="th-inner sortable both">煤种</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 5%; " data-field="FSIGNTONNUM">
-                                                    <div class="th-inner sortable both">船舶签数</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="RTON">
-                                                    <div class="th-inner sortable both">取料机秤数</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="BMTON">
-                                                    <div class="th-inner sortable both">BM秤数</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="BQTON">
-                                                    <div class="th-inner sortable both">BQ秤数</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="BJTON">
-                                                    <div class="th-inner sortable both">BJ秤数</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="RRATE">
-                                                    <div class="th-inner sortable both">取料机秤偏差率%</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="BMRATE">
-                                                    <div class="th-inner sortable both">BM偏差率%</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="BQRATE">
-                                                    <div class="th-inner sortable both">BQ偏差率%</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 7%; " data-field="BJRATE">
-                                                    <div class="th-inner sortable both">BJ偏差率%</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                                <th style="text-align: center; vertical-align: middle; width: 6%; " data-field="STATE">
-                                                    <div class="th-inner sortable both">签数对照分析</div>
-                                                    <div class="fht-cell"></div>
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr class="no-records-found">
-                                                <td colspan="17"></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="fixed-table-pagination" style="display: none;">
-                                        <div class="pull-left pagination-detail">
-                                            <span class="pagination-info">显示第 1 到第 0 条记录，总共 0 条记录</span>
-                                            <span class="page-list" style="display: none;">每页显示
-          <span class="btn-group dropup">
-            <button type="button" class="btn btn-default btn-outline dropdown-toggle" data-toggle="dropdown">
-              <span class="page-size">15</span>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li role="menuitem" class="active">
-                <a href="http://124.237.123.234:12380/CoalMS/ship/ship4#">15</a></li>
-            </ul>
-          </span>条记录</span>
-                                        </div>
-                                        <div class="pull-right pagination" style="display: none;">
-                                            <ul class="pagination pagination-outline">
-                                                <li class="page-pre">
-                                                    <a href="http://124.237.123.234:12380/CoalMS/ship/ship4#">‹</a></li>
-                                                <li class="page-next">
-                                                    <a href="http://124.237.123.234:12380/CoalMS/ship/css/ship4#">›</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <table id="Ship4Table" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
+                                </table>
                             </div>
                             <div class="clearfix"></div>
                         </div>

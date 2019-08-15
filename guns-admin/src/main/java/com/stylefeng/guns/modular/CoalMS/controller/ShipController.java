@@ -97,12 +97,14 @@ public class ShipController extends BaseController {
     @RequestMapping(value = "/list_ship3")
     @ResponseBody
     public Object list_ship3(String str_company,String dt_start,String dt_end) {
-
-        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
         List<Map<String, Object>> list = this.ShipService.list_ship3(str_company,dt_start,dt_end);
-
         return super.warpObject(new ShipWarpper(list));
+    }
 
-
+    @RequestMapping(value = "/list_ship4")
+    @ResponseBody
+    public Object list_ship4(String str_company,String dt_start,String dt_end) {
+        List<Map<String, Object>> list = this.ShipService.list_ship4(str_company,dt_start,dt_end);
+        return super.warpObject(new ShipWarpper(list));
     }
 }
