@@ -13,6 +13,14 @@ import java.util.Map;
 @Service
 @Transactional
 public class ShipServiceImpl extends ServiceImpl<TVShipmainMapper, TVShipmain> implements ShipService {
+    public List<Map<String, Object>> list_ship1(String dt_start, String dt_end) {
+        return this.baseMapper.list_ship1(dt_start,dt_end);
+    }
+
+    public List<Map<String, Object>> list_ship2(String str_company, String dt_start, String dt_end) {
+        return this.baseMapper.list_ship2(str_company,dt_start,dt_end);
+    }
+
     public List<Map<String, Object>> list_ship3(String str_company, String dt_start, String dt_end) {
         return this.baseMapper.list_ship3(str_company,dt_start,dt_end);
     }

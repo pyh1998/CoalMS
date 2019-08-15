@@ -40,7 +40,7 @@ Ship2.initColumn = function () {
         {
             title: '分公司', field: 'COMPANY', align: 'center', valign: 'middle', formatter: opendetail
         },
-        {title: '月份', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle'},
+        {title: '月份', field: 'FBELONGMONTH', align: 'center', valign: 'middle'},
         {
             title: '合格船数', field: 'HEGE', align: 'center', valign: 'middle',
             footerFormatter: function (value, row, index) {
@@ -112,7 +112,7 @@ var Ship2D = {
 Ship2D.initColumn = Ship1Table.initColumn;
 
 function opendetail(value, row, index) {
-    var funurl = "openInfoDetail('" + row.COMPANY + "','" + row.FCOUNTTIMEDTM + "')";
+    var funurl = "openInfoDetail('" + row.COMPANY + "','" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
     return url;
 }
@@ -129,6 +129,7 @@ function openInfoDetail(company, month) {
     queryData['dt_start'] = month + "-01";
     queryData['dt_end'] = month + "-" + curDate.getDate();
     queryData['str_first'] = "1";
+    console.log(queryData);
     gd_company = company;
     gd_month = month;
 
@@ -137,7 +138,7 @@ function openInfoDetail(company, month) {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship2D.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + "/ship/list_ship3"
+            url:  "/ship/list_ship3"
         });
     } else {
         Ship2D.table.refresh({query: queryData});
@@ -158,7 +159,7 @@ Ship2.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship2.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship2.bootstrapTableUrl
+            url: Ship2.bootstrapTableUrl
         });
     } else {
         Ship2.table.refresh({query: queryData});
@@ -233,7 +234,7 @@ $(function () {
         if (field !== "FSHIPYEARNUMVCR") {
             return;
         }
-        var url = Feng.ctxPath + "/ship/ship8";
+        var url =  "/ship/ship8";
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

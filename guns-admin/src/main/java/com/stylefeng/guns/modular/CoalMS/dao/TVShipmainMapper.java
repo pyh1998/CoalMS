@@ -7,7 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface TVShipmainMapper extends BaseMapper<TVShipmain> {
+    List<Map<String, Object>> list_ship1(@Param("dt_start") String dt_start, @Param("dt_end") String dt_end);
+
+    List<Map<String, Object>> list_ship2(@Param("str_company") String str_company, @Param("dt_start") String dt_start, @Param("dt_end") String dt_end);
 
     List<Map<String, Object>> list_ship3(@Param("str_company") String str_company, @Param("dt_start") String dt_start, @Param("dt_end") String dt_end);
+
+
+
 
 }
