@@ -108,7 +108,7 @@ Ship8.initColumn = function () {
         {title: '流程', field: 'FFLOWNAME', align: 'center', valign: 'middle'},
         {title: '仓位', field: 'FCABINNUMNUMNO', align: 'center', valign: 'middle'},
         {title: '垛位', field: 'FBATTLENAME', align: 'center', valign: 'middle'},
-        {title: '煤种', field: 'FCOALNAME', align: 'center', valign: 'middle'},
+        {title: '煤种', field: 'FCOALNAME1', align: 'center', valign: 'middle'},
         {
             title: '取料机秤数', field: 'RTON', align: 'center', valign: 'middle',
             footerFormatter: function (value, row, index) {

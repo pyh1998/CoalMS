@@ -51,4 +51,25 @@
       where COMPANY like CONCAT('%',#{str_company},'%')
     </if>
   </select>
+
+  <select id="list_ship7" resultType="map">
+    select *
+    from T_V_SHIPMAIN
+    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">
+      where COMPANY like CONCAT('%',#{str_company},'%')
+    </if>
+  </select>
+
+  <select id="list_ship7_1" resultType="map">
+    select *
+    from T_V_SHIPMAIN
+   where COMPANY = #{str_company} and FSHIPYEARNUMVCR = #{str_shipno}
+  </select>
+
+  <select id="list_ship8" resultType="map">
+    select *
+    from T_V_SHIPMAIN
+   where COMPANY = #{str_company} and FSHIPYEARNUMVCR = #{str_shipno}
+  </select>
+
 </mapper>

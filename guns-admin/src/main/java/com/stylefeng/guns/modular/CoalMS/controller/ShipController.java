@@ -2,37 +2,12 @@ package com.stylefeng.guns.modular.CoalMS.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.modular.CoalMS.service.ShipService;
-import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import com.stylefeng.guns.modular.CoalMS.warpper.ShipWarpper;
-import com.stylefeng.guns.core.base.tips.Tip;
-import com.stylefeng.guns.core.cache.CacheKit;
-import com.stylefeng.guns.core.common.annotion.BussinessLog;
-import com.stylefeng.guns.core.common.annotion.Permission;
-import com.stylefeng.guns.core.common.constant.Const;
-import com.stylefeng.guns.core.common.constant.cache.Cache;
-import com.stylefeng.guns.core.common.constant.dictmap.RoleDict;
-import com.stylefeng.guns.core.common.constant.factory.ConstantFactory;
-import com.stylefeng.guns.core.common.exception.BizExceptionEnum;
-import com.stylefeng.guns.core.exception.GunsException;
-import com.stylefeng.guns.core.log.LogObjectHolder;
-import com.stylefeng.guns.core.node.ZTreeNode;
-import com.stylefeng.guns.core.util.Convert;
-import com.stylefeng.guns.core.util.ToolUtil;
-import com.stylefeng.guns.modular.system.model.Role;
-import com.stylefeng.guns.modular.system.model.User;
-import com.stylefeng.guns.modular.system.service.IRoleService;
-import com.stylefeng.guns.modular.system.service.IUserService;
-import com.stylefeng.guns.modular.system.warpper.RoleWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -100,6 +75,41 @@ public class ShipController extends BaseController {
 
         System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
         List<Map<String, Object>> list = this.ShipService.list_ship3(str_company,dt_start,dt_end);
+
+        return super.warpObject(new ShipWarpper(list));
+
+
+    }
+    @RequestMapping(value = "/list_ship7Q")
+    @ResponseBody
+    public Object list_ship7(String str_company,String dt_start,String dt_end) {
+
+        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
+        List<Map<String, Object>> list = this.ShipService.list_ship7(str_company,dt_start,dt_end);
+
+        return super.warpObject(new ShipWarpper(list));
+
+
+    }
+
+    @RequestMapping(value = "/list_ship7")
+    @ResponseBody
+    public Object list_ship7_1(String str_company,String str_shipno) {
+
+        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
+        List<Map<String, Object>> list = this.ShipService.list_ship7_1(str_company,str_shipno);
+
+        return super.warpObject(new ShipWarpper(list));
+
+
+    }
+
+    @RequestMapping(value = "/list_ship8")
+    @ResponseBody
+    public Object list_ship8(String str_company,String str_shipno) {
+
+        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
+        List<Map<String, Object>> list = this.ShipService.list_ship8(str_company,str_shipno);
 
         return super.warpObject(new ShipWarpper(list));
 

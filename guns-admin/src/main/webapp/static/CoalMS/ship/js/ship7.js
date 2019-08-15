@@ -113,27 +113,27 @@ function show_detail(data) {
     } else {
         $("#FSHIPYEARNUMVCR").val(data[0]["FSHIPYEARNUMVCR"]);
         $("#FSHIPNAME").val(data[0]["FSHIPNAME"]);
-        $("#FTONNUM").val(data[0]["FTONNUM"]);
-        $("#FSIGNTON1").val(data[0]["FSIGNTON1"]);
-        $("#FSIGNTON2").val(data[0]["FSIGNTON2"]);
+        $("#FTONNUM").val(data[0]["RTON"]);
+        $("#FSIGNTON1").val(data[0]["FSIGNTONNUM"]);
+        $("#FSIGNTON2").val(data[0]["FSIGNTONNUM2"]);
 
         $("#RTON").val(data[0]["RTON"]);
-        $("#RRATE1").val(data[0]["RRATE1"]);
-        $("#RRATE2").val(data[0]["RRATE2"]);
+        $("#RRATE1").val(data[0]["RRATE"]);
+        $("#RRATE2").val(data[0]["SIGNRRATE"]);
 
         $("#BMTON").val(data[0]["BMTON"]);
-        $("#BMRATE1").val(data[0]["BMRATE1"]);
-        $("#BMRATE2").val(data[0]["BMRATE2"]);
+        $("#BMRATE1").val(data[0]["BMRATE"]);
+        $("#BMRATE2").val(data[0]["SIGNBMRATE"]);
 
         $("#BQTON").val(data[0]["BQTON"]);
-        $("#BQRATE1").val(data[0]["BQRATE1"]);
-        $("#BQRATE2").val(data[0]["BQRATE2"]);
+        $("#BQRATE1").val(data[0]["BQRATE"]);
+        $("#BQRATE2").val(data[0]["SIGNBQRATE"]);
 
         $("#BJTON").val(data[0]["BJTON"]);
-        $("#BJRATE1").val(data[0]["BJRATE1"]);
-        $("#BJRATE2").val(data[0]["BJRATE2"]);
+        $("#BJRATE1").val(data[0]["BJRATE"]);
+        $("#BJRATE2").val(data[0]["SIGNBJRATE"]);
 
-        $("#SIGNRATE").val(data[0]["SIGNRATE"]);
+        $("#SIGNRATE").val(data[0]["SIGNRRATE"]);
     }
 }
 
