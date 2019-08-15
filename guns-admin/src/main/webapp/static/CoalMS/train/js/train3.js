@@ -6,7 +6,7 @@ var Train3 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train3"
+    bootstrapTableUrl: "/train/search2"
 };
 
 Train3.initColumn = function () {
@@ -271,6 +271,7 @@ function cellformat(value, row, index) {
 function opendetail(value, row, index) {
     var funurl = "openInfoDetail('" + row.COMPANY + "','" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
+    console.log(url);
     return url;
 }
 
@@ -282,7 +283,7 @@ function openInfoDetail(company, month) {
     queryData['dt_end'] = $("#dt_end").val();
     gd_company = company;
     gd_date = month;
-
+    console.log(queryData);
     Train3D.table.refresh({query: queryData});
     Train3D.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
     $("#Train3DTable").bootstrapTable('selectPage', 1);
@@ -298,7 +299,7 @@ Train3.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Train3.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train3.bootstrapTableUrl
+            url:Train3.bootstrapTableUrl
         });
     } else {
         Train3.table.refresh({query: queryData});
@@ -355,7 +356,7 @@ $(function () {
     Train3.table = table.init();
 
     var defaultColunmsD = Train3D.initColumn();
-    var tableD = new BSTable(Train3D.id, "/train/list_train3D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
+    var tableD = new BSTable(Train3D.id, "/train/search2D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
@@ -366,7 +367,7 @@ $(function () {
         if (field !== "FTRAINCODEVCR") {
             return;
         }
-        var url = Feng.ctxPath + "/train/train5";
+        var url = "/train/train4";
         var title = "单车过衡数据分析";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

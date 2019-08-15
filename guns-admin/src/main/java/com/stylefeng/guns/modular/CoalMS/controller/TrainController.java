@@ -82,12 +82,64 @@ public class TrainController extends BaseController {
 //        ToolUtil.isEmpty()
 //        TrainService.selectList(new EntityWrapper<>());
 
-        System.out.println("aaaaaaaaaaaaaa");
         List<Map<String, Object>> list = this.TrainService.search1(str_company,dt_start,dt_end);
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+
+
+    /**
+     * 轨道衡功能2：分公司轨道衡系统有效过衡率统计表和明细表-统计表
+     */
+    @RequestMapping(value = "/search2")
+    @ResponseBody
+    public Object search2(  String dt_start, String dt_end) {
+
+
+        List<Map<String, Object>> list = this.TrainService.search2(dt_start,dt_end);
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+
+    /**
+     * 轨道衡功能2：分公司轨道衡系统有效过衡率统计表和明细表-明细表
+     */
+    @RequestMapping(value = "/search2D")
+    @ResponseBody
+    public Object search2D( String str_company, String dt_date) {
+
+
+        List<Map<String, Object>> list = this.TrainService.search2D(str_company, dt_date);
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+
+    /**
+     * 轨道衡功能3：列车过衡盈亏率分析
+     */
+    @RequestMapping(value = "/search3")
+    @ResponseBody
+    public Object search3(String str_company, String dt_start, String dt_end) {
+
+
+        List<Map<String, Object>> list = this.TrainService.search3(str_company, dt_start, dt_end);
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+
+    /**
+     * 轨道衡功能3：列车过衡盈亏率分析
+     */
+    @RequestMapping(value = "/search3D")
+    @ResponseBody
+    public Object search3D(String str_company,String dt_start,String dt_end,String str_ftraincodevcr) {
+        List<Map<String, Object>> list = this.TrainService.search3D(str_company,dt_start,dt_end,str_ftraincodevcr);
 
         return super.warpObject(new TrainWarpper(list));
 
     }
+
+
     @RequestMapping(value = "/search4")
     @ResponseBody
     public Object search4(String str_company,String dt_start,String dt_end,String str_ftraincodevcr) {
@@ -104,10 +156,10 @@ public class TrainController extends BaseController {
         return super.warpObject(new TrainWarpper(list));
 
     }
-    @RequestMapping(value = "/Train5D")
+    @RequestMapping(value = "/search4D")
     @ResponseBody
-    public Object Train5D(String str_company,String dt_start,String dt_end,String str_trainno) {
-        List<Map<String, Object>> list = this.TrainService.Train5D(str_company,dt_start,dt_end,str_trainno);
+    public Object search4D(String str_company,String dt_start,String dt_end,String str_trainno) {
+        List<Map<String, Object>> list = this.TrainService.search4D(str_company,dt_start,dt_end,str_trainno);
 
         return super.warpObject(new TrainWarpper(list));
 

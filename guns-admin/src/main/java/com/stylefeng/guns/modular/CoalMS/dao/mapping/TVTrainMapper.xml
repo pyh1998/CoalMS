@@ -45,24 +45,131 @@
   </if>
   </select>
 
+  <select id="search2" resultType="map">
+    SELECT COMPANY,FBELONGMONTH,WEIGHTTRAIN,NOWEIGHTTRAIN,TOTALTRAIN,WEIGHTTRAIN/TOTALTRAIN*100 AS RATE
+    FROM(
+    SELECT
+    DISTINCT COMPANY,
+    CONCAT(YEAR(FBELONGDATETIMEDTM),"-",MONTH(FBELONGDATETIMEDTM)) AS FBELONGMONTH,
+    SUM(CASE
+    WHEN ISVALID=1
+    THEN
+    1
+    ELSE
+    0
+    END
+    )WEIGHTTRAIN,
+    SUM(CASE
+    WHEN ISVALID=0
+    THEN
+    1
+    ELSE
+    0
+    END
+    )NOWEIGHTTRAIN,
+    SUM(CASE
+    WHEN ISVALID=0 OR ISVALID=1
+    THEN
+    1
+    ELSE
+    0
+    END
+    )TOTALTRAIN
+    from T_V_TRAIN
+    where 1=1
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+    GROUP BY COMPANY,FBELONGMONTH)AS AA
+  </select>
+
+  <select id="search2D" resultType="map">
+    select * from T_V_TRAIN
+    where COMPANY = #{str_company} AND CONCAT(YEAR(FBELONGDATETIMEDTM),"-",MONTH(FBELONGDATETIMEDTM)) = #{dt_date}
+  </select>
+
+
+  <select id="search3" resultType="map">
+    select FTRAINCODEVCR,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM AS RATE from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
+
+  <select id="search3D" resultType="map">
+    <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+      select * from T_V_TRAIN
+      where 1=1
+      <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+        AND FTRAINCODEVCR = #{str_ftraincodevcr}
+      </if>
+      <if test="str_company != null and str_company != '' ">
+        AND COMPANY = #{str_company}
+      </if>
+      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+        AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+      </if>
+    </if>
+  </select>
+
+
+
 
 <select id="search4" resultType="map">
-select * from T_V_TRAIN
-<if test="(str_ftraincodevcr != null and str_ftraincodevcr != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')or(str_company != null and str_company != '') ">
-  where FTRAINCODEVCR like CONCAT('%',#{str_ftraincodevcr},'%')and COMPANY like CONCAT('%',#{str_company},'%')
+select distinct COMPANY,FTRAINCODEVCR from T_V_TRAIN
+  where 1=1
+<if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+  AND FTRAINCODEVCR = #{str_ftraincodevcr}
 </if>
+  <if test="str_company != null and str_company != '' ">
+    AND COMPANY = #{str_company}
+  </if>
+  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+  </if>
 </select>
-<select id="search6" resultType="map">
-select * from T_V_TRAIN
-<if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')">
-  where COMPANY like CONCAT('%',#{str_company},'%')
-</if>
+
+  <select id="search4D" resultType="map">
+SELECT
+	*, AVG(FEMPTYTONNUM) AS LIMITEMPTY
+FROM
+	(
+		SELECT
+			*, (FVOLUME - LIMITVOL) / LIMITVOL * 100 AS VOLRATE
+		FROM
+			(
+				SELECT
+					*, MIN(FVOLUME) AS LIMITVOL,
+					(FWEIGHTTONNUM - FCHECKTONNUM) / FCHECKTONNUM * 100 AS WEIGHTRATE
+				FROM
+					T_V_TRAIN
+				WHERE
+				    FTRAINCODEVCR = #{str_trainno}
+			) AS PANGSHEN1
+	) AS PANGSHEN2
+ORDER BY
+	FEMPTYTONNUM
+LIMIT 0,3
 </select>
-<select id="Train5D" resultType="map">
-select * from T_V_TRAIN
-<if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '')">
-  where FTRAINCODEVCR like CONCAT('%',#{str_trainno},'%')
-</if>
-</select>
+
+
+
+
+  <select id="search6" resultType="map">
+    select *,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS RATE from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
+
+
 
 </mapper>
