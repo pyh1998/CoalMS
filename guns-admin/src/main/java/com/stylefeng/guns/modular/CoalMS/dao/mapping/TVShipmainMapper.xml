@@ -218,21 +218,37 @@ FROM
   <select id="list_ship7" resultType="map">
     select *
     from T_V_SHIPMAIN
-    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">
-      where COMPANY like CONCAT('%',#{str_company},'%')
-    </if>
+      WHERE 1=1
+      <if test="(str_company != null and str_company != '') ">
+          AND COMPANY = #{str_company}
+      </if>
+      <if test="(str_shipno != null and str_shipno != '') ">
+          AND FSHIPYEARNUMVCR = #{str_shipno}
+      </if>
   </select>
 
   <select id="list_ship7_1" resultType="map">
     select *
     from T_V_SHIPMAIN
-   where COMPANY = #{str_company} and FSHIPYEARNUMVCR = #{str_shipno}
+      WHERE 1=1
+      <if test="(str_company != null and str_company != '') ">
+          AND COMPANY = #{str_company}
+      </if>
+      <if test="(str_shipno != null and str_shipno != '') ">
+          AND FSHIPYEARNUMVCR = #{str_shipno}
+      </if>
   </select>
 
   <select id="list_ship8" resultType="map">
     select *
     from T_V_SHIPMAIN
-   where COMPANY = #{str_company} and FSHIPYEARNUMVCR = #{str_shipno}
+      WHERE 1=1
+      <if test="(str_company != null and str_company != '') ">
+          AND COMPANY = #{str_company}
+      </if>
+      <if test="(str_shipno != null and str_shipno != '') ">
+          AND FSHIPYEARNUMVCR = #{str_shipno}
+      </if>
   </select>
 
     <select id="list_ship3" resultType="map">
@@ -388,9 +404,13 @@ FROM
         )
         ) AS STATE
         from T_V_SHIPMAIN
-<!--        <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">-->
-            where COMPANY = #{str_company}
-<!--        </if>-->
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        </if>
     </select>
 
 </mapper>
