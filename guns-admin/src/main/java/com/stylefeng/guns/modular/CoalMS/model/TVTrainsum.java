@@ -1,9 +1,8 @@
 package com.stylefeng.guns.modular.CoalMS.model;
 
-
 import java.util.Date;
 
-public class TVTrainmain {
+public class TVTrainsum {
     private String company;
 
     private String ftraincodevcr;
@@ -24,7 +23,15 @@ public class TVTrainmain {
 
     private Date fbelongdatetimedtm;
 
-    private Long isvalid;
+    private String fstatstastionname;
+
+    private String fcoalname;
+
+    private String ticketNo;
+
+    private String fdisbuttname;
+
+    private String fconsignername;
 
     private Long fheavytonnum;
 
@@ -33,6 +40,12 @@ public class TVTrainmain {
     private Long fweighttonnum;
 
     private Long fchecktonnum;
+
+    private Short fisweightnumd;
+
+    private Integer fstatstastioncodenum;
+
+    private String fcoalcodevcr;
 
     private Long traincount;
 
@@ -116,12 +129,44 @@ public class TVTrainmain {
         this.fbelongdatetimedtm = fbelongdatetimedtm;
     }
 
-    public Long getIsvalid() {
-        return isvalid;
+    public String getFstatstastionname() {
+        return fstatstastionname;
     }
 
-    public void setIsvalid(Long isvalid) {
-        this.isvalid = isvalid;
+    public void setFstatstastionname(String fstatstastionname) {
+        this.fstatstastionname = fstatstastionname == null ? null : fstatstastionname.trim();
+    }
+
+    public String getFcoalname() {
+        return fcoalname;
+    }
+
+    public void setFcoalname(String fcoalname) {
+        this.fcoalname = fcoalname == null ? null : fcoalname.trim();
+    }
+
+    public String getTicketNo() {
+        return ticketNo;
+    }
+
+    public void setTicketNo(String ticketNo) {
+        this.ticketNo = ticketNo == null ? null : ticketNo.trim();
+    }
+
+    public String getFdisbuttname() {
+        return fdisbuttname;
+    }
+
+    public void setFdisbuttname(String fdisbuttname) {
+        this.fdisbuttname = fdisbuttname == null ? null : fdisbuttname.trim();
+    }
+
+    public String getFconsignername() {
+        return fconsignername;
+    }
+
+    public void setFconsignername(String fconsignername) {
+        this.fconsignername = fconsignername == null ? null : fconsignername.trim();
     }
 
     public Long getFheavytonnum() {
@@ -154,6 +199,30 @@ public class TVTrainmain {
 
     public void setFchecktonnum(Long fchecktonnum) {
         this.fchecktonnum = fchecktonnum;
+    }
+
+    public Short getFisweightnumd() {
+        return fisweightnumd;
+    }
+
+    public void setFisweightnumd(Short fisweightnumd) {
+        this.fisweightnumd = fisweightnumd;
+    }
+
+    public Integer getFstatstastioncodenum() {
+        return fstatstastioncodenum;
+    }
+
+    public void setFstatstastioncodenum(Integer fstatstastioncodenum) {
+        this.fstatstastioncodenum = fstatstastioncodenum;
+    }
+
+    public String getFcoalcodevcr() {
+        return fcoalcodevcr;
+    }
+
+    public void setFcoalcodevcr(String fcoalcodevcr) {
+        this.fcoalcodevcr = fcoalcodevcr == null ? null : fcoalcodevcr.trim();
     }
 
     public Long getTraincount() {

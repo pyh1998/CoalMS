@@ -3,7 +3,7 @@ var Train7 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train7"
+    bootstrapTableUrl: "/train/search6"
 };
 
 Train7.initColumn = function () {
@@ -211,7 +211,7 @@ Train7.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Train7.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train7.bootstrapTableUrl
+            url: Train7.bootstrapTableUrl
         });
     } else {
         Train7.table.refresh({query: queryData});
@@ -220,6 +220,8 @@ Train7.search = function () {
 
     $("#Train7Table").bootstrapTable('selectPage', 1);
 };
+
+
 
 function showSelect() {
     $.ajax({
@@ -263,7 +265,7 @@ function showSelect() {
 function showCoalnameList() {
 
     $.ajax({
-        url: Feng.ctxPath + "/train/getsCoalnameList",
+        url: "/train/coal",
         type: "POST",
         data: {},
         dataType: "json",
@@ -273,7 +275,7 @@ function showCoalnameList() {
 
             //判断下拉宽度
             // todo
-
+            console.log(data+"!!!!!!!!!!!!!!");
             var beanList = data;   //返回的json数据
             if (beanList) {                   //判断
                 for (var i = 0; i < beanList.length; i++) {
@@ -290,7 +292,7 @@ function showCoalnameList() {
             $("#str_coalname").selectpicker('refresh');
         },
         error: function (data) {
-            Feng.error("煤种查询失败!" + data.responseJSON.message + "!");
+            //Feng.error("煤种查询失败!" + data.responseJSON.message + "!");
         }
     });
 

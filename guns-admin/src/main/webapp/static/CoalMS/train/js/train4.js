@@ -3,7 +3,7 @@ var gd_chart;  //全局变量，用来导出echart
 var gd_trainno = "";
 
 function search_line() {
-    var ajax = new $ax(Feng.ctxPath + "/train/list_train4", function (data) {
+    var ajax = new $ax("/train/search3", function (data) {
         if (data == null || data.length == 0) {
             show_line(data);
         } else {
@@ -22,6 +22,7 @@ function search_line() {
 function show_line(data) {
     var pName = new Array();
     var pData = new Array();
+
     if (data != null) {
         for (var i = 0; i < data.length; i++) {
             pName.push(data[i]["FTRAINCODEVCR"]);
@@ -30,6 +31,8 @@ function show_line(data) {
     } else {
 
     }
+    console.log(pName);
+    console.log(pData);
     // var pName = new Array("73003Q","73023Q","73173Q","73185Q","73189Q","871001","871007","871173","P71005","P73001Y","P73011Y","P73015Q","P73015Y");
     // var pData = new Array(1.547,2.237,1.077,-0.912,-2.334,0.887,1.105,3.622,-0.838,1.326,2.888,2.738,2.458);
     var dom = document.getElementById("echartdiv");
@@ -147,10 +150,10 @@ function search_chart() {
 }
 
 function search_table(param) {
-    //alert(param.name + ' '+param.value);
+    // alert(param.name + ' '+param.value);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
-    queryData['str_trainno'] = param.name;
+    queryData['str_ftraincodevcr'] = param.name;
     gd_trainno = param.name;
 
     Train4.table.refresh({query: queryData});
@@ -225,7 +228,7 @@ $(function () {
     var table_height = $(document).height() - oddheight - document.getElementById("echartdiv").offsetHeight;
     //alert(table_height);
     var defaultColunms = Train4.initColumn();
-    var table = new BSTable(Train4.id, "/train/list_train4D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
+    var table = new BSTable(Train4.id, "/train/search3D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
     table.setPaginationType("client");
     table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
     // table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;

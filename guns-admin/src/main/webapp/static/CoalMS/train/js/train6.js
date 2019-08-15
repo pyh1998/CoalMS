@@ -5,7 +5,7 @@ var Train6 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train6"
+    bootstrapTableUrl: "/train/search5"
 };
 
 function show_line(data) {
@@ -200,7 +200,7 @@ function search_table() {
     if (!CustomizeParameters.autoSearch_switch) {
         Train6.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train6.bootstrapTableUrl
+            url:Train6.bootstrapTableUrl
         });
     } else {
         Train6.table.refresh({query: queryData});
