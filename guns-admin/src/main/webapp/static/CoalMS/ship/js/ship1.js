@@ -28,11 +28,11 @@ Ship1.initColumn = function () {
                 }
             }
         },
-        {title: '月份', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle'},
-        {title: '二公司', field: 'RATE2', align: 'center', valign: 'middle', formatter: opendetail2},
-        {title: '六公司', field: 'RATE6', align: 'center', valign: 'middle', formatter: opendetail6},
-        {title: '七公司', field: 'RATE7', align: 'center', valign: 'middle', formatter: opendetail7},
-        {title: '九公司', field: 'RATE9', align: 'center', valign: 'middle', formatter: opendetail9}
+        {title: '月份', field: 'FBELONGMONTH', align: 'center', valign: 'middle'},
+        {title: '二公司', field: 'COMPANY2', align: 'center', valign: 'middle', formatter: opendetail2},
+        {title: '六公司', field: 'COMPANY6', align: 'center', valign: 'middle', formatter: opendetail6},
+        {title: '七公司', field: 'COMPANY7', align: 'center', valign: 'middle', formatter: opendetail7},
+        {title: '九公司', field: 'COMPANY9', align: 'center', valign: 'middle', formatter: opendetail9}
     ];
 };
 
@@ -47,28 +47,28 @@ Ship1D.initColumn = Ship1Table.initColumn;
 
 function opendetail2(value, row, index) {
     if (value === "--") return value;
-    var funurl = "openInfoDetail('02'.toString(),'" + row.FCOUNTTIMEDTM + "')";
+    var funurl = "openInfoDetail('02'.toString(),'" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
     return url;
 }
 
 function opendetail6(value, row, index) {
     if (value === "--") return value;
-    var funurl = "openInfoDetail('06'.toString(),'" + row.FCOUNTTIMEDTM + "')";
+    var funurl = "openInfoDetail('06'.toString(),'" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
     return url;
 }
 
 function opendetail7(value, row, index) {
     if (value === "--") return value;
-    var funurl = "openInfoDetail('07'.toString(),'" + row.FCOUNTTIMEDTM + "')";
+    var funurl = "openInfoDetail('07'.toString(),'" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
     return url;
 }
 
 function opendetail9(value, row, index) {
     if (value === "--") return value;
-    var funurl = "openInfoDetail('09'.toString(),'" + row.FCOUNTTIMEDTM + "')";
+    var funurl = "openInfoDetail('09'.toString(),'" + row.FBELONGMONTH + "')";
     var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
     return url;
 }
@@ -95,6 +95,7 @@ function openInfoDetail(company, month) {
     queryData['dt_start'] = month + "-01";
     queryData['dt_end'] = month + "-" + curDate.getDate();
     queryData['str_first'] = "1";
+    console.log(queryData);
     gd_company = company;
     gd_month = month;
 
@@ -102,7 +103,7 @@ function openInfoDetail(company, month) {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship1D.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + "/ship/list_ship3"
+            url:  "/ship/list_ship3"
         });
     } else {
         Ship1D.table.refresh({query: queryData});
@@ -122,7 +123,7 @@ Ship1.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship1.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship1.bootstrapTableUrl
+            url: Ship1.bootstrapTableUrl
         });
     } else {
         Ship1.table.refresh({query: queryData});
@@ -194,11 +195,11 @@ $(function () {
         if (field !== "FSHIPYEARNUMVCR") {
             return;
         }
-        var url = Feng.ctxPath + "/ship/ship8";
+        var url = "/ship/ship8";
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");
-        var iframe = '<iframe class="J_iframe" name="iframe10000" cid="' + row.COMPANY + '" fid="' + value + '" ftime="' + row["FCOUNTTIMEDTM"] + '" width="100%" height="100%" src="' + url + '" frameborder="0" data-id="' + url + '" seamless="" style="display: inline;"></iframe>';
+        var iframe = '<iframe class="J_iframe" name="iframe10000" cid="' + row.COMPANY + '" fid="' + value + '" ftime="' + row["FBELONGMONTH"] + '" width="100%" height="100%" src="' + url + '" frameborder="0" data-id="' + url + '" seamless="" style="display: inline;"></iframe>';
         $(window.parent.document).find('.J_mainContent').append(iframe);
         // 判断是否已存在标签
         var flag = true;

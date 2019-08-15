@@ -5,7 +5,7 @@ var Train5 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train5"
+    bootstrapTableUrl: "/train/search4"
 };
 
 Train5.initColumn = function () {
@@ -40,7 +40,7 @@ Train5.initColumn = function () {
             },
             width: '40%'
         },
-        {title: '翻净率%', field: 'RATE', align: 'center', valign: 'middle', width: '40%'}
+        //{title: '翻净率%', field: 'RATE', align: 'center', valign: 'middle', width: '40%'}
     ];
 };
 
@@ -56,7 +56,7 @@ Train5.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Train5.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train5.bootstrapTableUrl
+            url: Train5.bootstrapTableUrl
         });
     } else {
         Train5.table.refresh({query: queryData});
@@ -356,7 +356,7 @@ $(function () {
     Train5.table = table.init();
 
     var defaultColunmsD = Train5D.initColumn();
-    var tableD = new BSTable(Train5D.id, "/train/list_train5D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    var tableD = new BSTable(Train5D.id, "/train/search4D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

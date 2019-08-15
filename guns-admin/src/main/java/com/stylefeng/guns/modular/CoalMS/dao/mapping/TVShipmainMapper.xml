@@ -43,14 +43,177 @@
     <result column="SIGNBQRATE" property="signbqrate" jdbcType="DECIMAL" />
     <result column="SIGNBJRATE" property="signbjrate" jdbcType="DECIMAL" />
   </resultMap>
-
-  <select id="list_ship3" resultType="map">
-    select *
-    from T_V_SHIPMAIN
-    <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">
-      where COMPANY like CONCAT('%',#{str_company},'%')
-    </if>
+  <select id="list_ship1" resultType="map">
+SELECT
+	FBELONGMONTH,
+	SUM( CASE COMPANY WHEN '02' THEN RATE END ) AS COMPANY2,
+	SUM( CASE COMPANY WHEN '06' THEN RATE END ) AS COMPANY6,
+	SUM( CASE COMPANY WHEN '07' THEN RATE END ) AS COMPANY7,
+	SUM( CASE COMPANY WHEN '09' THEN RATE END ) AS COMPANY9
+FROM
+	(
+SELECT DISTINCT
+	COMPANY,
+	FBELONGMONTH,
+	HEGE,
+	TOTAL,
+	HEGE / TOTAL * 100  AS RATE
+	FROM (
+SELECT DISTINCT
+	COMPANY,
+	CONCAT( YEAR ( FCOUNTTIMEDTM ), "-", MONTH ( FCOUNTTIMEDTM ) ) AS FBELONGMONTH,
+	STATE,
+	SUM( CASE WHEN STATE = '合格' THEN 1 ELSE 0 END ) HEGE,
+	SUM( CASE WHEN STATE = '合格' OR STATE = '不合格' THEN 1 ELSE 0 END ) TOTAL
+FROM
+	(
+SELECT
+	COMPANY,
+	FCOUNTTIMEDTM,
+IF
+	(
+	( RATE1 BETWEEN - 2 AND 2 )
+	AND ( RATE2 BETWEEN - 2 AND 2 )
+	AND ( RATE3 BETWEEN - 3 AND 3 ),
+	"合格",
+	"不合格"
+	) AS STATE
+FROM
+	(
+SELECT
+	*,
+CASE
+	COMPANY
+	WHEN '02' THEN
+	( ( RTON - BQTON ) / BQTON * 100 )
+	WHEN '06' THEN
+	( ( RTON - BQTON ) / BQTON * 100 )
+	WHEN '07' THEN
+	( ( RTON - BMTON ) / BMTON * 100 )
+	WHEN '09' THEN
+	( ( RTON - BMTON ) / BMTON * 100 )
+	END AS RATE1,
+CASE
+	COMPANY
+	WHEN '02' THEN
+	( ( RTON - BMTON ) / BMTON * 100 )
+	WHEN '06' THEN
+	( ( RTON - BJTON ) / BJTON * 100 )
+	WHEN '07' THEN
+	( ( RTON - BMTON ) / BMTON * 100 )
+	WHEN '09' THEN
+	( ( RTON - BQTON ) / BQTON * 100 )
+	END AS RATE2,
+CASE
+	COMPANY
+	WHEN '02' THEN
+	( ( BQTON - BMTON ) / ( BQTON + BMTON ) / 2 * 100 )
+	WHEN '06' THEN
+	( ( BQTON - BJTON ) / ( BQTON + BJTON ) / 2 * 100 )
+	WHEN '07' THEN
+	( ( BJTON - BMTON ) / ( BJTON + BMTON ) / 2 * 100 )
+	WHEN '09' THEN
+	( ( BMTON - BQTON ) / ( BMTON + BQTON ) / 2 * 100 )
+	END AS RATE3
+FROM
+	T_V_SHIPMAIN
+      where 1=1
+      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+          and   FCOUNTTIMEDTM between #{dt_start} and #{dt_end}
+      </if>
+	) AS PANGSHEN
+	) AS AAA
+GROUP BY
+	COMPANY,
+	FBELONGMONTH
+	) AS BBB
+	) AS CCC
+GROUP BY
+	FBELONGMONTH
   </select>
+
+  <select id="list_ship2" resultType="map">
+    SELECT DISTINCT COMPANY,FBELONGMONTH,HEGE,TOTAL,HEGE/TOTAL*100 AS RATE
+FROM(
+SELECT DISTINCT COMPANY,CONCAT(YEAR(FCOUNTTIMEDTM),"-",MONTH(FCOUNTTIMEDTM)) AS FBELONGMONTH,STATE,
+SUM(CASE
+    WHEN STATE='合格'
+    THEN
+    1
+    ELSE
+    0
+    END
+    )HEGE,
+    SUM(CASE
+    WHEN STATE='合格' OR STATE='不合格'
+    THEN
+    1
+    ELSE
+    0
+    END
+    )TOTAL
+FROM(SELECT
+	COMPANY,FCOUNTTIMEDTM,
+IF
+	(( RATE2 BETWEEN - 2 AND 2 )
+		AND ( RATE6 BETWEEN - 2 AND 2 )
+		AND ( RATE7 BETWEEN - 3 AND 3 ),
+		"合格",
+		"不合格"
+	) AS STATE
+
+FROM
+	(
+	SELECT
+		*,
+	CASE
+			COMPANY
+			WHEN '02' THEN
+			(( RTON - BQTON )/ BQTON * 100 )
+			WHEN '06' THEN
+			(( RTON - BQTON )/ BQTON * 100 )
+			WHEN '07' THEN
+			(( RTON - BMTON )/ BMTON * 100 )
+			WHEN '09' THEN
+			(( RTON - BMTON )/ BMTON * 100 )
+		END AS RATE2,
+	CASE
+			COMPANY
+			WHEN '02' THEN
+			(( RTON - BMTON )/ BMTON * 100 )
+			WHEN '06' THEN
+			(( RTON - BJTON )/ BJTON * 100 )
+			WHEN '07' THEN
+			(( RTON - BMTON )/ BMTON * 100 )
+			WHEN '09' THEN
+			(( RTON - BQTON )/ BQTON * 100 )
+		END AS RATE6,
+	CASE
+			COMPANY
+			WHEN '02' THEN
+			(( BQTON - BMTON )/ ( BQTON + BMTON )/ 2 * 100 )
+			WHEN '06' THEN
+			(( BQTON - BJTON )/ ( BQTON + BJTON )/ 2 * 100 )
+			WHEN '07' THEN
+			(( BJTON - BMTON )/ ( BJTON + BMTON )/ 2 * 100 )
+			WHEN '09' THEN
+			(( BMTON - BQTON )/ ( BMTON + BQTON )/ 2 * 100 )
+		END AS RATE7
+	FROM
+		T_V_SHIPMAIN
+	WHERE
+	1=1
+    <if test="(str_company != null and str_company != '')">
+	AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '')">
+    AND FCOUNTTIMEDTM between #{dt_start} and  #{dt_end}
+    </if>
+	) AS PANGSHEN)AS AAA
+	group by FBELONGMONTH)AS BBB
+  </select>
+
+
 
   <select id="list_ship7" resultType="map">
     select *
@@ -71,5 +234,163 @@
     from T_V_SHIPMAIN
    where COMPANY = #{str_company} and FSHIPYEARNUMVCR = #{str_shipno}
   </select>
+
+    <select id="list_ship3" resultType="map">
+        SELECT
+        *,
+        IF
+        ((
+        RATE1 BETWEEN - 2
+        AND 2
+        )
+        AND ( RATE2 BETWEEN - 2 AND 2 )
+        AND ( RATE3 BETWEEN - 3 AND 3 ),
+        "合格",
+        "不合格"
+        ) AS STATE
+        FROM
+        (
+        SELECT
+        *,
+        CASE
+        COMPANY
+        WHEN '02' THEN
+        (( RTON - BQTON )/ BQTON * 100 )
+        WHEN '06' THEN
+        (( RTON - BQTON )/ BQTON * 100 )
+        WHEN '07' THEN
+        (( RTON - BMTON )/ BMTON * 100 )
+        WHEN '09' THEN
+        (( RTON - BMTON )/ BMTON * 100 )
+        END AS RATE1,
+        CASE
+        COMPANY
+        WHEN '02' THEN
+        (( RTON - BMTON )/ BMTON * 100 )
+        WHEN '06' THEN
+        (( RTON - BJTON )/ BJTON * 100 )
+        WHEN '07' THEN
+        (( RTON - BMTON )/ BMTON * 100 )
+        WHEN '09' THEN
+        (( RTON - BQTON )/ BQTON * 100 )
+        END AS RATE2,
+        CASE
+        COMPANY
+        WHEN '02' THEN
+        (( BQTON - BMTON )/ ( BQTON + BMTON )/ 2 * 100 )
+        WHEN '06' THEN
+        (( BQTON - BJTON )/ ( BQTON + BJTON )/ 2 * 100 )
+        WHEN '07' THEN
+        (( BJTON - BMTON )/ ( BJTON + BMTON )/ 2 * 100 )
+        WHEN '09' THEN
+        (( BMTON - BQTON )/ ( BMTON + BQTON )/ 2 * 100 )
+        END AS RATE3
+        from T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        </if>
+        )AS PANGSHEN
+    </select>
+
+
+    <select id="list_ship4" resultType="map">
+        SELECT
+        *,
+        IF
+        (
+        ABS ( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2,
+        "合格",
+        IF
+        ((
+        COMPANY = '02'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '07'
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '09'
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        ),
+        '基本合格',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2,
+        '签数异常',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2,
+        '签数负异常',
+        IF
+        (
+        ABS(
+        GREATEST( RTON, BMTON, BJTON, BQTON )- LEAST( RTON, BMTON, BJTON, BQTON ))/ LEAST( RTON, BMTON, BJTON, BQTON ) * 100 &lt; 2,
+        '记录异常',
+        IF
+        ((
+        COMPANY = '02'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '07'
+        AND (
+        ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '09'
+        AND (
+        ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        ),
+        '不合格',
+        '不合格'
+        )
+        )
+        )
+        )
+        )
+        ) AS STATE
+        from T_V_SHIPMAIN
+<!--        <if test="(str_company != null and str_company != '')or(dt_start != null and dt_start != '') or (dt_end != null and dt_end != '') ">-->
+            where COMPANY = #{str_company}
+<!--        </if>-->
+    </select>
 
 </mapper>

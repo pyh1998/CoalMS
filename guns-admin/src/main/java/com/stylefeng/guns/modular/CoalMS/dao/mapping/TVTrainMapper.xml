@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stylefeng.guns.modular.CoalMS.dao.TVTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.CoalMS.model.TVTrain" >
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="FTRAINCODEVCR" property="ftraincodevcr" jdbcType="VARCHAR" />
+    <result column="FTRAINORDERVCR" property="ftrainordervcr" jdbcType="VARCHAR" />
+    <result column="FARRIVEPORTTIMEDTM" property="farriveporttimedtm" jdbcType="DATE" />
+    <result column="FTRAINNUMNUM" property="ftrainnumnum" jdbcType="VARCHAR" />
+    <result column="FUNLOADFLAGNUM" property="funloadflagnum" jdbcType="DECIMAL" />
+    <result column="FISWEIGHTNUM" property="fisweightnum" jdbcType="DECIMAL" />
+    <result column="FWEIGHTDTM" property="fweightdtm" jdbcType="DATE" />
+    <result column="FWEIGHTFLAG" property="fweightflag" jdbcType="VARCHAR" />
+    <result column="FBELONGDATETIMEDTM" property="fbelongdatetimedtm" jdbcType="DATE" />
+    <result column="ISVALID" property="isvalid" jdbcType="DECIMAL" />
+    <result column="FTRAINORDERNUM" property="ftrainordernum" jdbcType="DECIMAL" />
+    <result column="FTRAINNONUM" property="ftrainnonum" jdbcType="VARCHAR" />
+    <result column="FSTATSTASTIONCODENUM" property="fstatstastioncodenum" jdbcType="DECIMAL" />
+    <result column="FSTATSTASTIONNAME" property="fstatstastionname" jdbcType="VARCHAR" />
+    <result column="FCOALCODEVCR" property="fcoalcodevcr" jdbcType="VARCHAR" />
+    <result column="FCOALNAME" property="fcoalname" jdbcType="VARCHAR" />
+    <result column="FCONSIGNERNUM" property="fconsignernum" jdbcType="DECIMAL" />
+    <result column="FCONSIGNERNAME" property="fconsignername" jdbcType="VARCHAR" />
+    <result column="FCHECKTONNUM" property="fchecktonnum" jdbcType="DECIMAL" />
+    <result column="FWEIGHTTONNUM" property="fweighttonnum" jdbcType="DECIMAL" />
+    <result column="FISWEIGHTNUMD" property="fisweightnumd" jdbcType="DECIMAL" />
+    <result column="FDISBUTTCODEVCR" property="fdisbuttcodevcr" jdbcType="VARCHAR" />
+    <result column="FDISBUTTNAME" property="fdisbuttname" jdbcType="VARCHAR" />
+    <result column="FHEAVYTONNUM" property="fheavytonnum" jdbcType="DECIMAL" />
+    <result column="FEMPTYTONNUM" property="femptytonnum" jdbcType="DECIMAL" />
+    <result column="FEMPTYTIMEDTM" property="femptytimedtm" jdbcType="DATE" />
+    <result column="TICKET_NO" property="ticketNo" jdbcType="VARCHAR" />
+    <result column="FTRAINNONUM2" property="ftrainnonum2" jdbcType="VARCHAR" />
+    <result column="FVOLUME" property="fvolume" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="search1" resultType="map">
+  select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS DEVIARATE from T_V_TRAIN
+  where 1=1
+  <if test="str_company != null and str_company != '' ">
+    AND COMPANY = #{str_company}
+  </if>
+  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+  </if>
+  </select>
+
+  <select id="search2" resultType="map">
+    SELECT COMPANY,FBELONGMONTH,WEIGHTTRAIN,NOWEIGHTTRAIN,TOTALTRAIN,WEIGHTTRAIN/TOTALTRAIN*100 AS RATE
+    FROM(
+    SELECT
+    DISTINCT COMPANY,
+    CONCAT(YEAR(FBELONGDATETIMEDTM),"-",MONTH(FBELONGDATETIMEDTM)) AS FBELONGMONTH,
+    SUM(CASE
+    WHEN ISVALID=1
+    THEN
+    1
+    ELSE
+    0
+    END
+    )WEIGHTTRAIN,
+    SUM(CASE
+    WHEN ISVALID=0
+    THEN
+    1
+    ELSE
+    0
+    END
+    )NOWEIGHTTRAIN,
+    SUM(CASE
+    WHEN ISVALID=0 OR ISVALID=1
+    THEN
+    1
+    ELSE
+    0
+    END
+    )TOTALTRAIN
+    from T_V_TRAIN
+    where 1=1
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+    GROUP BY COMPANY,FBELONGMONTH)AS AA
+  </select>
+
+  <select id="search2D" resultType="map">
+    select * from T_V_TRAIN
+    where COMPANY = #{str_company} AND CONCAT(YEAR(FBELONGDATETIMEDTM),"-",MONTH(FBELONGDATETIMEDTM)) = #{dt_date}
+  </select>
+
+
+  <select id="search3" resultType="map">
+    select FTRAINCODEVCR,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM AS RATE from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
+
+  <select id="search3D" resultType="map">
+    <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+      select * from T_V_TRAIN
+      where 1=1
+      <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+        AND FTRAINCODEVCR = #{str_ftraincodevcr}
+      </if>
+      <if test="str_company != null and str_company != '' ">
+        AND COMPANY = #{str_company}
+      </if>
+      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+        AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+      </if>
+    </if>
+  </select>
+
+
+
+
+<select id="search4" resultType="map">
+select distinct COMPANY,FTRAINCODEVCR from T_V_TRAIN
+  where 1=1
+<if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+  AND FTRAINCODEVCR = #{str_ftraincodevcr}
+</if>
+  <if test="str_company != null and str_company != '' ">
+    AND COMPANY = #{str_company}
+  </if>
+  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+  </if>
+</select>
+
+  <select id="search4D" resultType="map">
+SELECT
+	*, AVG(FEMPTYTONNUM) AS LIMITEMPTY
+FROM
+	(
+		SELECT
+			*, (FVOLUME - LIMITVOL) / LIMITVOL * 100 AS VOLRATE
+		FROM
+			(
+				SELECT
+					*, MIN(FVOLUME) AS LIMITVOL,
+					(FWEIGHTTONNUM - FCHECKTONNUM) / FCHECKTONNUM * 100 AS WEIGHTRATE
+				FROM
+					T_V_TRAIN
+				WHERE
+				    FTRAINCODEVCR = #{str_trainno}
+			) AS PANGSHEN1
+	) AS PANGSHEN2
+ORDER BY
+	FEMPTYTONNUM
+LIMIT 0,3
+</select>
+
+
+
+
+  <select id="search6" resultType="map">
+    select *,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS RATE from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
+
+
+
+</mapper>

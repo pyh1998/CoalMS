@@ -66,19 +66,47 @@ public class ShipController extends BaseController {
     public String ship8() {
         return PREFIX + "ship8.html";
     }
+
+    /**
+     * 皮带秤1：合格率查询
+     */
+    @RequestMapping(value = "/list_ship1")
+    @ResponseBody
+    public Object list_ship1(String dt_start,String dt_end) {
+
+        System.out.printf("************"+dt_start+"***"+dt_end+"*************");
+        List<Map<String, Object>> list = this.ShipService.list_ship1(dt_start,dt_end);
+
+        return super.warpObject(new ShipWarpper(list));
+    }
+
+    /**
+     * 皮带秤功能2：误差合格分析
+     */
+    @RequestMapping(value = "/list_ship2")
+    @ResponseBody
+    public Object list_ship2(String str_company,String dt_start,String dt_end) {
+        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
+        List<Map<String, Object>> list = this.ShipService.list_ship2(str_company,dt_start,dt_end);
+
+        return super.warpObject(new ShipWarpper(list));
+    }
+
     /**
      * 皮带秤功能3：误差合格分析
      */
     @RequestMapping(value = "/list_ship3")
     @ResponseBody
     public Object list_ship3(String str_company,String dt_start,String dt_end) {
-
-        System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
         List<Map<String, Object>> list = this.ShipService.list_ship3(str_company,dt_start,dt_end);
-
         return super.warpObject(new ShipWarpper(list));
+    }
 
-
+    @RequestMapping(value = "/list_ship4")
+    @ResponseBody
+    public Object list_ship4(String str_company,String dt_start,String dt_end) {
+        List<Map<String, Object>> list = this.ShipService.list_ship4(str_company,dt_start,dt_end);
+        return super.warpObject(new ShipWarpper(list));
     }
     @RequestMapping(value = "/list_ship7Q")
     @ResponseBody
