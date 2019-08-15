@@ -25,8 +25,8 @@ public class ShipServiceImpl extends ServiceImpl<TVShipmainMapper, TVShipmain> i
         return this.baseMapper.list_ship3(str_company,dt_start,dt_end);
     }
 
-    public List<Map<String, Object>> list_ship7(String str_company, String dt_start, String dt_end) {
-        return this.baseMapper.list_ship7(str_company,dt_start,dt_end);
+    public List<Map<String, Object>> list_ship7(String str_company,String str_fshipyearnumvcr, String dt_start, String dt_end) {
+        return this.baseMapper.list_ship7(str_company,str_fshipyearnumvcr,dt_start,dt_end);
     }
 
     public List<Map<String, Object>> list_ship7_1(String str_company, String str_shipno) {

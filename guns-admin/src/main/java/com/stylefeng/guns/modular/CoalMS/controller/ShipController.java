@@ -110,10 +110,10 @@ public class ShipController extends BaseController {
     }
     @RequestMapping(value = "/list_ship7Q")
     @ResponseBody
-    public Object list_ship7(String str_company,String dt_start,String dt_end) {
+    public Object list_ship7(String str_company,String str_fshipyearnumvcr,String dt_start,String dt_end) {
 
         System.out.printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+str_company);
-        List<Map<String, Object>> list = this.ShipService.list_ship7(str_company,dt_start,dt_end);
+        List<Map<String, Object>> list = this.ShipService.list_ship7(str_company,str_fshipyearnumvcr,dt_start,dt_end);
 
         return super.warpObject(new ShipWarpper(list));
 
