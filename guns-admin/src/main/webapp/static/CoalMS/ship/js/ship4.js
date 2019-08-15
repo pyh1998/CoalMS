@@ -42,7 +42,7 @@ Ship4.initColumn = function () {
         {title: '船舶年序号', field: 'FSHIPYEARNUMVCR', align: 'center', valign: 'middle', width: '6%'},
         {title: '船舶名称', field: 'FSHIPNAME', align: 'center', valign: 'middle', width: '6%'},
         {title: '泊位', field: 'FBERTHNAME', align: 'center', valign: 'middle', width: '5%'},
-        {title: '煤种', field: 'COALS', align: 'center', valign: 'middle', width: '20%'},
+        {title: '煤种', field: 'FCOALNAME1', align: 'center', valign: 'middle', width: '20%'},
         {
             title: '船舶签数', field: 'FSIGNTONNUM', align: 'center', valign: 'middle', width: '5%',
             footerFormatter: function (value, row, index) {

@@ -330,7 +330,7 @@ function showCoalnameList() {
             $("#str_coalname").selectpicker('refresh');
         },
         error: function (data) {
-            Feng.error("煤种查询失败!" + data.responseJSON.message + "!");
+          //  Feng.error("煤种查询失败!" + data.responseJSON.message + "!");
         }
     });
 
