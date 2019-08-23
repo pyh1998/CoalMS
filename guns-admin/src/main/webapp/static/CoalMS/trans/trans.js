@@ -1,15 +1,12 @@
-var gd_company = "";
-var gd_shipno = "";
-
-var Ship7Q = {
-    id: "Ship7QTable",	//表格id
+var Ship4 = {
+    id: "Ship4Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship7Q"
+    bootstrapTableUrl: "/ship/list_ship4"
 };
 
-Ship7Q.initColumn = function () {
+Ship4.initColumn = function () {
     var me = this;
     return [
         {field: 'selectItem', radio: true, visible: false},
@@ -27,207 +24,160 @@ Ship7Q.initColumn = function () {
                 } else {
                     return index + 1;
                 }
+            },
+            footerFormatter: function (value, row, index) {
+                if (1 === CustomizeParameters.radioValue) {
+                    //求和
+                    return "求和";
+                } else {
+                    //求平均
+                    return "平均";
+                }
             }
         },
-        {title: '公司', field: 'COMPANY', align: 'center', valign: 'middle'},
-        // {title: '船舶年序号', field: 'FSHIPYEARNUMVCR', align: 'center', valign: 'middle',formatter:opendetail},
         {
-            title: '船舶年序号',
-            field: 'FSHIPYEARNUMVCR',
-            align: 'center',
-            valign: 'middle',
-            formatter: function (value, row, index) {
-                return "<a href='#'>" + value + "</a>";
-            }
+            title: '公司', field: 'COMPANY', align: 'center', valign: 'middle', width: '5%'
         },
-        {title: '船舶名称', field: 'FSHIPNAME', align: 'center', valign: 'middle'}
+        {title: '所属日期', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶年序号', field: 'FSHIPYEARNUMVCR', align: 'center', valign: 'middle', width: '6%'},
+        {title: '航次', field: 'FSHIPORDERNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '抵达时间', field: 'FARRIVETIMEDTM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶代码', field: 'FSHIPCODENUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位代码', field: 'FBERTHNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位名称', field: 'FBERTHNAME', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数吨2', field: 'FSIGNTONNUM2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数吨', field: 'FSIGNTONNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '装船状态', field: 'FSHIPSTATEVCR', align: 'center', valign: 'middle', width: '6%'},
+        {title: '统计年月 月份 所属日期', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '舱数', field: 'FCABINNUMNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11最大承重吨', field: 'FMAXWEIGHNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数1', field: 'FRTON1NUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数1', field: 'FBQTON1NUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数2', field: 'FRTON2NUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数2', field: 'FBQBTON2NUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨数', field: 'FBMTONNUM', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数1', field: 'FBJTONNUM1', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数2', field: 'FBJTONNUM2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11结果', field: 'LINERESULT', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11状态', field: 'LINESTATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数', field: 'RTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨数', field: 'BMTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数', field: 'BQTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数', field: 'BJTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: '最大吨数', field: 'MAXTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: '最小吨数', field: 'MINTON', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨偏差率', field: 'RRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨偏差率', field: 'BMRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨偏差率', field: 'BQRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨偏差率', field: 'BJRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '煤种名称1', field: 'FCOALNAME1', align: 'center', valign: 'middle', width: '6%'},
+        {title: '煤种名称2', field: 'FCOALNAME2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数结果', field: 'SIGNRESULT', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数状态', field: 'SIGNSTATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数率', field: 'SIGNRRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BM率', field: 'SIGNBMRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BQ率', field: 'SIGNBQRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BJ率', field: 'SIGNBJRATE', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11开始时间', field: 'FSTARTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11停止时间', field: 'FSTOPTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11battle名称', field: 'FBATTLENAME', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11流动名称', field: 'FFLOWNAME', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11船舱数量', field: 'FCABINNUMNUMNO', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶名称', field: 'FSHIPNAME', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位', field: 'FBERTHNAME', align: 'center', valign: 'middle', width: '5%'},
+        {title: '煤种', field: 'FCOALNAME1', align: 'center', valign: 'middle', width: '20%'},
+        {
+            title: '船舶签数', field: 'FSIGNTONNUM', align: 'center', valign: 'middle', width: '5%'
+        },
+        {
+            title: '取料机秤数', field: 'RTON', align: 'center', valign: 'middle', width: '6%'
+
+        },
+        {
+            title: 'BM秤数', field: 'BMTON', align: 'center', valign: 'middle', width: '6%'
+        },
+        {
+            title: 'BQ秤数', field: 'BQTON', align: 'center', valign: 'middle', width: '6%'
+        },
+        {
+            title: 'BJ秤数', field: 'BJTON', align: 'center', valign: 'middle', width: '6%'
+        },
+        {
+            title: '取料机秤偏差率%', field: 'RRATE', align: 'center', valign: 'middle', width: '7%'
+        },
+        {
+            title: 'BM偏差率%', field: 'BMRATE', align: 'center', valign: 'middle', width: '7%'
+        },
+        {
+            title: 'BQ偏差率%', field: 'BQRATE', align: 'center', valign: 'middle', width: '7%'
+        },
+        {
+            title: 'BJ偏差率%', field: 'BJRATE', align: 'center', valign: 'middle', width: '7%'
+        },
+        {title: '签数对照分析', field: 'STATE', align: 'center', valign: 'middle', width: '6%', cellStyle: cellformat}
     ];
 };
 
-Ship7Q.search = function () {
-    var queryData = {};
-    queryData['company'] = $("#company").val();
-    queryData['fshipyearnumvcr'] = $("#fshipyearnumvcr").val();
-    queryData['fshipordernum'] = $("#fshipordernum").val();
-    queryData['farrivetimedtm'] = $("#farrivetimedtm").val();
-    queryData['fshipcodenum'] = $("#fshipcodenum").val();
-    queryData['fshipname'] = $("#fshipname").val();
-    queryData['fberthnum'] = $("#fberthnum").val();
-    queryData['fberthname'] = $("#fberthname").val();
-    queryData['fsigntonnum2'] = $("#fsigntonnum2").val();
-    queryData['fsigntonnum'] = $("#fsigntonnum").val();
-    queryData['fshipstatevcr'] = $("#fshipstatevcr").val();
-    queryData['fcounttimedtm'] = $("#fcounttimedtm").val();
-    queryData['fcabinnumnum'] = $("#fcabinnumnum").val();
-    queryData['fmaxweighnum'] = $("#fmaxweighnum").val();
-    queryData['frton1num'] = $("#frton1num").val();
-    queryData['fbqton1num'] = $("#fbqton1num").val();
-    queryData['frton2num'] = $("#frton2num").val();
-    queryData['fbqbton2num'] = $("#fbqbton2num").val();
-    queryData['fbmtonnum'] = $("#fbmtonnum").val();
-    queryData['fbjtonnum1'] = $("#fbjtonnum1").val();
-    queryData['fbjtonnum2'] = $("#fbjtonnum2").val();
-    queryData['lineresult'] = $("#lineresult").val();
-    queryData['linestate'] = $("#linestate").val();
-    queryData['rton'] = $("#rton").val();
-    queryData['bmton'] = $("#bmton").val();
-    queryData['bqton'] = $("#bqton").val();
-    queryData['bjton'] = $("#bjton").val();
-    queryData['maxton'] = $("#maxton").val();
-    queryData['minton'] = $("#minton").val();
-    queryData['rrate'] = $("#rrate").val();
-    queryData['bmrate'] = $("#bmrate").val();
-    queryData['bqrate'] = $("#bqrate").val();
-    queryData['bjrate'] = $("#bjrate").val();
-    queryData['fcoalname1'] = $("#fcoalname1").val();
-    queryData['fcoalname2'] = $("#fcoalname2").val();
-    queryData['signresult'] = $("#signresult").val();
-    queryData['signstate'] = $("#signstate").val();
-    queryData['signrrate'] = $("#signrrate").val();
-    queryData['signbmrate'] = $("#signbmrate").val();
-    queryData['signbqrate'] = $("#signbqrate").val();
-    queryData['signbjrate'] = $("#signbjrate").val();
-    queryData['fstarttimedtm'] = $("#fstarttimedtm").val();
-    queryData['fstoptimedtm'] = $("#fstoptimedtm").val();
-    queryData['fbattlename'] = $("#fbattlename").val();
-    queryData['fflowname'] = $("#fflowname").val();
-    queryData['fcabinnumnumno'] = $("#fcabinnumnumno").val();
+function cellformat(value, row, index) {
+    if (value != '合格' && value != '基本合格') {
+        return {css: {"color": "red"}}
+    } else {
+        return {css: {}};
+    }
+};
 
+Ship4.search = function () {
+    var queryData = {};
+    queryData['str_company'] = $("#str_company").val();
+    queryData['dt_start'] = $("#dt_start").val();
+    queryData['dt_end'] = $("#dt_end").val();
     queryData['str_first'] = "1";
 
     //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
-        Ship7Q.table.refresh({
+        Ship4.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship7Q.bootstrapTableUrl
+            url: Feng.ctxPath + Ship4.bootstrapTableUrl
         });
     } else {
-        Ship7Q.table.refresh({query: queryData});
+        Ship4.table.refresh({query: queryData});
     }
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
-    $("#Ship7QTable").bootstrapTable('selectPage', 1);
+
+    $("#Ship4Table").bootstrapTable('selectPage', 1);
 };
 
-function opendetail(value, row, index) {
-    var funurl = "openInfoDetail('" + row.COMPANY + "','" + row.FSHIPYEARNUMVCR + "')";
-    var url = "<a href='#' onclick=" + funurl + ">" + value + "</a>";
-    return url;
-}
-
-function openInfoDetail(company, shipno) {
-    gd_company = company;
-    gd_shipno = shipno;
-    var ajax = new $ax(Feng.ctxPath + "/ship/list_ship7", function (data) {
-        // if(data==null || data.length==0){}else{}
-        show_detail(data);
-    }, function (data) {
-        Feng.error("查询失败!" + data.responseJSON.message + "!");
-    });
-    ajax.set("str_company", company);
-    ajax.set("str_shipno", shipno);
-    ajax.start();
-};
-
-function show_detail(data) {
-    if (CustomizeParameters.isEmpty(data)) {
-        $("#FSHIPYEARNUMVCR").val("");
-        $("#FSHIPNAME").val("");
-        $("#FTONNUM").val("");
-        $("#FSIGNTON1").val("");
-        $("#FSIGNTON2").val("");
-
-        $("#RTON").val("");
-        $("#RRATE1").val("");
-        $("#RRATE2").val("");
-
-        $("#BMTON").val("");
-        $("#BMRATE1").val("");
-        $("#BMRATE2").val("");
-
-        $("#BQTON").val("");
-        $("#BQRATE1").val("");
-        $("#BQRATE2").val("");
-
-        $("#BJTON").val("");
-        $("#BJRATE1").val("");
-        $("#BJRATE2").val("");
-
-        $("#SIGNRATE").val();
-    } else {
-        $("#FSHIPYEARNUMVCR").val(data[0]["FSHIPYEARNUMVCR"]);
-        $("#FSHIPNAME").val(data[0]["FSHIPNAME"]);
-        $("#FTONNUM").val(data[0]["RTON"]);
-        $("#FSIGNTON1").val(data[0]["FSIGNTONNUM"]);
-        $("#FSIGNTON2").val(data[0]["FSIGNTONNUM2"]);
-
-        $("#RTON").val(data[0]["RTON"]);
-        $("#RRATE1").val(data[0]["RRATE"]);
-        $("#RRATE2").val(data[0]["SIGNRRATE"]);
-
-        $("#BMTON").val(data[0]["BMTON"]);
-        $("#BMRATE1").val(data[0]["BMRATE"]);
-        $("#BMRATE2").val(data[0]["SIGNBMRATE"]);
-
-        $("#BQTON").val(data[0]["BQTON"]);
-        $("#BQRATE1").val(data[0]["BQRATE"]);
-        $("#BQRATE2").val(data[0]["SIGNBQRATE"]);
-
-        $("#BJTON").val(data[0]["BJTON"]);
-        $("#BJRATE1").val(data[0]["BJRATE"]);
-        $("#BJRATE2").val(data[0]["SIGNBJRATE"]);
-
-        $("#SIGNRATE").val(data[0]["SIGNRRATE"]);
-    }
-}
-
-function Ship7_export() {
+Ship4.export = function () {
     Feng.confirm("是否按现查询条件导出excel?", function () {
         var str_company = $("#str_company").val();
-        var str_fshipyearnumvcr = $("#str_fshipyearnumvcr").val();
         var dt_start = $("#dt_start").val();
         var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship7_excel?str_company=" + str_company + "&str_fshipyearnumvcr=" + str_fshipyearnumvcr + "&dt_start=" + dt_start + "&dt_end=" + dt_end +
-            "&str_company2=" + gd_company + "&str_shipno=" + gd_shipno;
+        window.location.href = Feng.ctxPath + "/ship/list_ship4_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
     });
 };
 
 $(function () {
     var bodyheight = ($(document).height() - 20) + 'px';
-    document.getElementById("Ship7Dbody").style.height = bodyheight;
+    document.getElementById("Ship4Dbody").style.height = bodyheight;
 
-    var tableheight1 = $(document).height() - document.getElementById("qdiv").offsetHeight - 36;
-
-    var defaultColunmsD = Ship7Q.initColumn();
-    var tableD = new BSTable(Ship7Q.id, Ship7Q.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight1);
+    var oddheight = document.getElementById("qdiv").offsetHeight + 36;
+    var tableheight = $(document).height() - oddheight;
+    var defaultColunms = Ship4.initColumn();
+    var table = new BSTable(Ship4.id, Ship4.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
-    queryData['str_fshipyearnumvcr'] = $("#str_fshipyearnumvcr").val();
     queryData['dt_start'] = $("#dt_start").val();
     queryData['dt_end'] = $("#dt_end").val();
     queryData['str_first'] = "1";
-    tableD.queryParams = queryData;
-    tableD.setPaginationType("client");
-    tableD.onClickCell = function (field, value, row, $element) {
-        if (field !== "FSHIPYEARNUMVCR") {
-            return;
-        }
-        gd_company = row.COMPANY;
-        gd_shipno = row.FSHIPYEARNUMVCR;
-        var ajax = new $ax(Feng.ctxPath + "/ship/list_ship7", function (data) {
-            show_detail(data);
-        }, function (data) {
-            Feng.error("查询失败!" + data.responseJSON.message + "!");
-        });
-        ajax.set("str_company", row.COMPANY);
-        ajax.set("str_shipno", row.FSHIPYEARNUMVCR);
-        ajax.start();
-    };
+    table.queryParams = queryData;
+    table.setPaginationType("client");
+    table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
-        tableD.url = "";
+        table.url = "";
     }
-    tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
-    Ship7Q.table = tableD.init();
+    table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
+    Ship4.table = table.init();
 
     window.setTimeout(init_time, 300);
 });
