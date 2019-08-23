@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html><script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', { get: function(){ return 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'; } });Object.defineProperty(window.navigator, 'vendor', { get: function(){ return 'Mozilla, Inc.'; } });Object.defineProperty(window.navigator, 'platform', { get: function(){ return 'Windows'; } });</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit"><!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <script src="${ctxPath}/static/CoalMS/common/js/laydate.js"></script>
+    <link rel="stylesheet" href="${ctxPath}/static/CoalMS/common/css/laydate.css">
+    <link rel="shortcut icon" href="http://124.237.123.234:12380/CoalMS/static/favicon.ico">
+    <link href="${ctxPath}/static/CoalMS/common/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/font-awesome.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/chosen.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/bootstrap-table.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/style.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/_fstyle.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/custom.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/webuploader.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/zTreeStyle.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/bootstrap-treetable.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/globalTableSize.css" rel="stylesheet">
+    <link href="${ctxPath}/static/CoalMS/common/css/customizeParameters.css" rel="stylesheet">
+
+    <!-- 全局js -->
+    <script src="${ctxPath}/static/CoalMS/common/js/jquery.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/jquery.ztree.all.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap-table.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrapValidator.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/zh_CN.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap-table-mobile.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap-treetable.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/layer.js"></script><link rel="stylesheet" href="${ctxPath}/static/CoalMS/common/js/layer.css" id="layuicss-layer">
+    <script src="${ctxPath}/static/CoalMS/common/js/chosen.jquery.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/icheck.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/laydate.js"></script><link rel="stylesheet" href="${ctxPath}/static/CoalMS/common/js/laydate.css" id="layuicss-laydate">
+    <script src="${ctxPath}/static/CoalMS/common/js/webuploader.min.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/ajax-object.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/bootstrap-table-object.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/tree-table-object.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/web-upload-object.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/ztree-object.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/Feng.js"></script>
+    <script src="${ctxPath}/static/CoalMS/common/js/customizeParameters.js"></script>
+
+    <!--手工拖拽table列宽，但是效果不是很好-->
+    <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/colResizable-1.6.min.js"></script>-->
+    <!--<script src="/CoalMS/static/js/plugins/bootstrap-table/bootstrap-table-resizable.js"></script>-->
+
+    <style type="text/css">
+        table{
+            /*width:100px;*/
+            /*table-layout:fixed;!* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 *!*/
+        }
+        td{
+            /*width:100%;*/
+            /*word-break:keep-all;!* 不换行 *!*/
+            /*white-space:nowrap;!* 不换行 *!*/
+            /*overflow:hidden;!* 内容超出宽度时隐藏超出部分的内容 *!*/
+            /*text-overflow:ellipsis;!* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*!*/
+        }
+    </style>
+
+    <script type="text/javascript">
+        Feng.sessionTimeoutRegistry();
+    </script>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content"><!-- -->
+    <script src="${ctxPath}/static/CoalMS/common/js/echarts-all.js"></script>
+    <div class="row" style="height:100%">
+        <div class="col-sm-12" style="height:100%">
+            <div class="ibox float-e-margins" style="height:100%">
+
+                <div id="Ship7Dbody" class="ibox-content" style="height: 611px;">
+                    <div class="row row-lg">
+
+                        <div class="col-sm-12">
+
+                            <!-- ship -->
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button name="返回">
+                                        返回
+                                    </button>
+                                    <button name="确认">
+                                        确认
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+                            <!-- form -->
+                            <div class="col-sm-9">
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">公司</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="company" name="公司" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">抵达时间</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="farrivetimedtm" name="抵达时间" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">船舶年序号</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fshipyearnumvcr" name="船舶年序号" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">船舶代码</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fshipcodenum" name="船舶代码" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">航次</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fshipordernum" name="航次" underline="true"/>                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">船舶名称</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fshipname" name="船舶名称" underline="true"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">泊位代码</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fberthnum" name="泊位代码" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">泊位名称</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fberthname" name="泊位名称" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数吨2</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fsigntonnum2" name="签数吨2" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数吨</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fsigntonnum" name="签数吨" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">装船状态</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fshipstatevcr" name="装船状态" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">统计年月 月份 所属日期</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fcounttimedtm" name="统计年月 月份 所属日期" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">舱数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fcabinnumnum" name="舱数" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11最大承重吨</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fmaxweighnum" name="最大承重吨" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">R吨数1</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="frton1num" name="R吨数1" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BQ吨数1</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbqton1num" name="BQ吨数1" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">R吨数2</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="frton2num" name="R吨数2" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BQ吨数2</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbqbton2num" name="BQ吨数2" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BM吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbmtonnum" name="BM吨数" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BJ吨数1</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbjtonnum1" name="BJ吨数1" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BJ吨数2</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbjtonnum2" name="BJ吨数2" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11结果</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="lineresult" name="结果" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11状态</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="linestate" name="状态"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">R吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="rton" name="R吨数" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BM吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bmton" name="BM吨数" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BQ吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bqton" name="BQ吨数" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BJ吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bjton" name="BJ吨数" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">最大吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="maxton" name="最大吨数" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">最小吨数</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="minton" name="最小吨数" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">R吨偏差率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="rrate" name="R吨偏差率" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BM吨偏差率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bmrate" name="BM吨偏差率" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BQ吨偏差率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bqrate" name="BQ吨偏差率" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">BJ吨偏差率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="bjrate" name="BJ吨偏差率" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">煤种名称1</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fcoalname1" name="煤种名称1" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">煤种名称2</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fcoalname2" name="煤种名称2" underline="true"/>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数结果</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signresult" name="签数结果" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数状态</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signstate" name="签数状态" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signrrate" name="签数率" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数BM率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signbmrate" name="签数BM率" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数BQ率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signbqrate" name="签数BQ率" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">签数BJ率</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="signbjrate" name="签数BJ率" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11开始时间</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fstarttimedtm" name="" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11停止时间</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fstoptimedtm" name="" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11battle名称</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fbattlename" name="" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11流动名称</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fflowname" name="" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">11船舱数量</label>
+                                                <div class="col-sm-7">
+                                                    <input autocomplete="off" type="text"  class="form-control" id="fcabinnumnumno" name="" underline="true"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- form over -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="${ctxPath}/static/CoalMS/common/js/permission_control.js"></script>
+    <script src="${ctxPath}/static/CoalMS/ship/js/ship7.js"></script>
+
+</div>
+<script src="${ctxPath}/static/CoalMS/common/js/content.js"></script><div class="gohome"><a class="animated bounceInUp" href="http://124.237.123.234:12380/CoalMS/" title="返回首页"><i class="fa fa-home"></i></a></div>
+
+
+</body></html>
