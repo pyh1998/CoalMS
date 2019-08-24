@@ -1,9 +1,20 @@
 package com.stylefeng.guns.modular.CoalMS.service;
+import io.swagger.models.HttpMethod;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.stylefeng.guns.modular.CoalMS.model.TVShipmain;
-import com.stylefeng.guns.modular.CoalMS.model.TVTrain;
+import java.util.List;
+import java.util.Map;
 
-public interface TransService extends IService<TVShipmain>{
-    boolean insert(TVShipmain tvShipmain);
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author Elliot
+ * @since 2019-08-23
+ */
+public interface TransService {
+
+    int insert(Map<String, Object> tvShipmain);
+    List<Map<String, Object>> client(String url, HttpMethod method, List<Map<String, Object>> params);
+    Integer client(String url, HttpMethod method);
 }
