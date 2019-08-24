@@ -2,28 +2,11 @@ var Ship3 = {
     id: "Ship3Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
-    tableData:null,
     layerIndex: -1,
     bootstrapTableUrl: "/ship/list_ship3"
 };
 
 Ship3.initColumn = Ship1Table.initColumn;
-
-Ship3.check = function () {
-    console.log(this);
-
-    // var selected = $('#' + this.id).bootstrapTable('getSelections');
-    var selected = $('#' + this.id).bootstrapTable('getSelections');
-    if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
-        return false;
-    } else {
-        Ship3.seItem = selected[0];
-        Ship3.tableData = selected;
-        return true;
-    }
-};
-
 
 Ship3.search = function () {
     var queryData = {};

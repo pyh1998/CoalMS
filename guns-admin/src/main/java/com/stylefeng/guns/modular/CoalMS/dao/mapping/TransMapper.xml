@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.CoalMS.dao.TransMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.CoalMS.model.TVShipmain">
+        <result column="COMPANY" property="company" />
+        <result column="FSHIPYEARNUMVCR" property="fshipyearnumvcr" />
+        <result column="FSHIPORDERNUM" property="fshipordernum" />
+        <result column="FARRIVETIMEDTM" property="farrivetimedtm" />
+        <result column="FSHIPCODENUM" property="fshipcodenum" />
+        <result column="FSHIPNAME" property="fshipname" />
+        <result column="FBERTHNUM" property="fberthnum" />
+        <result column="FBERTHNAME" property="fberthname" />
+        <result column="FSIGNTONNUM2" property="fsigntonnum2" />
+        <result column="FSIGNTONNUM" property="fsigntonnum" />
+        <result column="FSHIPSTATEVCR" property="fshipstatevcr" />
+        <result column="FCOUNTTIMEDTM" property="fcounttimedtm" />
+        <result column="FCABINNUMNUM" property="fcabinnumnum" />
+        <result column="FMAXWEIGHNUM" property="fmaxweighnum" />
+        <result column="FRTON1NUM" property="frton1num" />
+        <result column="FBQTON1NUM" property="fbqton1num" />
+        <result column="FRTON2NUM" property="frton2num" />
+        <result column="FBQBTON2NUM" property="fbqbton2num" />
+        <result column="FBMTONNUM" property="fbmtonnum" />
+        <result column="FBJTONNUM1" property="fbjtonnum1" />
+        <result column="FBJTONNUM2" property="fbjtonnum2" />
+        <result column="LINERESULT" property="lineresult" />
+        <result column="LINESTATE" property="linestate" />
+        <result column="RTON" property="rton" />
+        <result column="BMTON" property="bmton" />
+        <result column="BQTON" property="bqton" />
+        <result column="BJTON" property="bjton" />
+        <result column="MAXTON" property="maxton" />
+        <result column="MINTON" property="minton" />
+        <result column="RRATE" property="rrate" />
+        <result column="BMRATE" property="bmrate" />
+        <result column="BQRATE" property="bqrate" />
+        <result column="BJRATE" property="bjrate" />
+        <result column="FCOALNAME1" property="fcoalname1" />
+        <result column="FCOALNAME2" property="fcoalname2" />
+        <result column="SIGNRESULT" property="signresult" />
+        <result column="SIGNSTATE" property="signstate" />
+        <result column="SIGNRRATE" property="signrrate" />
+        <result column="SIGNBMRATE" property="signbmrate" />
+        <result column="SIGNBQRATE" property="signbqrate" />
+        <result column="SIGNBJRATE" property="signbjrate" />
+        <result column="FSTARTTIMEDTM" property="fstarttimedtm" />
+        <result column="FSTOPTIMEDTM" property="fstoptimedtm" />
+        <result column="FBATTLENAME" property="fbattlename" />
+        <result column="FFLOWNAME" property="fflowname" />
+        <result column="FCABINNUMNUMNO" property="fcabinnumnumno" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        COMPANY, FSHIPYEARNUMVCR, FSHIPORDERNUM, FARRIVETIMEDTM, FSHIPCODENUM, FSHIPNAME, FBERTHNUM, FBERTHNAME, FSIGNTONNUM2, FSIGNTONNUM, FSHIPSTATEVCR, FCOUNTTIMEDTM, FCABINNUMNUM, FMAXWEIGHNUM, FRTON1NUM, FBQTON1NUM, FRTON2NUM, FBQBTON2NUM, FBMTONNUM, FBJTONNUM1, FBJTONNUM2, LINERESULT, LINESTATE, RTON, BMTON, BQTON, BJTON, MAXTON, MINTON, RRATE, BMRATE, BQRATE, BJRATE, FCOALNAME1, FCOALNAME2, SIGNRESULT, SIGNSTATE, SIGNRRATE, SIGNBMRATE, SIGNBQRATE, SIGNBJRATE, FSTARTTIMEDTM, FSTOPTIMEDTM, FBATTLENAME, FFLOWNAME, FCABINNUMNUMNO
+    </sql>
+
+    <insert id="insert" parameterType="Map">
+insert into T_V_SHIPMAIN (COMPANY, FSHIPYEARNUMVCR, FSHIPORDERNUM, FSHIPCODENUM, FSHIPNAME, FBERTHNUM, FBERTHNAME, FSIGNTONNUM2, FSIGNTONNUM, FSHIPSTATEVCR, FCABINNUMNUM, FMAXWEIGHNUM, FRTON1NUM, FBQTON1NUM, FRTON2NUM, FBQBTON2NUM, FBMTONNUM, FBJTONNUM1, FBJTONNUM2, LINERESULT, LINESTATE, RTON, BMTON, BQTON, BJTON, MAXTON, MINTON, RRATE, BMRATE, BQRATE, BJRATE, FCOALNAME1, FCOALNAME2, SIGNRESULT, SIGNSTATE, SIGNRRATE, SIGNBMRATE, SIGNBQRATE, SIGNBJRATE, FBATTLENAME, FFLOWNAME, FCABINNUMNUMNO)
+values(#{company},#{fshipyearnumvcr},#{fshipordernum},#{fshipcodenum},#{fshipname},#{fberthnum},#{fberthname},#{fsigntonnum2},#{fsigntonnum},#{fshipstatevcr},#{fcabinnumnum},#{fmaxweighnum},#{frton1num},#{fbqton1num},#{frton2num},#{fbqbton2num},#{fbmtonnum},#{fbjtonnum1},#{fbjtonnum2},#{lineresult},#{linestate},#{rton},#{bmton},#{bqton},#{bjton},#{maxton},#{minton},#{rrate},#{bmrate},#{bqrate},#{bjrate},#{fcoalname1},#{fcoalname2},#{signresult},#{signstate},#{signrrate},#{signbmrate},#{signbqrate},#{signbjrate},#{fbattlename},#{fflowname},#{fcabinnumnumno})
+    </insert>
+
+</mapper>

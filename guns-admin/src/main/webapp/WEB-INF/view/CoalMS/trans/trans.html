@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)http://124.237.123.234:12380/CoalMS/ship/ship4 -->
+<!-- saved from url=(0046)http://124.237.123.234:12380/CoalMS/ship/Trans -->
 <html><script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', { get: function(){ return 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'; } });Object.defineProperty(window.navigator, 'vendor', { get: function(){ return 'Mozilla, Inc.'; } });Object.defineProperty(window.navigator, 'platform', { get: function(){ return 'Windows'; } });</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,7 @@
         <div class="col-sm-12" style="height:100%">
             <div class="ibox float-e-margins" style="height:100%">
 
-                <div id="Ship4Dbody" class="ibox-content" style="height: 600px;">
+                <div id="TransDbody" class="ibox-content" style="height: 600px;">
                     <div class="row row-lg">
                         <div class="col-sm-12">
                             <div id="qdiv" class="row">
@@ -84,13 +84,13 @@
 
                                 <div class="col-sm-3">
 
-                                    <button type="button" class="btn btn-primary " onclick="Ship4.search()" id="">
+                                    <button type="button" class="btn btn-primary " onclick="Trans.search()" id="">
                                         <i class="fa fa-search"></i>&nbsp;搜索
                                     </button>
 
 
-                                    <button type="button" class="btn btn-primary button-margin" onclick="Ship4.export()" id="excel-export">
-                                        <i class="fa fa-file-excel-o"></i>&nbsp;导出
+                                    <button type="button" class="btn btn-primary button-margin" onclick="Trans.export()" id="excel-export">
+                                        <i class="fa fa-file-excel-o"></i>&nbsp;删除
                                     </button>
 
                                 </div>
@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="bootstrap-table">
-                                <table id="Ship4Table" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
+                                <table id="TransTable" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -40px;">
                                 </table>
                             </div>
                             <div class="clearfix"></div>
@@ -110,8 +110,7 @@
         </div>
     </div>
     <script src="${ctxPath}/static/CoalMS/common/js/permission_control.js"></script>
-    <script src="${ctxPath}/static/CoalMS/ship/js/ship4.js"></script>
-
+    <script src="${ctxPath}/static/CoalMS/trans/trans.js"></script>
 </div>
 <script src="${ctxPath}/static/CoalMS/common/js/content.js"></script><div class="gohome"><a class="animated bounceInUp" href="http://124.237.123.234:12380/CoalMS/" title="返回首页"><i class="fa fa-home"></i></a></div>
 

@@ -1,15 +1,15 @@
-var Ship4 = {
-    id: "Ship4Table",	//表格id
+var Trans = {
+    id: "TransTable",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship4"
+    bootstrapTableUrl: "/trans/transShip"
 };
 
-Ship4.initColumn = function () {
+Trans.initColumn = function () {
     var me = this;
     return [
-        {field: 'selectItem', radio: true, visible: false},
+        {field: 'selectitem', radio: true, visible: false},
         {
             title: '序号',
             field: 'index',
@@ -36,85 +36,85 @@ Ship4.initColumn = function () {
             }
         },
         {
-            title: '公司', field: 'COMPANY', align: 'center', valign: 'middle', width: '5%'
+            title: '公司', field: 'company', align: 'center', valign: 'middle', width: '5%'
         },
-        {title: '所属日期', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '船舶年序号', field: 'FSHIPYEARNUMVCR', align: 'center', valign: 'middle', width: '6%'},
-        {title: '航次', field: 'FSHIPORDERNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '抵达时间', field: 'FARRIVETIMEDTM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '船舶代码', field: 'FSHIPCODENUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '泊位代码', field: 'FBERTHNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '泊位名称', field: 'FBERTHNAME', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数吨2', field: 'FSIGNTONNUM2', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数吨', field: 'FSIGNTONNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '装船状态', field: 'FSHIPSTATEVCR', align: 'center', valign: 'middle', width: '6%'},
-        {title: '统计年月 月份 所属日期', field: 'FCOUNTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '舱数', field: 'FCABINNUMNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11最大承重吨', field: 'FMAXWEIGHNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'R吨数1', field: 'FRTON1NUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BQ吨数1', field: 'FBQTON1NUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'R吨数2', field: 'FRTON2NUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BQ吨数2', field: 'FBQBTON2NUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BM吨数', field: 'FBMTONNUM', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BJ吨数1', field: 'FBJTONNUM1', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BJ吨数2', field: 'FBJTONNUM2', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11结果', field: 'LINERESULT', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11状态', field: 'LINESTATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'R吨数', field: 'RTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BM吨数', field: 'BMTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BQ吨数', field: 'BQTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BJ吨数', field: 'BJTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: '最大吨数', field: 'MAXTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: '最小吨数', field: 'MINTON', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'R吨偏差率', field: 'RRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BM吨偏差率', field: 'BMRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BQ吨偏差率', field: 'BQRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: 'BJ吨偏差率', field: 'BJRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '煤种名称1', field: 'FCOALNAME1', align: 'center', valign: 'middle', width: '6%'},
-        {title: '煤种名称2', field: 'FCOALNAME2', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数结果', field: 'SIGNRESULT', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数状态', field: 'SIGNSTATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数率', field: 'SIGNRRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数BM率', field: 'SIGNBMRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数BQ率', field: 'SIGNBQRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '签数BJ率', field: 'SIGNBJRATE', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11开始时间', field: 'FSTARTTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11停止时间', field: 'FSTOPTIMEDTM', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11battle名称', field: 'FBATTLENAME', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11流动名称', field: 'FFLOWNAME', align: 'center', valign: 'middle', width: '6%'},
-        {title: '11船舱数量', field: 'FCABINNUMNUMNO', align: 'center', valign: 'middle', width: '6%'},
-        {title: '船舶名称', field: 'FSHIPNAME', align: 'center', valign: 'middle', width: '6%'},
-        {title: '泊位', field: 'FBERTHNAME', align: 'center', valign: 'middle', width: '5%'},
-        {title: '煤种', field: 'FCOALNAME1', align: 'center', valign: 'middle', width: '20%'},
+        {title: '所属日期', field: 'fcounttimedtm', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶年序号', field: 'fshipyearnumvcr', align: 'center', valign: 'middle', width: '6%'},
+        {title: '航次', field: 'fshipordernum', align: 'center', valign: 'middle', width: '6%'},
+        {title: '抵达时间', field: 'farrivetimedtm', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶代码', field: 'fshipcodenum', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位代码', field: 'fberthnum', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位名称', field: 'fberthname', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数吨2', field: 'fsigntonnum2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数吨', field: 'fsigntonnum', align: 'center', valign: 'middle', width: '6%'},
+        {title: '装船状态', field: 'fshipstatevcr', align: 'center', valign: 'middle', width: '6%'},
+        {title: '统计年月 月份 所属日期', field: 'fcounttimedtm', align: 'center', valign: 'middle', width: '6%'},
+        {title: '舱数', field: 'fcabinnumnum', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11最大承重吨', field: 'fmaxweighnum', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数1', field: 'frton1num', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数1', field: 'fbqton1num', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数2', field: 'frton2num', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数2', field: 'fbqbton2num', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨数', field: 'fbmtonnum', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数1', field: 'fbjtonnum1', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数2', field: 'fbjtonnum2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11结果', field: 'lineresult', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11状态', field: 'linestate', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨数', field: 'rton', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨数', field: 'bmton', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨数', field: 'bqton', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨数', field: 'bjton', align: 'center', valign: 'middle', width: '6%'},
+        {title: '最大吨数', field: 'maxton', align: 'center', valign: 'middle', width: '6%'},
+        {title: '最小吨数', field: 'minton', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'R吨偏差率', field: 'rrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BM吨偏差率', field: 'bmrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BQ吨偏差率', field: 'bqrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: 'BJ吨偏差率', field: 'bjrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '煤种名称1', field: 'fcoalname1', align: 'center', valign: 'middle', width: '6%'},
+        {title: '煤种名称2', field: 'fcoalname2', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数结果', field: 'signresult', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数状态', field: 'signstate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数率', field: 'signrrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BM率', field: 'signbmrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BQ率', field: 'signbqrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '签数BJ率', field: 'signbjrate', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11开始时间', field: 'fstarttimedtm', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11停止时间', field: 'fstoptimedtm', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11battle名称', field: 'fbattlename', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11流动名称', field: 'fflowname', align: 'center', valign: 'middle', width: '6%'},
+        {title: '11船舱数量', field: 'fcabinnumnumno', align: 'center', valign: 'middle', width: '6%'},
+        {title: '船舶名称', field: 'fshipname', align: 'center', valign: 'middle', width: '6%'},
+        {title: '泊位', field: 'fberthname', align: 'center', valign: 'middle', width: '5%'},
+        {title: '煤种', field: 'fcoalname1', align: 'center', valign: 'middle', width: '20%'},
         {
-            title: '船舶签数', field: 'FSIGNTONNUM', align: 'center', valign: 'middle', width: '5%'
+            title: '船舶签数', field: 'fsigntonnum', align: 'center', valign: 'middle', width: '5%'
         },
         {
-            title: '取料机秤数', field: 'RTON', align: 'center', valign: 'middle', width: '6%'
+            title: '取料机秤数', field: 'rton', align: 'center', valign: 'middle', width: '6%'
 
         },
         {
-            title: 'BM秤数', field: 'BMTON', align: 'center', valign: 'middle', width: '6%'
+            title: 'BM秤数', field: 'bmton', align: 'center', valign: 'middle', width: '6%'
         },
         {
-            title: 'BQ秤数', field: 'BQTON', align: 'center', valign: 'middle', width: '6%'
+            title: 'BQ秤数', field: 'bqton', align: 'center', valign: 'middle', width: '6%'
         },
         {
-            title: 'BJ秤数', field: 'BJTON', align: 'center', valign: 'middle', width: '6%'
+            title: 'BJ秤数', field: 'bjton', align: 'center', valign: 'middle', width: '6%'
         },
         {
-            title: '取料机秤偏差率%', field: 'RRATE', align: 'center', valign: 'middle', width: '7%'
+            title: '取料机秤偏差率%', field: 'rrate', align: 'center', valign: 'middle', width: '7%'
         },
         {
-            title: 'BM偏差率%', field: 'BMRATE', align: 'center', valign: 'middle', width: '7%'
+            title: 'BM偏差率%', field: 'bmrate', align: 'center', valign: 'middle', width: '7%'
         },
         {
-            title: 'BQ偏差率%', field: 'BQRATE', align: 'center', valign: 'middle', width: '7%'
+            title: 'BQ偏差率%', field: 'bqrate', align: 'center', valign: 'middle', width: '7%'
         },
         {
-            title: 'BJ偏差率%', field: 'BJRATE', align: 'center', valign: 'middle', width: '7%'
+            title: 'BJ偏差率%', field: 'bjrate', align: 'center', valign: 'middle', width: '7%'
         },
-        {title: '签数对照分析', field: 'STATE', align: 'center', valign: 'middle', width: '6%', cellStyle: cellformat}
+        {title: '签数对照分析', field: 'state', align: 'center', valign: 'middle', width: '6%', cellStyle: cellformat}
     ];
 };
 
@@ -126,7 +126,7 @@ function cellformat(value, row, index) {
     }
 };
 
-Ship4.search = function () {
+Trans.search = function () {
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
@@ -135,35 +135,38 @@ Ship4.search = function () {
 
     //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
-        Ship4.table.refresh({
+        Trans.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship4.bootstrapTableUrl
+            url: Feng.ctxPath + Trans.bootstrapTableUrl
         });
     } else {
-        Ship4.table.refresh({query: queryData});
+        Trans.table.refresh({query: queryData});
     }
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
 
-    $("#Ship4Table").bootstrapTable('selectPage', 1);
+    $("#TransTable").bootstrapTable('selectPage', 1);
 };
 
-Ship4.export = function () {
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        var str_company = $("#str_company").val();
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship4_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
-    });
+Trans.export = function () {
+    $.ajax({
+        url:"/trans/deleteShip",//访问的地址
+        type:"get",
+        success:function(data) {
+            console.log(data);
+
+        }
+    })
+
 };
 
 $(function () {
     var bodyheight = ($(document).height() - 20) + 'px';
-    document.getElementById("Ship4Dbody").style.height = bodyheight;
+    document.getElementById("TransDbody").style.height = bodyheight;
 
     var oddheight = document.getElementById("qdiv").offsetHeight + 36;
     var tableheight = $(document).height() - oddheight;
-    var defaultColunms = Ship4.initColumn();
-    var table = new BSTable(Ship4.id, Ship4.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
+    var defaultColunms = Trans.initColumn();
+    var table = new BSTable(Trans.id, Trans.bootstrapTableUrl, CustomizeParameters.formatGlobalTableColumn(defaultColunms), tableheight);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
@@ -177,7 +180,7 @@ $(function () {
         table.url = "";
     }
     table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
-    Ship4.table = table.init();
+    Trans.table = table.init();
 
     window.setTimeout(init_time, 300);
 });

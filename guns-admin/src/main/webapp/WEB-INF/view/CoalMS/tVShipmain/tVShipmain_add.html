@@ -1,0 +1,71 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="company" name="公司" underline="true"/>
+                            <#input id="fshipyearnumvcr" name="船舶年序号" underline="true"/>
+                            <#input id="fshipordernum" name="航次" underline="true"/>
+                            <#input id="farrivetimedtm" name="抵达时间" underline="true"/>
+                            <#input id="fshipcodenum" name="船舶代码" underline="true"/>
+                            <#input id="fshipname" name="船舶名称" underline="true"/>
+                            <#input id="fberthnum" name="泊位代码" underline="true"/>
+                            <#input id="fberthname" name="泊位名称" underline="true"/>
+                            <#input id="fsigntonnum2" name="" underline="true"/>
+                            <#input id="fsigntonnum" name="签数吨" underline="true"/>
+                            <#input id="fshipstatevcr" name="装船状态" underline="true"/>
+                            <#input id="fcounttimedtm" name="统计年月 月份 所属日期" underline="true"/>
+                            <#input id="fcabinnumnum" name="舱数" underline="true"/>
+                            <#input id="fmaxweighnum" name="" underline="true"/>
+                            <#input id="frton1num" name="R吨数1" underline="true"/>
+                            <#input id="fbqton1num" name="BQ吨数1" underline="true"/>
+                            <#input id="frton2num" name="R吨数2" underline="true"/>
+                            <#input id="fbqbton2num" name="BQ吨数2" underline="true"/>
+                            <#input id="fbmtonnum" name="BM吨数" underline="true"/>
+                            <#input id="fbjtonnum1" name="BJ吨数1" underline="true"/>
+                            <#input id="fbjtonnum2" name="BJ吨数2" underline="true"/>
+                            <#input id="lineresult" name="" underline="true"/>
+                            <#input id="linestate" name=""/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="rton" name="R吨数" underline="true"/>
+                            <#input id="bmton" name="BM吨数" underline="true"/>
+                            <#input id="bqton" name="BQ吨数" underline="true"/>
+                            <#input id="bjton" name="BJ吨数" underline="true"/>
+                            <#input id="maxton" name="最大吨数" underline="true"/>
+                            <#input id="minton" name="最小吨数" underline="true"/>
+                            <#input id="rrate" name="R吨偏差率" underline="true"/>
+                            <#input id="bmrate" name="BM吨偏差率" underline="true"/>
+                            <#input id="bqrate" name="BQ吨偏差率" underline="true"/>
+                            <#input id="bjrate" name="BJ吨偏差率" underline="true"/>
+                            <#input id="fcoalname1" name="煤种名称1" underline="true"/>
+                            <#input id="fcoalname2" name="煤种名称2" underline="true"/>
+                            <#input id="signresult" name="签数结果" underline="true"/>
+                            <#input id="signstate" name="签数状态" underline="true"/>
+                            <#input id="signrrate" name="签数率" underline="true"/>
+                            <#input id="signbmrate" name="签数BM率" underline="true"/>
+                            <#input id="signbqrate" name="签数BQ率" underline="true"/>
+                            <#input id="signbjrate" name="签数BJ率" underline="true"/>
+                            <#input id="fstarttimedtm" name="" underline="true"/>
+                            <#input id="fstoptimedtm" name="" underline="true"/>
+                            <#input id="fbattlename" name="" underline="true"/>
+                            <#input id="fflowname" name="" underline="true"/>
+                            <#input id="fcabinnumnumno" name="" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TVShipmainInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TVShipmainInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/CoalMS/tVShipmain/tVShipmain_info.js"></script>
+@}
