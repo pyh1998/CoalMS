@@ -67,6 +67,16 @@ public class ShipController extends BaseController {
         return PREFIX + "ship8.html";
     }
 
+    @RequestMapping(value="/add")
+    public String ship9() {
+        return PREFIX + "add.html";
+    }
+
+    @RequestMapping(value="/edit")
+    public String ship10() {
+        return PREFIX + "edit.html";
+    }
+
     /**
      * 皮带秤1：合格率查询
      */
@@ -108,6 +118,20 @@ public class ShipController extends BaseController {
         List<Map<String, Object>> list = this.ShipService.list_ship4(str_company,dt_start,dt_end);
         return super.warpObject(new ShipWarpper(list));
     }
+
+    @RequestMapping(value = "/list_ship5")
+    @ResponseBody
+    public Object list_ship5(String str_company,String dt_start,String dt_end) {
+        List<Map<String, Object>> list = this.ShipService.list_ship5(str_company,dt_start,dt_end);
+        return super.warpObject(new ShipWarpper(list));
+    }
+    @RequestMapping(value = "/list_ship5D")
+    @ResponseBody
+    public Object list_ship5D(String str_company,String dt_start,String dt_end,String str_state) {
+        List<Map<String, Object>> list = this.ShipService.list_ship5D(str_company,dt_start,dt_end,str_state);
+        return super.warpObject(new ShipWarpper(list));
+    }
+
     @RequestMapping(value = "/list_ship7Q")
     @ResponseBody
     public Object list_ship7(String str_company,String str_fshipyearnumvcr,String dt_start,String dt_end) {

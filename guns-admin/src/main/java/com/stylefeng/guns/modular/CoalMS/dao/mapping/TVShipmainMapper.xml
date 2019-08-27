@@ -416,4 +416,218 @@ FROM
         </if>
     </select>
 
+    <select id="list_ship5" resultType="map">
+        SELECT STATE,COUNT(STATE) AS TOTAL
+        FROM(
+        SELECT
+        IF
+        (
+        ABS ( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2,
+        "合格",
+        IF
+        ((
+        COMPANY = '02'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '07'
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '09'
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        ),
+        '基本合格',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2,
+        '签数异常',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2,
+        '签数负异常',
+        IF
+        (
+        ABS(
+        GREATEST( RTON, BMTON, BJTON, BQTON )- LEAST( RTON, BMTON, BJTON, BQTON ))/ LEAST( RTON, BMTON, BJTON, BQTON ) *
+        100 &lt; 2,
+        '记录异常',
+        IF
+        ((
+        COMPANY = '02'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100
+        )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100
+        )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '07'
+        AND (
+        ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '09'
+        AND (
+        ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        ),
+        '不合格',
+        '不合格'
+        )
+        )
+        )
+        )
+        )
+        ) AS STATE
+        from T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND #{dt_end}
+        </if>)AS AAA
+        GROUP BY STATE
+    </select>
+
+
+    <select id="list_ship5D" resultType="map">
+        <if test="(str_state != null and str_state != '') ">
+        SELECT * FROM(
+        SELECT
+        *,
+        IF
+        (
+        ABS ( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2
+        AND ABS ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt;= 2,
+        "合格",
+        IF
+        ((
+        COMPANY = '02'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '07'
+        AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        )
+        OR (
+        COMPANY = '09'
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 2
+        AND ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&lt;= 4
+        ),
+        '基本合格',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &gt; 2,
+        '签数异常',
+        IF
+        ((
+        RTON - FSIGNTONNUM
+        )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2
+        AND ( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 &lt; - 2,
+        '签数负异常',
+        IF
+        (
+        ABS(
+        GREATEST( RTON, BMTON, BJTON, BQTON )- LEAST( RTON, BMTON, BJTON, BQTON ))/ LEAST( RTON, BMTON, BJTON, BQTON ) *
+        100 &lt; 2,
+        '记录异常',
+        IF
+        ((
+        COMPANY = '02'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100
+        )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '06'
+        AND ( ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2 AND ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100
+        )&gt; 2 )
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '07'
+        AND (
+        ABS(( BJTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        )
+        OR (
+        COMPANY = '09'
+        AND (
+        ABS(( BMTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 2
+        AND ABS(( BQTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 ))&gt; 2
+        OR ABS(( RTON - FSIGNTONNUM )/ FSIGNTONNUM * 100 )&gt; 4
+        ),
+        '不合格',
+        '不合格'
+        )
+        )
+        )
+        )
+        )
+        ) AS STATE
+        from T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND #{dt_end}
+        </if>)AS AAA
+        WHERE  STATE = #{str_state}
+        </if>
+
+    </select>
+
 </mapper>

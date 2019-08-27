@@ -3,7 +3,7 @@ var gd_state = "";
 var gd_chart;
 
 function search_pie() {
-    var ajax = new $ax(Feng.ctxPath + "/ship/list_ship5", function (data) {
+    var ajax = new $ax("/ship/list_ship5", function (data) {
         if (data == null || data.length == 0) {
             show_pie([]);
         } else {

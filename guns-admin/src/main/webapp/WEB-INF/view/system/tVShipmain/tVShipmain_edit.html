@@ -1,0 +1,71 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="company" name="公司" value="${item.company}" underline="true"/>
+                            <#input id="fshipyearnumvcr" name="船舶年序号" value="${item.fshipyearnumvcr}" underline="true"/>
+                            <#input id="fshipordernum" name="航次" value="${item.fshipordernum}" underline="true"/>
+                            <#input id="farrivetimedtm" name="抵达时间" value="${item.farrivetimedtm}" underline="true"/>
+                            <#input id="fshipcodenum" name="船舶代码" value="${item.fshipcodenum}" underline="true"/>
+                            <#input id="fshipname" name="船舶名称" value="${item.fshipname}" underline="true"/>
+                            <#input id="fberthnum" name="泊位代码" value="${item.fberthnum}" underline="true"/>
+                            <#input id="fberthname" name="泊位名称" value="${item.fberthname}" underline="true"/>
+                            <#input id="fsigntonnum2" name="" value="${item.fsigntonnum2}" underline="true"/>
+                            <#input id="fsigntonnum" name="签数吨" value="${item.fsigntonnum}" underline="true"/>
+                            <#input id="fshipstatevcr" name="装船状态" value="${item.fshipstatevcr}" underline="true"/>
+                            <#input id="fcounttimedtm" name="统计年月 月份 所属日期" value="${item.fcounttimedtm}" underline="true"/>
+                            <#input id="fcabinnumnum" name="舱数" value="${item.fcabinnumnum}" underline="true"/>
+                            <#input id="fmaxweighnum" name="" value="${item.fmaxweighnum}" underline="true"/>
+                            <#input id="frton1num" name="R吨数1" value="${item.frton1num}" underline="true"/>
+                            <#input id="fbqton1num" name="BQ吨数1" value="${item.fbqton1num}" underline="true"/>
+                            <#input id="frton2num" name="R吨数2" value="${item.frton2num}" underline="true"/>
+                            <#input id="fbqbton2num" name="BQ吨数2" value="${item.fbqbton2num}" underline="true"/>
+                            <#input id="fbmtonnum" name="BM吨数" value="${item.fbmtonnum}" underline="true"/>
+                            <#input id="fbjtonnum1" name="BJ吨数1" value="${item.fbjtonnum1}" underline="true"/>
+                            <#input id="fbjtonnum2" name="BJ吨数2" value="${item.fbjtonnum2}" underline="true"/>
+                            <#input id="lineresult" name="" value="${item.lineresult}" underline="true"/>
+                            <#input id="linestate" name="" value="${item.linestate}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="rton" name="R吨数" value="${item.rton}" underline="true"/>
+                            <#input id="bmton" name="BM吨数" value="${item.bmton}" underline="true"/>
+                            <#input id="bqton" name="BQ吨数" value="${item.bqton}" underline="true"/>
+                            <#input id="bjton" name="BJ吨数" value="${item.bjton}" underline="true"/>
+                            <#input id="maxton" name="最大吨数" value="${item.maxton}" underline="true"/>
+                            <#input id="minton" name="最小吨数" value="${item.minton}" underline="true"/>
+                            <#input id="rrate" name="R吨偏差率" value="${item.rrate}" underline="true"/>
+                            <#input id="bmrate" name="BM吨偏差率" value="${item.bmrate}" underline="true"/>
+                            <#input id="bqrate" name="BQ吨偏差率" value="${item.bqrate}" underline="true"/>
+                            <#input id="bjrate" name="BJ吨偏差率" value="${item.bjrate}" underline="true"/>
+                            <#input id="fcoalname1" name="煤种名称1" value="${item.fcoalname1}" underline="true"/>
+                            <#input id="fcoalname2" name="煤种名称2" value="${item.fcoalname2}" underline="true"/>
+                            <#input id="signresult" name="签数结果" value="${item.signresult}" underline="true"/>
+                            <#input id="signstate" name="签数状态" value="${item.signstate}" underline="true"/>
+                            <#input id="signrrate" name="签数率" value="${item.signrrate}" underline="true"/>
+                            <#input id="signbmrate" name="签数BM率" value="${item.signbmrate}" underline="true"/>
+                            <#input id="signbqrate" name="签数BQ率" value="${item.signbqrate}" underline="true"/>
+                            <#input id="signbjrate" name="签数BJ率" value="${item.signbjrate}" underline="true"/>
+                            <#input id="fstarttimedtm" name="" value="${item.fstarttimedtm}" underline="true"/>
+                            <#input id="fstoptimedtm" name="" value="${item.fstoptimedtm}" underline="true"/>
+                            <#input id="fbattlename" name="" value="${item.fbattlename}" underline="true"/>
+                            <#input id="fflowname" name="" value="${item.fflowname}" underline="true"/>
+                            <#input id="fcabinnumnumno" name="" value="${item.fcabinnumnumno}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TVShipmainInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TVShipmainInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tVShipmain/tVShipmain_info.js"></script>
+@}

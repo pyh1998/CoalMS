@@ -17,4 +17,8 @@ public interface ShipService extends IService<TVShipmain> {
 
     @Override
     boolean insert(TVShipmain tvShipmain);
+
+    List<Map<String, Object>> list_ship5(String str_company, String dt_start, String dt_end);
+
+    List<Map<String, Object>> list_ship5D(String str_company, String dt_start, String dt_end, String str_state);
 }

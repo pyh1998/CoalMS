@@ -82,6 +82,7 @@ public class TrainController extends BaseController {
 //        ToolUtil.isEmpty()
 //        TrainService.selectList(new EntityWrapper<>());
 
+
         List<Map<String, Object>> list = this.TrainService.search1(str_company,dt_start,dt_end);
         return super.warpObject(new TrainWarpper(list));
 
