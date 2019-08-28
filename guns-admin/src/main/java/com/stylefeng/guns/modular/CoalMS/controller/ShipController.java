@@ -132,6 +132,13 @@ public class ShipController extends BaseController {
         return super.warpObject(new ShipWarpper(list));
     }
 
+    @RequestMapping(value = "/list_ship6")
+    @ResponseBody
+    public Object list_ship6(String str_company,String dt_year) {
+        List<Map<String, Object>> list = this.ShipService.list_ship6(str_company,dt_year);
+        return super.warpObject(new ShipWarpper(list));
+    }
+
     @RequestMapping(value = "/list_ship7Q")
     @ResponseBody
     public Object list_ship7(String str_company,String str_fshipyearnumvcr,String dt_start,String dt_end) {
@@ -143,6 +150,7 @@ public class ShipController extends BaseController {
 
 
     }
+
 
     @RequestMapping(value = "/list_ship7")
     @ResponseBody
@@ -164,6 +172,7 @@ public class ShipController extends BaseController {
         List<Map<String, Object>> list = this.ShipService.list_ship8(str_company,str_shipno);
 
         return super.warpObject(new ShipWarpper(list));
+
 
 
     }

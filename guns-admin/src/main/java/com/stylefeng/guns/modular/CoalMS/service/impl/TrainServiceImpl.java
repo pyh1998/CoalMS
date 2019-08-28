@@ -31,10 +31,21 @@ public class TrainServiceImpl extends ServiceImpl<TVTrainMapper,TVTrain> impleme
     public List<Map<String, Object>> search4(String str_company, String dt_start, String dt_end,String str_ftraincodevcr) {
         return this.baseMapper.search4(str_company, dt_start, dt_end,str_ftraincodevcr);
     }
+    public List<Map<String, Object>> search5(String str_company, String dt_year) {
+        return this.baseMapper.search5(str_company,dt_year);
+    }
     public List<Map<String, Object>> search6(String str_company,String dt_start,String dt_end,String str_station,String str_first,String str_coalname) {
         return this.baseMapper.search6(str_company,dt_start,dt_end,str_station,str_first,str_coalname);
     }
     public List<Map<String, Object>> search4D(String str_company,String dt_start,String dt_end,String str_trainno) {
         return this.baseMapper.search4D(str_company,dt_start,dt_end,str_trainno);
+    }
+
+    public List<Map<String, Object>> search77(String str_company, String dt_start, String dt_end,String str_ftraincodevcr,String str_status,String str_trainno) {
+        return this.baseMapper.search77(str_company, dt_start, dt_end,str_ftraincodevcr,str_status,str_trainno);
+    }
+
+    public List<Map<String, Object>> search8(String str_company, String dt_year, String str_station, String str_coalname) {
+        return this.baseMapper.search8(str_company,dt_year,str_station,str_coalname);
     }
 }

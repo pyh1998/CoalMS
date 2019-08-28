@@ -115,7 +115,7 @@ var Train8 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/list_train8"
+    bootstrapTableUrl: "/train/search8"
 };
 
 Train8.initColumn = function () {
@@ -252,7 +252,7 @@ Train8.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Train8.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Train8.bootstrapTableUrl
+            url: Train8.bootstrapTableUrl
         });
     } else {
         Train8.table.refresh({query: queryData});

@@ -1,16 +1,12 @@
 package com.stylefeng.guns.modular.CoalMS.controller;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
-import com.stylefeng.guns.core.util.ToolUtil;
 import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import com.stylefeng.guns.modular.CoalMS.warpper.TrainWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import java.util.List;
 import java.util.Map;
@@ -149,6 +145,18 @@ public class TrainController extends BaseController {
         return super.warpObject(new TrainWarpper(list));
 
     }
+
+
+
+    @RequestMapping(value = "/search5")
+    @ResponseBody
+    public Object search5(String str_company, String dt_year) {
+
+
+        List<Map<String, Object>> list = this.TrainService.search5(str_company, dt_year);
+        return super.warpObject(new TrainWarpper(list));
+    }
+
     @RequestMapping(value = "/search6")
     @ResponseBody
     public Object search6(String str_company,String dt_start,String dt_end,String str_station,String str_first,String str_coalname) {
@@ -161,6 +169,15 @@ public class TrainController extends BaseController {
     @ResponseBody
     public Object search4D(String str_company,String dt_start,String dt_end,String str_trainno) {
         List<Map<String, Object>> list = this.TrainService.search4D(str_company,dt_start,dt_end,str_trainno);
+
+        return super.warpObject(new TrainWarpper(list));
+
+    }
+
+    @RequestMapping(value = "/search8")
+    @ResponseBody
+    public Object search8(String str_company,String dt_year,String str_station,String str_coalname) {
+        List<Map<String, Object>> list = this.TrainService.search8(str_company,dt_year,str_station,str_coalname);
 
         return super.warpObject(new TrainWarpper(list));
 

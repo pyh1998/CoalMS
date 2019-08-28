@@ -17,6 +17,8 @@ public interface TVShipmainMapper extends BaseMapper<TVShipmain> {
     List<Map<String, Object>> list_ship8(@Param("str_company") String str_company, @Param("str_shipno") String str_shipno);
     List<Map<String, Object>> list_ship4(@Param("str_company") String str_company, @Param("dt_start") String dt_start, @Param("dt_end") String dt_end);
 
+    List<Map<String, Object>> list_ship6(@Param("str_company") String str_company, @Param("dt_year") String dt_year);
+
 
     List<Map<String, Object>> list_ship5(@Param("str_company") String str_company, @Param("dt_start") String dt_start, @Param("dt_end") String dt_end);
 

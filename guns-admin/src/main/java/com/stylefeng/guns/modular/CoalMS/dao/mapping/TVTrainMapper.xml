@@ -156,7 +156,27 @@ ORDER BY
 LIMIT 0,3
 </select>
 
+  <select id="search5" resultType="map">
+   SELECT
+	COMPANY,
+	MONTH ( FBELONGDATETIMEDTM ) AS FBELONGMM,
+	SUM( FEMPTYTONNUM ) AS FEMPTYTONNUM,
+	MIN( FEMPTYTONNUM ) * COUNT( * ) AS AVGNUM,
+	MIN( FEMPTYTONNUM ) * COUNT( * ) / SUM( FEMPTYTONNUM ) * 100 AS RATE
+FROM
+	T_V_TRAIN
+WHERE
+    1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="dt_year != null and dt_year != '' ">
+      AND YEAR ( FBELONGDATETIMEDTM ) = #{dt_year}
+    </if>
+GROUP BY
+	MONTH ( FBELONGDATETIMEDTM )
 
+  </select>
 
 
   <select id="search6" resultType="map">
@@ -171,5 +191,46 @@ LIMIT 0,3
   </select>
 
 
+  <select id="search77" resultType="map">
+    select * from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="str_trainno != null and str_trainno != '' ">
+      AND FTRAINCODEVCR = #{str_trainno}
+    </if>
+    <if test="str_status != null and str_status != '' ">
+      AND ISVALID = #{str_status}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
+
+  <select id="search8" resultType="map">
+    SELECT
+	*,
+	AVG( RATE ) AS RATE
+FROM
+	(
+SELECT *,
+    MONTH( FBELONGDATETIMEDTM ) AS FBELONGMM,
+	( FWEIGHTTONNUM - FCHECKTONNUM ) / FCHECKTONNUM * 100 AS RATE
+FROM
+	T_V_TRAIN
+WHERE
+    1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="dt_year != null and dt_year != '' ">
+      AND YEAR ( FBELONGDATETIMEDTM ) = #{dt_year}
+    </if>
+	) AS AAA
+GROUP BY
+	FCOALNAME,FBELONGMM
+
+  </select>
 
 </mapper>

@@ -213,6 +213,20 @@ FROM
 	group by FBELONGMONTH)AS BBB
   </select>
 
+    <select id="list_ship6" resultType="map">
+        SELECT FCOUNTTIMEDTM, AVG(RRATE) AS RRATE,AVG(BQRATE) AS BQRATE,AVG(BMRATE) AS BMRATE,AVG(BJRATE) AS BJRATE FROM(
+        SELECT  MONTH(FCOUNTTIMEDTM) AS FCOUNTTIMEDTM,RRATE,BQRATE,BMRATE,BJRATE
+        FROM T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '')">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_year != null and dt_year != '') ">
+            AND YEAR(FCOUNTTIMEDTM)=#{dt_year}
+        </if>
+        )AS AAA
+        GROUP BY FCOUNTTIMEDTM
+    </select>
 
 
   <select id="list_ship7" resultType="map">
@@ -317,6 +331,7 @@ FROM
 
 
     <select id="list_ship4" resultType="map">
+
         SELECT
         *,
         IF
