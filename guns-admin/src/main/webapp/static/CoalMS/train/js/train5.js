@@ -1,11 +1,15 @@
 var gd_company = "";
 var gd_trainno = "";
+
+
 var Train5 = {
     id: "Train5Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
     bootstrapTableUrl: "/train/search4"
+
+
 };
 
 Train5.initColumn = function () {
@@ -308,6 +312,11 @@ function openInfoDetail(company, trainno) {
 };
 
 Train5.export = function () {
+    console.log("bianhao"+gd_trainno);
+    if (CustomizeParameters.isEmpty(gd_trainno)) {
+        Feng.alert("导出前请选择详细列车编号！", 7);
+        return;
+    }
     Feng.confirm("是否按现查询条件导出excel?", function () {
         var str_company = $("#str_company").val();
         var str_ftraincodevcr = $("#str_ftraincodevcr").val();

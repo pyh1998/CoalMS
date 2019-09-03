@@ -242,6 +242,16 @@ Train1.export = function () {
 
 };
 
+$("#excel-export").click(function() {
+    $("#ReceivingTaskTable").tableExport({//表ID
+        exclude : ".noExl",
+        name : "receivingTask",
+        fileName : "工单接收日志数据",
+        type : "excel",
+        escape : "false"
+    });
+});
+
 //临时修改了table url 别忘了
 $(function () {
     var bodyheight = ($(document).height() - 20) + 'px';

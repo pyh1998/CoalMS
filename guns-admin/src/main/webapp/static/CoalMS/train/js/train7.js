@@ -1,3 +1,5 @@
+var searchbool = 0;
+
 var Train7 = {
     id: "Train7Table",	//表格id
     seItem: null,		//选中的条目
@@ -217,6 +219,7 @@ Train7.search = function () {
         Train7.table.refresh({query: queryData});
     }
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
+    searchbool = 1;
 
     $("#Train7Table").bootstrapTable('selectPage', 1);
 };
@@ -303,6 +306,11 @@ Train7.export = function () {
         // Feng.alert("请选择一个发站");
         // return ;
     }
+    if(searchbool == 0)
+    {
+        Feng.alert("导出前请搜索！", 7);
+        return;
+    }
 
     Feng.confirm("是否按现查询条件导出excel?", function () {
         var str_company = $("#str_company").val();
@@ -322,6 +330,7 @@ $(function () {
     showCoalnameList();
     window.setTimeout(init_time, 300);
     window.setTimeout(init_table, 500);
+    searchbool = 0;
 });
 
 function init_time() {
