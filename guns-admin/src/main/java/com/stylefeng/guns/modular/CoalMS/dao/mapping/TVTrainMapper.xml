@@ -35,7 +35,7 @@
   </resultMap>
 
   <select id="search1" resultType="map">
-  select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS DEVIARATE from T_V_TRAIN
+  select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100,2) AS DECIMAL(38,2)) AS DEVIARATE from T_V_TRAIN
   where 1=1
   <if test="str_company != null and str_company != '' ">
     AND COMPANY = #{str_company}

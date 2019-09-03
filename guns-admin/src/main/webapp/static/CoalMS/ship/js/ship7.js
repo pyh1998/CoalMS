@@ -74,7 +74,7 @@ function opendetail(value, row, index) {
 function openInfoDetail(company, shipno) {
     gd_company = company;
     gd_shipno = shipno;
-    var ajax = new $ax(Feng.ctxPath + "/ship/list_ship7", function (data) {
+    var ajax = new $ax( "/ship/list_ship7", function (data) {
         // if(data==null || data.length==0){}else{}
         show_detail(data);
     }, function (data) {

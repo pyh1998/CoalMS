@@ -3,6 +3,7 @@ var gd_chart;  //全局变量，用来导出echart
 var gd_trainno = "";
 
 function search_line() {
+
     var ajax = new $ax("/train/search3", function (data) {
         if (data == null || data.length == 0) {
             show_line(data);
