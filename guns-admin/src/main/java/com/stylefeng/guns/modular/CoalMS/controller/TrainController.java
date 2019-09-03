@@ -3,11 +3,16 @@ package com.stylefeng.guns.modular.CoalMS.controller;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import com.stylefeng.guns.modular.CoalMS.warpper.TrainWarpper;
+import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -193,7 +198,7 @@ public class TrainController extends BaseController {
 
     }
 
-    private void createTitle1(HSSFWorkbook workbook,HSSFSheet sheet) {
+    private void createTitle1(HSSFWorkbook workbook, HSSFSheet sheet) {
         HSSFRow row = sheet.createRow(0);
         //设置列宽，setColumnWidth的第二个参数要乘以256，这个参数的单位是1/256个字符宽度
         sheet.setColumnWidth(1, 12 * 256);
@@ -464,16 +469,7 @@ public class TrainController extends BaseController {
 
     @RequestMapping(value = "/list_train1_excel")
     @ResponseBody
-    public String excel1(HttpServletRequest request,HttpServletResponse response) throws Exception {
-
-           String str_company=request.getParameter("str_company");
-           String dt_start=request.getParameter("dt_start");
-           String dt_end=request.getParameter("dt_end");
-           System.out.println("company is:"+str_company);
-           System.out.println("start is:"+dt_start);
-           System.out.println("end is:"+dt_start);
-
-
+    public String excel1(HttpServletResponse response) throws Exception {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("统计表");
         createTitle1(workbook,sheet);
@@ -541,15 +537,7 @@ public class TrainController extends BaseController {
 
     @RequestMapping(value = "/list_train3_excel")
     @ResponseBody
-    public String excel2(HttpServletRequest request,HttpServletResponse response) throws Exception {
-
-//        String str_company=request.getParameter("gd_company");
-//        String dt_date=request.getParameter("gd_date");
-//        System.out.println("company is:"+str_company);
-//        System.out.println("date is:"+dt_date);
-
-
-
+    public String excel2(HttpServletResponse response) throws Exception {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("统计表");
         createTitle2D(workbook,sheet);
@@ -721,7 +709,7 @@ public class TrainController extends BaseController {
     //浏览器下载excel
     protected void buildExcelDocument(String filename,HSSFWorkbook workbook,HttpServletResponse response) throws Exception{
         response.setContentType("application/vnd.ms-excel");
-        response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(filename, "utf-8"));
+        response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode(filename, "utf-8"));
         OutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         outputStream.flush();
