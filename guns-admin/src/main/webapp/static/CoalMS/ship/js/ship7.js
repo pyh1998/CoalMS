@@ -139,12 +139,7 @@ function show_detail(data) {
 
 function Ship7_export() {
     Feng.confirm("是否按现查询条件导出excel?", function () {
-        var str_company = $("#str_company").val();
-        var str_fshipyearnumvcr = $("#str_fshipyearnumvcr").val();
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship7_excel?str_company=" + str_company + "&str_fshipyearnumvcr=" + str_fshipyearnumvcr + "&dt_start=" + dt_start + "&dt_end=" + dt_end +
-            "&str_company2=" + gd_company + "&str_shipno=" + gd_shipno;
+        window.location.href = Feng.ctxPath + "/ship/list_Statistics_word";
     });
 };
 

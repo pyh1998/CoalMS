@@ -248,12 +248,7 @@ Ship4.search = function () {
 };
 
 Ship4.export = function () {
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        var str_company = $("#str_company").val();
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship4_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
-    });
+    return window.location.href="/ship/list_shipSignature_word";
 };
 
 $(function () {

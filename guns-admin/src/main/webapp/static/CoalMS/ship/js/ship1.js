@@ -133,21 +133,14 @@ Ship1.search = function () {
 };
 
 Ship1.export = function () {
+    console.log(gd_company);
+    console.log(gd_month);
+    if (CustomizeParameters.isEmpty(gd_month)) {
+        Feng.alert("导出前请选择详细月份及公司！", 7);
+        return;
+    }
     Feng.confirm("是否按现查询条件导出excel?", function () {
-
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-
-        var y = parseInt(gd_month.replace(/-\d{2}$/, ""));
-        var m = parseInt(gd_month.replace(/^\d{4}-/, ""));
-        var curDate = new Date();
-        curDate.setFullYear(y);
-        curDate.setMonth(m);
-        curDate.setDate(0);
-
-        var gd_start = gd_month + "-01";
-        var gd_end = gd_month + "-" + curDate.getDate();
-        window.location.href = Feng.ctxPath + "/ship/list_ship1_excel?dt_start=" + dt_start + "&dt_end=" + dt_end + "&str_company=" + gd_company + "&str_month=" + gd_month + "&gd_start=" + gd_start + "&gd_end=" + gd_end;
+        window.location.href = "/ship/list_ship_word" ;
     });
 }
 

@@ -28,19 +28,10 @@ Ship3.search = function () {
     $("#Ship3Table").bootstrapTable('selectPage', 1);
 };
 
-Ship3.export = function () {
-    if (this.check()) {
-        console.log("**************tableData*************");
-        console.log(tableData);
-    }
-    return;
+Ship3.export3 = function () {
 
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        var str_company = $("#str_company").val();
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-        window.location.href = "/ship/list_ship3_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
-    });
+    return window.location.href="/ship/list_ship_word";
+
 };
 
 $(function () {

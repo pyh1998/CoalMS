@@ -257,6 +257,7 @@ FROM
   </select>
 
   <select id="list_ship8" resultType="map">
+      <if test="(str_shipno != null and str_shipno != '') ">
     select *
     from T_V_SHIPMAIN
       WHERE 1=1
@@ -266,6 +267,8 @@ FROM
       <if test="(str_shipno != null and str_shipno != '') ">
           AND FSHIPYEARNUMVCR = #{str_shipno}
       </if>
+      </if>
+
   </select>
 
     <select id="list_ship3" resultType="map">
@@ -538,6 +541,7 @@ FROM
 
 
     <select id="list_ship5D" resultType="map">
+
         <if test="(str_state != null and str_state != '') ">
         SELECT * FROM(
         SELECT
