@@ -219,13 +219,12 @@ function openInfoDetail(company, shipno) {
 };
 
 Ship8.export = function () {
+    if (CustomizeParameters.isEmpty(gd_shipno)) {
+        Feng.alert("导出前请选择详细船舶年序号！", 7);
+        return;
+    }
     Feng.confirm("是否按现查询条件导出excel?", function () {
-        var str_company = $("#str_company").val();
-        var str_fshipyearnumvcr = $("#str_fshipyearnumvcr").val();
-        var dt_start = $("#dt_start").val();
-        var dt_end = $("#dt_end").val();
-        window.location.href = Feng.ctxPath + "/ship/list_ship8_excel?str_company=" + str_company + "&str_fshipyearnumvcr=" + str_fshipyearnumvcr + "&dt_start=" + dt_start + "&dt_end=" + dt_end +
-            "&str_company2=" + gd_company + "&str_shipno=" + gd_shipno;
+        window.location.href = "/ship/list_shipdetail_word";
     });
 };
 

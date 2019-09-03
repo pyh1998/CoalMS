@@ -3,20 +3,13 @@ package com.stylefeng.guns.modular.CoalMS.controller;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.modular.CoalMS.service.TrainService;
 import com.stylefeng.guns.modular.CoalMS.warpper.TrainWarpper;
-import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
-
 
 
 /**
@@ -77,7 +70,6 @@ public class TrainController extends BaseController {
         return PREFIX + "train7.html";
     }
 
-
     /**
      * 轨道衡功能1：列车过衡数据汇总
      */
@@ -87,6 +79,7 @@ public class TrainController extends BaseController {
 //        ^\d{4}\d{2}$
 //        ToolUtil.isEmpty()
 //        TrainService.selectList(new EntityWrapper<>());
+
 
         List<Map<String, Object>> list = this.TrainService.search1(str_company,dt_start,dt_end);
         listdetail=list;
@@ -167,9 +160,9 @@ public class TrainController extends BaseController {
 
 
         List<Map<String, Object>> list = this.TrainService.search5(str_company, dt_year);
-
         return super.warpObject(new TrainWarpper(list));
     }
+
     @RequestMapping(value = "/search6")
     @ResponseBody
     public Object search6(String str_company,String dt_start,String dt_end,String str_station,String str_first,String str_coalname) {

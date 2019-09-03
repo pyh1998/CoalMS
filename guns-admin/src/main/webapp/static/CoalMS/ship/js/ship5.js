@@ -334,49 +334,7 @@ function search_table(param) {
 }
 
 Ship5.export = function () {
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        var form = $("<form>");
-        form.attr('style', 'display:none');
-        form.attr('target', '');
-        form.attr('method', 'post');
-        form.attr('action', Feng.ctxPath + '/ship/list_ship5_excel');
-
-        //参数
-        var input1 = $('<input>');
-        input1.attr('type', 'hidden');
-        input1.attr('name', 'str_company');
-        input1.attr('value', $("#str_company").val());
-
-        var input2 = $('<input>');
-        input2.attr('type', 'hidden');
-        input2.attr('name', 'dt_start');
-        input2.attr('value', $("#dt_start").val());
-
-        var input3 = $('<input>');
-        input3.attr('type', 'hidden');
-        input3.attr('name', 'dt_end');
-        input3.attr('value', $("#dt_end").val());
-
-        var input4 = $('<input>');
-        input4.attr('type', 'hidden');
-        input4.attr('name', 'chartCode');
-        input4.attr('value', gd_chart.getDataURL("png"));
-
-        var input5 = $('<input>');
-        input5.attr('type', 'hidden');
-        input5.attr('name', 'str_state');
-        input5.attr('value', gd_state);
-
-        $('body').append(form);
-        form.append(input1);
-        form.append(input2);
-        form.append(input3);
-        form.append(input4);
-        form.append(input5);
-
-        form.submit();
-        form.remove();
-    });
+    return window.location.href="/ship/list_shipstatistics_word";
 };
 
 $(function () {

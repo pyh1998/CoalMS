@@ -174,18 +174,7 @@ Ship2.export = function () {
         Feng.alert("导出前请选择详细月份！", 7);
         return;
     }
-
-    Feng.confirm("是否按现查询条件导出Word?", function () {
-
-        var map = new Map();
-        // 添加键
-        map.set("month", gd_month);
-        //公司名称
-        map.set("company", gd_company);
-
-        CustomizeParameters.response4Download('/ship/list_ship2_excel', map);
-
-    });
+    window.location.href="/ship/list_ship_word";
 };
 
 
