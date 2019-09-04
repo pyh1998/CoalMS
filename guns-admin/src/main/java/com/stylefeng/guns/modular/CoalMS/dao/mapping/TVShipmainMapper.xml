@@ -267,8 +267,10 @@ FROM
       <if test="(str_shipno != null and str_shipno != '') ">
           AND FSHIPYEARNUMVCR = #{str_shipno}
       </if>
+      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+          AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
       </if>
-
+      </if>
   </select>
 
     <select id="list_ship3" resultType="map">
