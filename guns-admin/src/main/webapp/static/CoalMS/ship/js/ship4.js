@@ -1,3 +1,4 @@
+var searchbool1 = 0;
 var Ship4 = {
     id: "Ship4Table",	//表格id
     seItem: null,		//选中的条目
@@ -245,13 +246,23 @@ Ship4.search = function () {
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
 
     $("#Ship4Table").bootstrapTable('selectPage', 1);
+    searchbool1 = 1;
 };
 
 Ship4.export = function () {
-    return window.location.href="/ship/list_shipSignature_word";
+    console.log(searchbool1+"!!!!!!!!!!!!!!!!!!!!!")
+    if(searchbool1 == 0)
+    {
+        Feng.alert("导出前请搜索！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+     window.location.href="/ship/list_shipSignature_word";
+    });
 };
 
 $(function () {
+    searchbool1 = 0;
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship4Dbody").style.height = bodyheight;
 
@@ -275,6 +286,7 @@ $(function () {
     Ship4.table = table.init();
 
     window.setTimeout(init_time, 300);
+
 });
 
 function init_time() {

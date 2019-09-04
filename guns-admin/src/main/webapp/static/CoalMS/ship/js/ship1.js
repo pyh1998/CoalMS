@@ -133,16 +133,15 @@ Ship1.search = function () {
 };
 
 Ship1.export = function () {
-    console.log(gd_company);
-    console.log(gd_month);
+
     if (CustomizeParameters.isEmpty(gd_month)) {
         Feng.alert("导出前请选择详细月份及公司！", 7);
         return;
     }
-    Feng.confirm("是否按现查询条件导出excel?", function () {
+    Feng.confirm("是否按现查询条件导出word?", function () {
         window.location.href = "/ship/list_ship_word" ;
     });
-}
+};
 
 
 $(function () {

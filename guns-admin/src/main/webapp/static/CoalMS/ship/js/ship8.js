@@ -223,7 +223,7 @@ Ship8.export = function () {
         Feng.alert("导出前请选择详细船舶年序号！", 7);
         return;
     }
-    Feng.confirm("是否按现查询条件导出excel?", function () {
+    Feng.confirm("是否按现查询条件导出word?", function () {
         window.location.href = "/ship/list_shipdetail_word";
     });
 };

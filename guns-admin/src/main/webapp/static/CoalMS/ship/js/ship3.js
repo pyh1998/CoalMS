@@ -1,3 +1,4 @@
+var searchbool = 0;
 var Ship3 = {
     id: "Ship3Table",	//表格id
     seItem: null,		//选中的条目
@@ -26,15 +27,23 @@ Ship3.search = function () {
     }
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
     $("#Ship3Table").bootstrapTable('selectPage', 1);
+     searchbool = 1;
 };
 
 Ship3.export3 = function () {
 
-    return window.location.href="/ship/list_ship_word";
-
+    if(searchbool == 0)
+    {
+        Feng.alert("导出前请搜索！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+        window.location.href="/ship/list_ship_word";
+    });
 };
 
 $(function () {
+    searchbool = 0;
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship3Dbody").style.height = bodyheight;
     console.log(Ship3.bootstrapTableUrl);

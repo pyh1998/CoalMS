@@ -334,7 +334,12 @@ function search_table(param) {
 }
 
 Ship5.export = function () {
-    return window.location.href="/ship/list_shipstatistics_word";
+    if (CustomizeParameters.isEmpty(gd_state)) {
+        Feng.alert("导出前请选择详细船舶年序号！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+    return window.location.href="/ship/list_shipstatistics_word";});
 };
 
 $(function () {

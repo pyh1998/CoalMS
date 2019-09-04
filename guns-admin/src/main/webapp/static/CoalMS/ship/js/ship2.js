@@ -171,10 +171,11 @@ Ship2.search = function () {
 Ship2.export = function () {
     //判断公司是否为空
     if (CustomizeParameters.isEmpty(gd_month)) {
-        Feng.alert("导出前请选择详细月份！", 7);
+        Feng.alert("导出前请选择详细月份和公司！", 7);
         return;
     }
-    window.location.href="/ship/list_ship_word";
+    Feng.confirm("是否按现查询条件导出word?", function () {
+    window.location.href="/ship/list_ship_word";});
 };
 
 

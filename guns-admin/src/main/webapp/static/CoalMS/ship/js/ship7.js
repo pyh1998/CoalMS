@@ -137,13 +137,19 @@ function show_detail(data) {
     }
 }
 
-function Ship7_export() {
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        window.location.href = Feng.ctxPath + "/ship/list_Statistics_word";
+Ship7_export = function () {
+    console.log(gd_shipno+"!!!!!!!!!!!!!!!!!!");
+    if (CustomizeParameters.isEmpty(gd_shipno)) {
+        Feng.alert("导出前请选择详细船舶年序号！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+        window.location.href ="/ship/list_Statistics_word";
     });
 };
 
 $(function () {
+
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship7Dbody").style.height = bodyheight;
 
