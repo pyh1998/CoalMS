@@ -57,8 +57,8 @@ SELECT DISTINCT
 	FBELONGMONTH,
 	HEGE,
 	TOTAL,
-	HEGE / TOTAL * 100  AS RATE
-	FROM (
+    CAST(ROUND(HEGE / TOTAL * 100,2) AS DECIMAL(38,2)) AS RATE
+    FROM (
 SELECT DISTINCT
 	COMPANY,
 	CONCAT( YEAR ( FCOUNTTIMEDTM ), "-", MONTH ( FCOUNTTIMEDTM ) ) AS FBELONGMONTH,
@@ -133,7 +133,7 @@ GROUP BY
   </select>
 
   <select id="list_ship2" resultType="map">
-    SELECT DISTINCT COMPANY,FBELONGMONTH,HEGE,TOTAL,HEGE/TOTAL*100 AS RATE
+    SELECT DISTINCT COMPANY,FBELONGMONTH,HEGE,TOTAL,CAST(ROUND(HEGE / TOTAL * 100,2) AS DECIMAL(38,2)) AS RATE
 FROM(
 SELECT DISTINCT COMPANY,CONCAT(YEAR(FCOUNTTIMEDTM),"-",MONTH(FCOUNTTIMEDTM)) AS FBELONGMONTH,STATE,
 SUM(CASE
@@ -213,66 +213,6 @@ FROM
 	group by FBELONGMONTH)AS BBB
   </select>
 
-    <select id="list_ship6" resultType="map">
-        SELECT FCOUNTTIMEDTM, AVG(RRATE) AS RRATE,AVG(BQRATE) AS BQRATE,AVG(BMRATE) AS BMRATE,AVG(BJRATE) AS BJRATE FROM(
-        SELECT  MONTH(FCOUNTTIMEDTM) AS FCOUNTTIMEDTM,RRATE,BQRATE,BMRATE,BJRATE
-        FROM T_V_SHIPMAIN
-        WHERE 1=1
-        <if test="(str_company != null and str_company != '')">
-            AND COMPANY = #{str_company}
-        </if>
-        <if test="(dt_year != null and dt_year != '') ">
-            AND YEAR(FCOUNTTIMEDTM)=#{dt_year}
-        </if>
-        )AS AAA
-        GROUP BY FCOUNTTIMEDTM
-    </select>
-
-
-  <select id="list_ship7" resultType="map">
-    select *
-    from T_V_SHIPMAIN
-      WHERE 1=1
-      <if test="(str_company != null and str_company != '') ">
-          AND COMPANY = #{str_company}
-      </if>
-      <if test="(str_fshipyearnumvcr != null and str_fshipyearnumvcr != '') ">
-          AND FSHIPYEARNUMVCR = #{str_fshipyearnumvcr}
-      </if>
-      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-          AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
-      </if>
-  </select>
-
-  <select id="list_ship7_1" resultType="map">
-    select *
-    from T_V_SHIPMAIN
-      WHERE 1=1
-      <if test="(str_company != null and str_company != '') ">
-          AND COMPANY = #{str_company}
-      </if>
-      <if test="(str_shipno != null and str_shipno != '') ">
-          AND FSHIPYEARNUMVCR = #{str_shipno}
-      </if>
-  </select>
-
-  <select id="list_ship8" resultType="map">
-      <if test="(str_shipno != null and str_shipno != '') ">
-    select *
-    from T_V_SHIPMAIN
-      WHERE 1=1
-      <if test="(str_company != null and str_company != '') ">
-          AND COMPANY = #{str_company}
-      </if>
-      <if test="(str_shipno != null and str_shipno != '') ">
-          AND FSHIPYEARNUMVCR = #{str_shipno}
-      </if>
-      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-          AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
-      </if>
-      </if>
-  </select>
-
     <select id="list_ship3" resultType="map">
         SELECT
         *,
@@ -293,35 +233,35 @@ FROM
         CASE
         COMPANY
         WHEN '02' THEN
-        (( RTON - BQTON )/ BQTON * 100 )
+        CAST(ROUND((( RTON - BQTON )/ BQTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '06' THEN
-        (( RTON - BQTON )/ BQTON * 100 )
+        CAST(ROUND((( RTON - BQTON )/ BQTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '07' THEN
-        (( RTON - BMTON )/ BMTON * 100 )
+        CAST(ROUND((( RTON - BMTON )/ BMTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '09' THEN
-        (( RTON - BMTON )/ BMTON * 100 )
+        CAST(ROUND((( RTON - BMTON )/ BMTON * 100 ),2) AS DECIMAL(38,2))
         END AS RATE1,
         CASE
         COMPANY
         WHEN '02' THEN
-        (( RTON - BMTON )/ BMTON * 100 )
+        CAST(ROUND((( RTON - BMTON )/ BMTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '06' THEN
-        (( RTON - BJTON )/ BJTON * 100 )
+        CAST(ROUND((( RTON - BJTON )/ BJTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '07' THEN
-        (( RTON - BMTON )/ BMTON * 100 )
+        CAST(ROUND((( RTON - BMTON )/ BMTON * 100 ),2) AS DECIMAL(38,2))
         WHEN '09' THEN
-        (( RTON - BQTON )/ BQTON * 100 )
+        CAST(ROUND((( RTON - BQTON )/ BQTON * 100 ),2) AS DECIMAL(38,2))
         END AS RATE2,
         CASE
         COMPANY
         WHEN '02' THEN
-        (( BQTON - BMTON )/ ( BQTON + BMTON )/ 2 * 100 )
+        CAST(ROUND((( BQTON - BMTON )/ ( BQTON + BMTON )/ 2 * 100 ),2) AS DECIMAL(38,2))
         WHEN '06' THEN
-        (( BQTON - BJTON )/ ( BQTON + BJTON )/ 2 * 100 )
+        CAST(ROUND((( BQTON - BJTON )/ ( BQTON + BJTON )/ 2 * 100 ),2) AS DECIMAL(38,2))
         WHEN '07' THEN
-        (( BJTON - BMTON )/ ( BJTON + BMTON )/ 2 * 100 )
+        CAST(ROUND((( BJTON - BMTON )/ ( BJTON + BMTON )/ 2 * 100 ),2) AS DECIMAL(38,2))
         WHEN '09' THEN
-        (( BMTON - BQTON )/ ( BMTON + BQTON )/ 2 * 100 )
+        CAST(ROUND((( BMTON - BQTON )/ ( BMTON + BQTON )/ 2 * 100 ),2) AS DECIMAL(38,2))
         END AS RATE3
         from T_V_SHIPMAIN
         WHERE 1=1
@@ -333,7 +273,6 @@ FROM
         </if>
         )AS PANGSHEN
     </select>
-
 
     <select id="list_ship4" resultType="map">
 
@@ -541,7 +480,6 @@ FROM
         GROUP BY STATE
     </select>
 
-
     <select id="list_ship5D" resultType="map">
 
         <if test="(str_state != null and str_state != '') ">
@@ -651,4 +589,62 @@ FROM
 
     </select>
 
+    <select id="list_ship6" resultType="map">
+        SELECT FCOUNTTIMEDTM,CAST(ROUND(AVG(RRATE),2) AS DECIMAL(38,2)) AS RRATE,CAST(ROUND(AVG(BQRATE),2) AS DECIMAL(38,2)) AS BQRATE,CAST(ROUND(AVG(BMRATE),2) AS DECIMAL(38,2)) AS BMRATE,CAST(ROUND(AVG(BJRATE),2) AS DECIMAL(38,2)) AS BJRATE FROM(
+        SELECT  MONTH(FCOUNTTIMEDTM) AS FCOUNTTIMEDTM,RRATE,BQRATE,BMRATE,BJRATE
+        FROM T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '')">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(dt_year != null and dt_year != '') ">
+            AND YEAR(FCOUNTTIMEDTM)=#{dt_year}
+        </if>
+        )AS AAA
+        GROUP BY FCOUNTTIMEDTM
+    </select>
+
+    <select id="list_ship7" resultType="map">
+        select *
+        from T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(str_fshipyearnumvcr != null and str_fshipyearnumvcr != '') ">
+            AND FSHIPYEARNUMVCR = #{str_fshipyearnumvcr}
+        </if>
+        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        </if>
+    </select>
+
+    <select id="list_ship7_1" resultType="map">
+        select *
+        from T_V_SHIPMAIN
+        WHERE 1=1
+        <if test="(str_company != null and str_company != '') ">
+            AND COMPANY = #{str_company}
+        </if>
+        <if test="(str_shipno != null and str_shipno != '') ">
+            AND FSHIPYEARNUMVCR = #{str_shipno}
+        </if>
+    </select>
+
+    <select id="list_ship8" resultType="map">
+        <if test="(str_shipno != null and str_shipno != '') ">
+            select *
+            from T_V_SHIPMAIN
+            WHERE 1=1
+            <if test="(str_company != null and str_company != '') ">
+                AND COMPANY = #{str_company}
+            </if>
+            <if test="(str_shipno != null and str_shipno != '') ">
+                AND FSHIPYEARNUMVCR = #{str_shipno}
+            </if>
+            <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+                AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+            </if>
+        </if>
+    </select>
 </mapper>

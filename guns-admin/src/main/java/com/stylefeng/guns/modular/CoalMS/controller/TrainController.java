@@ -116,6 +116,7 @@ public class TrainController extends BaseController {
 
 
         List<Map<String, Object>> list = this.TrainService.search2D(str_company, dt_date);
+        listdetail = list;
         return super.warpObject(new TrainWarpper(list));
 
     }
@@ -152,7 +153,7 @@ public class TrainController extends BaseController {
     @ResponseBody
     public Object search4(String str_company,String dt_start,String dt_end,String str_ftraincodevcr) {
         List<Map<String, Object>> list = this.TrainService.search4(str_company,dt_start,dt_end,str_ftraincodevcr);
-
+        listdetail = list;
         return super.warpObject(new TrainWarpper(list));
 
     }
@@ -377,10 +378,6 @@ public class TrainController extends BaseController {
         cell.setCellValue("空车吨极限均值");
         cell.setCellStyle(style);
 
-        cell = row.createCell(8);
-        cell.setCellValue("翻净率%");
-        cell.setCellStyle(style);
-
         cell = row.createCell(9);
         cell.setCellValue("过衡盈亏率%");
         cell.setCellStyle(style);
@@ -555,9 +552,11 @@ public class TrainController extends BaseController {
             row.createCell(0).setCellValue(rowNum);
 
             row.createCell(1).setCellValue(listdetail.get(i).get("COMPANY").toString());
+            System.out.println(listdetail.get(i).get("COMPANY"+"*******************"));
 
             HSSFCell cell1 = row.createCell(2);
             cell1.setCellValue(listdetail.get(i).get("FBELONGDATETIMEDTM").toString());
+            System.out.println(listdetail.get(i).get("FBELONGDATETIMEDTM"+"*******************"));
             cell1.setCellStyle(style2);
 
             row.createCell(3).setCellValue(listdetail.get(i).get("FTRAINCODEVCR").toString());
@@ -592,6 +591,7 @@ public class TrainController extends BaseController {
         HSSFSheet sheet = workbook.createSheet("统计表");
         createTitle4D(workbook,sheet);
 
+        System.out.println(listdetail);
         //设置日期格式
         HSSFCellStyle style2 = workbook.createCellStyle();
         style2.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/d/yy h:mm"));
@@ -616,8 +616,6 @@ public class TrainController extends BaseController {
             row.createCell(6).setCellValue(listdetail.get(i).get("FHEAVYTONNUM").toString());
 
             row.createCell(7).setCellValue(listdetail.get(i).get("LIMITEMPTY").toString());
-
-            row.createCell(8).setCellValue(listdetail.get(i).get("EMPTYRATE").toString());
 
             row.createCell(9).setCellValue(listdetail.get(i).get("WEIGHTRATE").toString());
 

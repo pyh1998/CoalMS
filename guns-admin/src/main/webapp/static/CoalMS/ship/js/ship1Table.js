@@ -156,7 +156,7 @@ Ship1Table.initColumn = function () {
             }
         },
         {
-            title: '偏差率α1%', field: 'RATE1', align: 'center', valign: 'middle', width: '7%',
+            title: '偏差率α1%', field: 'RATE1', align: 'center', valign: 'middle', width: '7%', sortable: true,
             footerFormatter: function (value, row, index) {
                 if (!value) return;
                 var count = 0;
