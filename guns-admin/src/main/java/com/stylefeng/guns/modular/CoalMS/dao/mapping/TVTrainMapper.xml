@@ -35,14 +35,14 @@
   </resultMap>
 
   <select id="search1" resultType="map">
-  select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100,2) AS DECIMAL(38,2)) AS DEVIARATE from T_V_TRAIN
-  where 1=1
-  <if test="str_company != null and str_company != '' ">
-    AND COMPANY = #{str_company}
-  </if>
-  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
-  </if>
+    select *,FWEIGHTTONNUM-FCHECKTONNUM as PROFITNUM, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100,2) AS DECIMAL(38,2)) AS DEVIARATE from T_V_TRAIN
+    where 1=1
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
   </select>
 
   <select id="search2" resultType="map">
@@ -90,7 +90,7 @@
 
 
   <select id="search3" resultType="map">
-    select FTRAINCODEVCR,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM AS RATE from T_V_TRAIN
+    select FTRAINCODEVCR, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM,2) AS DECIMAL(38,2)) AS RATE from T_V_TRAIN
     where 1=1
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
@@ -119,53 +119,60 @@
 
 
 
-<select id="search4" resultType="map">
-select distinct COMPANY,FTRAINCODEVCR from T_V_TRAIN
-  where 1=1
-<if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
-  AND FTRAINCODEVCR = #{str_ftraincodevcr}
-</if>
-  <if test="str_company != null and str_company != '' ">
-    AND COMPANY = #{str_company}
-  </if>
-  <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-    AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
-  </if>
-</select>
+  <select id="search4" resultType="map">
+    select distinct COMPANY,FTRAINCODEVCR from T_V_TRAIN
+    where 1=1
+    <if test="(str_ftraincodevcr != null and str_ftraincodevcr != '') ">
+      AND FTRAINCODEVCR = #{str_ftraincodevcr}
+    </if>
+    <if test="str_company != null and str_company != '' ">
+      AND COMPANY = #{str_company}
+    </if>
+    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+  </select>
 
   <select id="search4D" resultType="map">
-SELECT
-	*, AVG(FEMPTYTONNUM) AS LIMITEMPTY
-FROM
-	(
-		SELECT
-			*, (FVOLUME - LIMITVOL) / LIMITVOL * 100 AS VOLRATE
-		FROM
-			(
-				SELECT
-					*, MIN(FVOLUME) AS LIMITVOL,
-					(FWEIGHTTONNUM - FCHECKTONNUM) / FCHECKTONNUM * 100 AS WEIGHTRATE
-				FROM
-					T_V_TRAIN
-				WHERE
-				    FTRAINCODEVCR = #{str_trainno}
-			) AS PANGSHEN1
-	) AS PANGSHEN2
-ORDER BY
-	FEMPTYTONNUM
-LIMIT 0,3
-</select>
+    <if test="str_trainno != null and str_trainno != '' ">
+      SELECT
+      *, CAST(ROUND((SELECT AVG(FEMPTYTONNUM) FROM T_V_TRAIN  ORDER BY FEMPTYTONNUM LIMIT 0,3),2) AS DECIMAL(38,2)) AS LIMITEMPTY
+      FROM
+      (
+      SELECT
+      *, CAST(ROUND((FVOLUME - LIMITVOL) / LIMITVOL * 100,2) AS DECIMAL(38,2)) AS VOLRATE
+      FROM
+      (
+      SELECT
+      *, (select MIN(FVOLUME) from T_V_TRAIN WHERE FTRAINCODEVCR = #{str_trainno} AND COMPANY = #{str_company} )	AS LIMITVOL,
+      CAST(ROUND((FWEIGHTTONNUM - FCHECKTONNUM) / FCHECKTONNUM * 100,2) AS DECIMAL(38,2)) AS WEIGHTRATE
+      FROM
+      T_V_TRAIN
+      WHERE 1=1
+      <if test="str_company != null and str_company != '' ">
+        AND COMPANY = #{str_company}
+      </if>
+      <if test="str_trainno != null and str_trainno != '' ">
+        AND FTRAINCODEVCR = #{str_trainno}
+      </if>
+      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
+        AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+      </if>
+      ) AS PANGSHEN1
+      ) AS PANGSHEN2
+    </if>
+  </select>
 
   <select id="search5" resultType="map">
-   SELECT
-	COMPANY,
-	MONTH ( FBELONGDATETIMEDTM ) AS FBELONGMM,
-	SUM( FEMPTYTONNUM ) AS FEMPTYTONNUM,
-	MIN( FEMPTYTONNUM ) * COUNT( * ) AS AVGNUM,
-	MIN( FEMPTYTONNUM ) * COUNT( * ) / SUM( FEMPTYTONNUM ) * 100 AS RATE
-FROM
-	T_V_TRAIN
-WHERE
+    SELECT
+    COMPANY,
+    MONTH ( FBELONGDATETIMEDTM ) AS FBELONGMM,
+    SUM( FEMPTYTONNUM ) AS FEMPTYTONNUM,
+    MIN( FEMPTYTONNUM ) * COUNT( * ) AS AVGNUM,
+    CAST(ROUND(MIN( FEMPTYTONNUM ) * COUNT( * ) / SUM( FEMPTYTONNUM ) * 100,2) AS DECIMAL(38,2)) AS RATE
+    FROM
+    T_V_TRAIN
+    WHERE
     1=1
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
@@ -173,20 +180,26 @@ WHERE
     <if test="dt_year != null and dt_year != '' ">
       AND YEAR ( FBELONGDATETIMEDTM ) = #{dt_year}
     </if>
-GROUP BY
-	MONTH ( FBELONGDATETIMEDTM )
+    GROUP BY
+    MONTH (FBELONGDATETIMEDTM),COMPANY
 
   </select>
 
 
   <select id="search6" resultType="map">
-    select *,(FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100 AS RATE from T_V_TRAIN
+    select *,CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM*100,2) AS DECIMAL(38,2)) AS RATE from T_V_TRAIN
     where 1=1
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
     </if>
     <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
       AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    </if>
+    <if test="str_station != null and str_station != '' ">
+      AND FSTATSTASTIONNAME = #{str_station}
+    </if>
+    <if test="str_coalname != null and str_coalname != '' ">
+      AND FCOALNAME = #{str_coalname}
     </if>
   </select>
 
@@ -210,16 +223,16 @@ GROUP BY
 
   <select id="search8" resultType="map">
     SELECT
-	*,
-	AVG( RATE ) AS RATE
-FROM
-	(
-SELECT *,
+    *,
+    CAST(ROUND(AVG( RATE ),2) AS DECIMAL(38,2)) AS RATE
+    FROM
+    (
+    SELECT *,
     MONTH( FBELONGDATETIMEDTM ) AS FBELONGMM,
-	( FWEIGHTTONNUM - FCHECKTONNUM ) / FCHECKTONNUM * 100 AS RATE
-FROM
-	T_V_TRAIN
-WHERE
+    CAST(ROUND(( FWEIGHTTONNUM - FCHECKTONNUM ) / FCHECKTONNUM * 100,2) AS DECIMAL(38,2)) AS RATE
+    FROM
+    T_V_TRAIN
+    WHERE
     1=1
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
@@ -227,9 +240,15 @@ WHERE
     <if test="dt_year != null and dt_year != '' ">
       AND YEAR ( FBELONGDATETIMEDTM ) = #{dt_year}
     </if>
-	) AS AAA
-GROUP BY
-	FCOALNAME,FBELONGMM
+    <if test="str_station != null and str_station != '' ">
+      AND FSTATSTASTIONNAME = #{str_station}
+    </if>
+    <if test="str_coalname != null and str_coalname != '' ">
+      AND FCOALNAME = #{str_coalname}
+    </if>
+    ) AS AAA
+    GROUP BY
+    FCOALNAME,FBELONGMM
 
   </select>
 

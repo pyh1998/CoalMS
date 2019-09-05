@@ -11,7 +11,7 @@ guns:
 
 spring:
   profiles:
-    active: @spring.active@
+    active: produce
   mvc:
     static-path-pattern: /static/**
     view:
@@ -80,10 +80,11 @@ spring:
 spring:
   profiles: produce
   datasource:
-      url: jdbc:mysql://124.237.123.234:50036/team6?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
-      username: team6
-      password: E54BFC26D643EBB17486DBAE4B37CFB2
-      filters: wall,mergeStat
+    url: jdbc:mysql://mariadb:3306/team6?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+    username: team6
+    password: E54BFC26D643EBB17486DBAE4B37CFB2
+    db-name: team6 #用来搜集数据库的所有表
+    filters: wall,mergeStat
 
 
 

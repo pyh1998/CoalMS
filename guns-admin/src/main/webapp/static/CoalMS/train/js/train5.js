@@ -179,20 +179,20 @@ Train5D.initColumn = function () {
                 }
             }
         },
-        {
-            title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
-            footerFormatter: function (value, row, index) {
-                if (!value) return;
-                var count = 0;
-                for (var i = 0; i < value.length; i++) {
-                    var number = parseInt(value[i]["EMPTYRATE"]);
-                    if (!Number.isNaN(number))
-                        count += number;
-                }
-                // return count;
-                return "";
-            }
-        },
+        // {
+        //     title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
+        //     footerFormatter: function (value, row, index) {
+        //         if (!value) return;
+        //         var count = 0;
+        //         for (var i = 0; i < value.length; i++) {
+        //             var number = parseInt(value[i]["EMPTYRATE"]);
+        //             if (!Number.isNaN(number))
+        //                 count += number;
+        //         }
+        //         // return count;
+        //         return "";
+        //     }
+        // },
         // {title: '货票吨', field: 'FCHECKTONNUM', align: 'center', valign: 'middle'},
         // {title: '过衡吨', field: 'FWEIGHTTONNUM', align: 'center', valign: 'middle'},
         {
