@@ -3,7 +3,7 @@ var Baseinfo1 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/baseinfo/list_basetrain"
+    bootstrapTableUrl: Feng.ctxPath + "/baseinfo/list_basetrain"
 };
 
 Baseinfo1.initColumn = function () {
@@ -97,7 +97,7 @@ Baseinfo1.save = function () {
          * @return
          *
          */
-        var url = "/baseinfo/batchSave";
+        var url = Feng.ctxPath + "/baseinfo/batchSave";
         var tips = "无效";
 
         var len = this.seItem.length;
@@ -107,7 +107,7 @@ Baseinfo1.save = function () {
         if (seItem[0]["ISVALID"] === "有效") {
 
         } else {
-            url = "/baseinfo/batchDel";
+            url = Feng.ctxPath + "/baseinfo/batchDel";
             tips = "有效";
         }
 

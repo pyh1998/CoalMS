@@ -6,7 +6,7 @@ var Train3 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search2"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search2"
 };
 
 Train3.initColumn = function () {
@@ -316,7 +316,7 @@ Train3.export = function () {
         return;
     }
     console.log(gd_company+"**********"+gd_date);
-    window.location.href =  "/train/list_train3_excel?gd_company=" + gd_company + "&gd_date=" + gd_date;
+    window.location.href =  Feng.ctxPath + "/train/list_train3_excel?gd_company=" + gd_company + "&gd_date=" + gd_date;
 
     // Feng.confirm("是否按现查询条件导出Word?", function () {
     //
@@ -360,7 +360,7 @@ $(function () {
     Train3.table = table.init();
 
     var defaultColunmsD = Train3D.initColumn();
-    var tableD = new BSTable(Train3D.id, "/train/search2D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
+    var tableD = new BSTable(Train3D.id, Feng.ctxPath + "/train/search2D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
@@ -371,7 +371,7 @@ $(function () {
         if (field !== "FTRAINCODEVCR") {
             return;
         }
-        var url = "/train/train4";
+        var url = Feng.ctxPath + "/train/train4";
         var title = "单车过衡数据分析";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

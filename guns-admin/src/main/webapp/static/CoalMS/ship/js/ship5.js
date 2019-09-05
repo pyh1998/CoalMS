@@ -3,7 +3,7 @@ var gd_state = "";
 var gd_chart;
 
 function search_pie() {
-    var ajax = new $ax("/ship/list_ship5", function (data) {
+    var ajax = new $ax(Feng.ctxPath + "/ship/list_ship5", function (data) {
         if (data == null || data.length == 0) {
             show_pie([]);
         } else {
@@ -339,7 +339,7 @@ Ship5.export = function () {
         return;
     }
     Feng.confirm("是否按现查询条件导出word?", function () {
-    return window.location.href="/ship/list_shipstatistics_word";});
+    return window.location.href=Feng.ctxPath + "/ship/list_shipstatistics_word";});
 };
 
 $(function () {
@@ -357,7 +357,7 @@ $(function () {
     var table_height = $(document).height() - oddheight - document.getElementById("echartdiv").offsetHeight;
     //alert(table_height);
     var defaultColunms = Ship5.initColumn();
-    var table = new BSTable(Ship5.id, "/ship/list_ship5D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
+    var table = new BSTable(Ship5.id, Feng.ctxPath + "/ship/list_ship5D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();

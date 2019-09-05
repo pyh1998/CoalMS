@@ -4,7 +4,7 @@ var Ship4 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship4"
+    bootstrapTableUrl: Feng.ctxPath + "/ship/list_ship4"
 };
 
 Ship4.initColumn = function () {
@@ -257,7 +257,7 @@ Ship4.export = function () {
         return;
     }
     Feng.confirm("是否按现查询条件导出word?", function () {
-     window.location.href="/ship/list_shipSignature_word";
+     window.location.href=Feng.ctxPath + "/ship/list_shipSignature_word";
     });
 };
 

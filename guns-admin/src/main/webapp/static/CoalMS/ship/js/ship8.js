@@ -5,7 +5,7 @@ var Ship8Q = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship7Q"
+    bootstrapTableUrl: Feng.ctxPath + "/ship/list_ship7Q"
 };
 
 Ship8Q.initColumn = function () {
@@ -224,7 +224,7 @@ Ship8.export = function () {
         return;
     }
     Feng.confirm("是否按现查询条件导出word?", function () {
-        window.location.href = "/ship/list_shipdetail_word";
+        window.location.href = Feng.ctxPath + "/ship/list_shipdetail_word";
     });
 };
 
@@ -265,7 +265,7 @@ $(function () {
     Ship8Q.table = table.init(); //左部小Table
 
     var defaultColunmsD = Ship8.initColumn();
-    var tableD = new BSTable(Ship8.id, "/ship/list_ship8", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    var tableD = new BSTable(Ship8.id,Feng.ctxPath +  "/ship/list_ship8", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

@@ -5,7 +5,7 @@ var Train7 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search6"
+    bootstrapTableUrl:Feng.ctxPath +  "/train/search6"
 };
 
 Train7.initColumn = function () {
@@ -268,7 +268,7 @@ function showSelect() {
 function showCoalnameList() {
 
     $.ajax({
-        url: "/train/coal",
+        url: Feng.ctxPath + "/train/coal",
         type: "POST",
         data: {},
         dataType: "json",

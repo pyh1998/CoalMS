@@ -115,7 +115,7 @@ var Train8 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search8"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search8"
 };
 
 Train8.initColumn = function () {

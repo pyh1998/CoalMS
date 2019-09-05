@@ -5,7 +5,7 @@ var Train6 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search5"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search5"
 };
 
 function show_line(data) {
