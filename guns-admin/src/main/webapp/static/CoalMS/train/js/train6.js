@@ -5,14 +5,14 @@ var Train6 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search5"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search5"
 };
 
 function show_line(data) {
     var pLegend = new Array();
     var pSeries = new Array();
 
-    var pName = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+    var pName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月");
     if (data != null && data.length > 0) {
         for (var i = 0; i < data.length; i++) {
             if (pLegend.indexOf(data[i]["COMPANY"]) == -1) {
@@ -64,8 +64,8 @@ function show_line(data) {
         xAxis: [
             {
                 type: 'category',
-                axisLabel: {textStyle: {color: '#000'}, formatter: '{value}月'},
-                splitLine: {show: false},
+                // axisLabel: {textStyle: {color: '#000'}, formatter: '{value}月'},
+                // splitLine: {show: false},
                 data: data == null || data.length == 0 ? ['空'] : pName
             }
         ],
@@ -178,8 +178,16 @@ Train6.initColumn = function () {
                     if (!Number.isNaN(number))
                         count += number;
                 }
-                // return count;
-                return "";
+                if (1 === CustomizeParameters.radioValue) {
+                    //求和
+                    return "";
+                } else {
+                    //求平均
+                    var avg = count / value.length;
+                    if (Number.isNaN(avg))
+                        return "空值";
+                    return avg.toFixed(0);
+                }
             }
         }
     ];

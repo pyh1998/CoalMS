@@ -20,7 +20,7 @@ function search_line() {
 
 function show_line(data) {
     var pLegend = new Array();
-    var pName = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+    var pName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月");
     var pSeries = new Array();
 
     if (data != null && data.length > 0) {
@@ -80,8 +80,8 @@ function show_line(data) {
         xAxis: [
             {
                 type: 'category',
-                axisLabel: {textStyle: {color: '#000'}, formatter: '{value}月'},
-                splitLine: {show: false},
+                // axisLabel: {textStyle: {color: '#000'}, formatter: '{value}月'},
+                // splitLine: {show: false},
                 data: data == null || data.length == 0 ? ['空'] : pName
             }
         ],
@@ -115,7 +115,7 @@ var Train8 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search8"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search8"
 };
 
 Train8.initColumn = function () {

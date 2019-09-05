@@ -178,9 +178,9 @@ public class ShipController extends BaseController {
 
     @RequestMapping(value = "/list_ship8")
     @ResponseBody
-    public Object list_ship8(String str_company,String str_shipno) {
+    public Object list_ship8(String str_company,String str_shipno,String dt_start,String dt_end){
 
-        List<Map<String, Object>> list = this.ShipService.list_ship8(str_company,str_shipno);
+        List<Map<String, Object>> list = this.ShipService.list_ship8(str_company,str_shipno,dt_start,dt_end);
         listDetail=list;
         return super.warpObject(new ShipWarpper(list));
 
@@ -232,7 +232,7 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File(path.getAbsolutePath(),"guns-admin/src/main/resources/wordTemplate/export2.docx");
+        File upload = new File("guns-admin/src/main/resources/wordTemplate/export2.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
@@ -311,7 +311,7 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File(path.getAbsolutePath(),"guns-admin/src/main/resources/wordTemplate/export4.docx");
+        File upload = new File("guns-admin/src/main/resources/wordTemplate/export4.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
@@ -389,7 +389,7 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File(path.getAbsolutePath(),"guns-admin/src/main/resources/wordTemplate/export5.docx");
+        File upload = new File("guns-admin/src/main/resources/wordTemplate/export5.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
@@ -465,7 +465,7 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File(path.getAbsolutePath(),"guns-admin/src/main/resources/wordTemplate/export8.docx");
+        File upload = new File("guns-admin/src/main/resources/wordTemplate/export8.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
@@ -550,7 +550,7 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File(path.getAbsolutePath(),"guns-admin/src/main/resources/wordTemplate/export10.docx");
+        File upload = new File("guns-admin/src/main/resources/wordTemplate/export10.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 

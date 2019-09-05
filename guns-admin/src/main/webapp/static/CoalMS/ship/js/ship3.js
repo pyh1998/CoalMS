@@ -1,9 +1,10 @@
+var searchbool = 0;
 var Ship3 = {
     id: "Ship3Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship3"
+    bootstrapTableUrl: Feng.ctxPath + "/ship/list_ship3"
 };
 
 Ship3.initColumn = Ship1Table.initColumn;
@@ -26,15 +27,23 @@ Ship3.search = function () {
     }
     this.table.formatNoMatches_displaywords = CustomizeParameters.formatNoMatches_displaywords;
     $("#Ship3Table").bootstrapTable('selectPage', 1);
+     searchbool = 1;
 };
 
 Ship3.export3 = function () {
 
-    return window.location.href="/ship/list_ship_word";
-
+    if(searchbool == 0)
+    {
+        Feng.alert("导出前请搜索！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+        window.location.href= Feng.ctxPath + "/ship/list_ship_word";
+    });
 };
 
 $(function () {
+    searchbool = 0;
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship3Dbody").style.height = bodyheight;
     console.log(Ship3.bootstrapTableUrl);
@@ -59,7 +68,7 @@ $(function () {
         if (field !== "FSHIPYEARNUMVCR") {
             return;
         }
-        var url =  "/ship/ship8";
+        var url =  Feng.ctxPath + "/ship/ship8";
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

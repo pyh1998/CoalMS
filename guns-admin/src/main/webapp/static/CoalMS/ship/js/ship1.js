@@ -5,7 +5,7 @@ var Ship1 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship1"
+    bootstrapTableUrl: Feng.ctxPath + "/ship/list_ship1"
 };
 
 Ship1.initColumn = function () {
@@ -103,7 +103,7 @@ function openInfoDetail(company, month) {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship1D.table.refresh({
             query: queryData,
-            url:  "/ship/list_ship3"
+            url:  Feng.ctxPath + "/ship/list_ship3"
         });
     } else {
         Ship1D.table.refresh({query: queryData});
@@ -133,16 +133,15 @@ Ship1.search = function () {
 };
 
 Ship1.export = function () {
-    console.log(gd_company);
-    console.log(gd_month);
+
     if (CustomizeParameters.isEmpty(gd_month)) {
         Feng.alert("导出前请选择详细月份及公司！", 7);
         return;
     }
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        window.location.href = "/ship/list_ship_word" ;
+    Feng.confirm("是否按现查询条件导出word?", function () {
+        window.location.href = Feng.ctxPath + "/ship/list_ship_word" ;
     });
-}
+};
 
 
 $(function () {
@@ -170,7 +169,7 @@ $(function () {
     Ship1.table = table.init();
 
     var defaultColunmsD = Ship1D.initColumn();
-    var tableD = new BSTable(Ship1D.id, "/ship/list_ship3", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
+    var tableD = new BSTable(Ship1D.id, Feng.ctxPath + "/ship/list_ship3", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();
@@ -188,7 +187,7 @@ $(function () {
         if (field !== "FSHIPYEARNUMVCR") {
             return;
         }
-        var url = "/ship/ship8";
+        var url = Feng.ctxPath + "/ship/ship8";
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");

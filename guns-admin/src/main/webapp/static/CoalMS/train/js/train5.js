@@ -7,7 +7,7 @@ var Train5 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/train/search4"
+    bootstrapTableUrl: Feng.ctxPath + "/train/search4"
 
 
 };
@@ -179,20 +179,20 @@ Train5D.initColumn = function () {
                 }
             }
         },
-        {
-            title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
-            footerFormatter: function (value, row, index) {
-                if (!value) return;
-                var count = 0;
-                for (var i = 0; i < value.length; i++) {
-                    var number = parseInt(value[i]["EMPTYRATE"]);
-                    if (!Number.isNaN(number))
-                        count += number;
-                }
-                // return count;
-                return "";
-            }
-        },
+        // {
+        //     title: '翻净率%', field: 'EMPTYRATE', align: 'center', valign: 'middle', width: '10%',
+        //     footerFormatter: function (value, row, index) {
+        //         if (!value) return;
+        //         var count = 0;
+        //         for (var i = 0; i < value.length; i++) {
+        //             var number = parseInt(value[i]["EMPTYRATE"]);
+        //             if (!Number.isNaN(number))
+        //                 count += number;
+        //         }
+        //         // return count;
+        //         return "";
+        //     }
+        // },
         // {title: '货票吨', field: 'FCHECKTONNUM', align: 'center', valign: 'middle'},
         // {title: '过衡吨', field: 'FWEIGHTTONNUM', align: 'center', valign: 'middle'},
         {
@@ -365,7 +365,7 @@ $(function () {
     Train5.table = table.init();
 
     var defaultColunmsD = Train5D.initColumn();
-    var tableD = new BSTable(Train5D.id, "/train/search4D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    var tableD = new BSTable(Train5D.id, Feng.ctxPath +  "/train/search4D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

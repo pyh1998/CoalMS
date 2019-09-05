@@ -6,7 +6,7 @@ var Ship7Q = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl: "/ship/list_ship7Q"
+    bootstrapTableUrl:Feng.ctxPath +  "/ship/list_ship7Q"
 };
 
 Ship7Q.initColumn = function () {
@@ -74,7 +74,7 @@ function opendetail(value, row, index) {
 function openInfoDetail(company, shipno) {
     gd_company = company;
     gd_shipno = shipno;
-    var ajax = new $ax( "/ship/list_ship7", function (data) {
+    var ajax = new $ax( Feng.ctxPath + "/ship/list_ship7", function (data) {
         // if(data==null || data.length==0){}else{}
         show_detail(data);
     }, function (data) {
@@ -137,13 +137,19 @@ function show_detail(data) {
     }
 }
 
-function Ship7_export() {
-    Feng.confirm("是否按现查询条件导出excel?", function () {
-        window.location.href = Feng.ctxPath + "/ship/list_Statistics_word";
+Ship7_export = function () {
+    console.log(gd_shipno+"!!!!!!!!!!!!!!!!!!");
+    if (CustomizeParameters.isEmpty(gd_shipno)) {
+        Feng.alert("导出前请选择详细船舶年序号！", 7);
+        return;
+    }
+    Feng.confirm("是否按现查询条件导出word?", function () {
+        window.location.href =Feng.ctxPath + "/ship/list_Statistics_word";
     });
 };
 
 $(function () {
+
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Ship7Dbody").style.height = bodyheight;
 

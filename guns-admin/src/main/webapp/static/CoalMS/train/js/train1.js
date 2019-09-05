@@ -3,7 +3,7 @@ var Train1 = {
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
-    bootstrapTableUrl:"/train/search1"
+    bootstrapTableUrl:Feng.ctxPath +"/train/search1"
 };
 
 Train1.initColumn = function () {
@@ -218,8 +218,6 @@ Train1.search = function () {
     queryData['dt_end'] = $("#dt_end").val();
     queryData['str_first'] = "1";
     console.log(queryData);
-    console.log("按钮点击489856494966497895");
-    //控制自动查询
     if (!CustomizeParameters.autoSearch_switch) {
         Train1.table.refresh({
             query: queryData,
@@ -237,7 +235,7 @@ Train1.export = function () {
         var str_company = $("#str_company").val();
         var dt_start = $("#dt_start").val();
         var dt_end = $("#dt_end").val();
-        window.location.href =  "/train/list_train1_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
+        window.location.href =  Feng.ctxPath +"/train/list_train1_excel?str_company=" + str_company + "&dt_start=" + dt_start + "&dt_end=" + dt_end;
     });
 
 };
@@ -252,7 +250,6 @@ $("#excel-export").click(function() {
     });
 });
 
-//临时修改了table url 别忘了
 $(function () {
     var bodyheight = ($(document).height() - 20) + 'px';
     document.getElementById("Train1Dbody").style.height = bodyheight;
@@ -276,11 +273,10 @@ $(function () {
 
     //页面跳转
     table.onClickCell = function (field, value, row, $element) {
-        //自定义函数 Cell点击触发
         if (field !== "FTRAINCODEVCR") {
             return;
         }
-        var url =  "/train/train4";
+        var url =  Feng.ctxPath +"/train/train4";
         var title = "单车过衡数据分析";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");
