@@ -238,7 +238,7 @@ Ship4.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship4.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship4.bootstrapTableUrl
+            url: Ship4.bootstrapTableUrl
         });
     } else {
         Ship4.table.refresh({query: queryData});

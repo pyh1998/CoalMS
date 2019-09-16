@@ -315,21 +315,9 @@ Train3.export = function () {
         Feng.alert("导出前请选择公司！", 7);
         return;
     }
-    console.log(gd_company+"**********"+gd_date);
-    window.location.href =  Feng.ctxPath + "/train/list_train3_excel?gd_company=" + gd_company + "&gd_date=" + gd_date;
-
-    // Feng.confirm("是否按现查询条件导出Word?", function () {
-    //
-    //     var map = new Map();
-    //     map.set("month", $("#dt_start").val().match(/^[\d]{4}-[\d]{2}/g));
-    //     map.set("method", $("#radio label[class~='active'] input").attr('id') === "sum" ? "sum" : "average"); //average 平均//sum 总和
-    //     //公司名称
-    //     map.set("company", gd_company);
-    //
-    //     CustomizeParameters.response4Download('/train/list_train3_excel', map);
-    //
-    //
-    // });
+    Feng.confirm("是否按现查询条件导出excel?", function () {
+        window.location.href = Feng.ctxPath + "/train/list_train3_excel?gd_company=" + gd_company + "&gd_date=" + gd_date;
+    });
 
 };
 
@@ -360,7 +348,7 @@ $(function () {
     Train3.table = table.init();
 
     var defaultColunmsD = Train3D.initColumn();
-    var tableD = new BSTable(Train3D.id, Feng.ctxPath + "/train/search2D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
+    var tableD = new BSTable(Train3D.id, "/train/search2D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), table2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

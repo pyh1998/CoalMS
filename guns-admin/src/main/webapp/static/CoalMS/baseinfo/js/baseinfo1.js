@@ -58,7 +58,7 @@ Baseinfo1.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Baseinfo1.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Baseinfo1.bootstrapTableUrl
+            url: Baseinfo1.bootstrapTableUrl
         });
     } else {
         Baseinfo1.table.refresh({query: queryData});

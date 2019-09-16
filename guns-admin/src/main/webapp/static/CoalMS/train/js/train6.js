@@ -9,6 +9,7 @@ var Train6 = {
 };
 
 function show_line(data) {
+
     var pLegend = new Array();
     var pSeries = new Array();
 
@@ -87,7 +88,7 @@ function show_line(data) {
         series: pSeries
     };
 
-    myChart.setOption(option);
+    myChart.setOption(option,true);
     chartCode = myChart;
 }
 
@@ -284,6 +285,7 @@ $(function () {
         table.url = "";
         show_line([]);
     }
+
     table.responseSuccessFun = function (data) {
         if (data === undefined || data === null || data === "" || data === []) {
             show_line([]);

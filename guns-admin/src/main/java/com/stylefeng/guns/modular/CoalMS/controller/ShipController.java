@@ -232,12 +232,12 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File("guns-admin/src/main/resources/wordTemplate/export2.docx");
+        File upload = new File(path.getAbsolutePath()+"/wordTemplate/export2.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
         String filePath = upload.getAbsolutePath();
-        String outPath = "D:/demo1.docx";
+        String outPath = upload.getAbsolutePath();
 
 
         WordReporter wordReporter = new WordReporter();
@@ -311,12 +311,12 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File("guns-admin/src/main/resources/wordTemplate/export4.docx");
+        File upload = new File(path.getAbsolutePath()+"/wordTemplate/export4.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
         String filePath = upload.getAbsolutePath();
-        String outPath = "D:/demo1.docx";
+        String outPath = upload.getAbsolutePath();
 
 
         WordReporter wordReporter = new WordReporter();
@@ -389,12 +389,12 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File("guns-admin/src/main/resources/wordTemplate/export5.docx");
+        File upload = new File(path.getAbsolutePath()+"/wordTemplate/export5.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
         String filePath = upload.getAbsolutePath();
-        String outPath = "D:/demo1.docx";
+        String outPath = upload.getAbsolutePath();
 
 
         WordReporter wordReporter = new WordReporter();
@@ -465,12 +465,12 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File("guns-admin/src/main/resources/wordTemplate/export8.docx");
+        File upload = new File(path.getAbsolutePath()+"/wordTemplate/export8.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
         String filePath = upload.getAbsolutePath();
-        String outPath = "D:/demo1.docx";
+        String outPath = upload.getAbsolutePath();
 
 
         WordReporter wordReporter = new WordReporter();
@@ -550,12 +550,12 @@ public class ShipController extends BaseController {
         System.out.println("path:"+path.getAbsolutePath());
 
         //如果上传目录为guns-admin/src/main/resources/wordTemplate/export.docx，则可以如下获取：
-        File upload = new File("guns-admin/src/main/resources/wordTemplate/export10.docx");
+        File upload = new File(path.getAbsolutePath()+"/wordTemplate/export10.docx");
         //if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
 
         String filePath = upload.getAbsolutePath();
-        String outPath = "D:/demo1.docx";
+        String outPath = upload.getAbsolutePath();
 
 
         WordReporter wordReporter = new WordReporter();

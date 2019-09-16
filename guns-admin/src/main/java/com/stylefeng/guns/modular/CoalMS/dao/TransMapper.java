@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,5 +18,5 @@ import java.util.Map;
  */
 @Repository
 public interface TransMapper {
-    Integer insert( Map<String, Object> tvShipmain);
+    Integer insert( List<TVShipmain> tvShipmain);
 }

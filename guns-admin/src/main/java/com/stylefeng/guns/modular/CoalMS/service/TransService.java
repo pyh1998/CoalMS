@@ -1,4 +1,5 @@
 package com.stylefeng.guns.modular.CoalMS.service;
+import com.stylefeng.guns.modular.CoalMS.model.TVShipmain;
 import io.swagger.models.HttpMethod;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Map;
  */
 public interface TransService {
 
-    int insert(Map<String, Object> tvShipmain);
-    List<Map<String, Object>> client(String url, HttpMethod method, List<Map<String, Object>> params);
-    Integer client(String url, HttpMethod method);
+    int insert(List<TVShipmain> list);
+    List<TVShipmain> listClient(String url, HttpMethod method);
+    Integer intClient(String url, HttpMethod method);
 }

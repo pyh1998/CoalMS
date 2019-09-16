@@ -40,8 +40,11 @@
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+    </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
     </if>
   </select>
 
@@ -77,8 +80,11 @@
     )TOTALTRAIN
     from T_V_TRAIN
     where 1=1
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+    </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
     </if>
     GROUP BY COMPANY,FBELONGMONTH)AS AA
   </select>
@@ -90,14 +96,20 @@
 
 
   <select id="search3" resultType="map">
-    select FTRAINCODEVCR, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM,2) AS DECIMAL(38,2)) AS RATE from T_V_TRAIN
+    select FTRAINCODEVCR,CAST(ROUND(AVG(ABS(RATE)),3) AS DECIMAL(38,3)) AS RATE FROM(
+    select FTRAINCODEVCR, CAST(ROUND((FWEIGHTTONNUM-FCHECKTONNUM)/FCHECKTONNUM,2) AS DECIMAL(38,2)) AS RATE from
+    T_V_TRAIN
     where 1=1
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
     </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
+    </if>)AS AAA
+    GROUP BY FTRAINCODEVCR
   </select>
 
   <select id="search3D" resultType="map">
@@ -110,8 +122,11 @@
       <if test="str_company != null and str_company != '' ">
         AND COMPANY = #{str_company}
       </if>
-      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-        AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+      <if test="(dt_start != null and dt_start != '')">
+        AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+      </if>
+      <if test="(dt_end != null and dt_end != '') ">
+        AND FBELONGDATETIMEDTM &lt;= #{dt_end}
       </if>
     </if>
   </select>
@@ -128,8 +143,11 @@
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+    </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
     </if>
   </select>
 
@@ -155,8 +173,11 @@
       <if test="str_trainno != null and str_trainno != '' ">
         AND FTRAINCODEVCR = #{str_trainno}
       </if>
-      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-        AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+      <if test="(dt_start != null and dt_start != '')">
+        AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+      </if>
+      <if test="(dt_end != null and dt_end != '') ">
+        AND FBELONGDATETIMEDTM &lt;= #{dt_end}
       </if>
       ) AS PANGSHEN1
       ) AS PANGSHEN2
@@ -192,8 +213,11 @@
     <if test="str_company != null and str_company != '' ">
       AND COMPANY = #{str_company}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+    </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
     </if>
     <if test="str_station != null and str_station != '' ">
       AND FSTATSTASTIONNAME = #{str_station}
@@ -216,8 +240,11 @@
     <if test="str_status != null and str_status != '' ">
       AND ISVALID = #{str_status}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-      AND FBELONGDATETIMEDTM between  #{dt_start} and #{dt_end}
+    <if test="(dt_start != null and dt_start != '')">
+      AND FBELONGDATETIMEDTM &gt;= #{dt_start}
+    </if>
+    <if test="(dt_end != null and dt_end != '') ">
+      AND FBELONGDATETIMEDTM &lt;= #{dt_end}
     </if>
   </select>
 

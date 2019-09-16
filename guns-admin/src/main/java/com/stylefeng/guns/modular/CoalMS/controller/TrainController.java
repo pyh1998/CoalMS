@@ -130,7 +130,9 @@ public class TrainController extends BaseController {
 
 
         List<Map<String, Object>> list = this.TrainService.search3(str_company, dt_start, dt_end);
+        System.out.println(list);
         return super.warpObject(new TrainWarpper(list));
+
 
     }
 
@@ -605,7 +607,7 @@ public class TrainController extends BaseController {
 
             row.createCell(1).setCellValue(listdetail.get(i).get("FTRAINCODEVCR").toString());
 
-            row.createCell(1).setCellValue(listdetail.get(i).get("FTRAINNONUM").toString());
+            row.createCell(2).setCellValue(listdetail.get(i).get("FTRAINNONUM").toString());
 
             row.createCell(3).setCellValue(listdetail.get(i).get("FTRAINNONUM2").toString());
 
@@ -660,7 +662,7 @@ public class TrainController extends BaseController {
 
             row.createCell(1).setCellValue(listdetail.get(i).get("FSTATSTASTIONNAME").toString());
 
-            row.createCell(1).setCellValue(listdetail.get(i).get("COMPANY").toString());
+            row.createCell(2).setCellValue(listdetail.get(i).get("COMPANY").toString());
 
             row.createCell(3).setCellValue(listdetail.get(i).get("FCOALNAME").toString());
 

@@ -365,7 +365,7 @@ $(function () {
     Train5.table = table.init();
 
     var defaultColunmsD = Train5D.initColumn();
-    var tableD = new BSTable(Train5D.id, Feng.ctxPath +  "/train/search4D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    var tableD = new BSTable(Train5D.id,   "/train/search4D", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

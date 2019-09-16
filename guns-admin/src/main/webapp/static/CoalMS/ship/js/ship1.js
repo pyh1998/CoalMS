@@ -191,7 +191,7 @@ $(function () {
         var title = "单船皮带秤明细";
         $(window.parent.document).find('.J_menuTabs .page-tabs-content ').find(".J_menuTab.active").removeClass("active");
         $(window.parent.document).find('.J_mainContent').find("iframe").css("display", "none");
-        var iframe = '<iframe class="J_iframe" name="iframe10000" cid="' + row.COMPANY + '" fid="' + value + '" ftime="' + row["FBELONGMONTH"] + '" width="100%" height="100%" src="' + url + '" frameborder="0" data-id="' + url + '" seamless="" style="display: inline;"></iframe>';
+        var iframe = '<iframe class="J_iframe" name="iframe10000" cid="' + row.COMPANY + '" fid="' + value + '" ftime="' + row["FCOUNTTIMEDTM"] + '" width="100%" height="100%" src="' + url + '" frameborder="0" data-id="' + url + '" seamless="" style="display: inline;"></iframe>';
         $(window.parent.document).find('.J_mainContent').append(iframe);
         // 判断是否已存在标签
         var flag = true;

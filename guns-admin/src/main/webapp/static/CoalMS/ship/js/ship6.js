@@ -20,7 +20,7 @@ function search_line() {
 }
 
 function show_line(data) {
-    var pLegend = new Array("取料机秤", "BM秤", "BQ秤", "BJ秤", "同线误差");
+    var pLegend = new Array("取料机秤", "BM秤", "BQ秤", "BJ秤");
     var pName = new Array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
 
     /**

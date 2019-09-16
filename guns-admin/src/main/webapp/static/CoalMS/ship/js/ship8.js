@@ -55,7 +55,7 @@ Ship8Q.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship8Q.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship8Q.bootstrapTableUrl
+            url: Ship8Q.bootstrapTableUrl
         });
     } else {
         Ship8Q.table.refresh({query: queryData});
@@ -265,7 +265,7 @@ $(function () {
     Ship8Q.table = table.init(); //左部小Table
 
     var defaultColunmsD = Ship8.initColumn();
-    var tableD = new BSTable(Ship8.id,Feng.ctxPath +  "/ship/list_ship8", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
+    var tableD = new BSTable(Ship8.id, "/ship/list_ship8", CustomizeParameters.formatGlobalTableColumn(defaultColunmsD), tableheight2);
     tableD.setPaginationType("client");
     tableD.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;
     tableD.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;

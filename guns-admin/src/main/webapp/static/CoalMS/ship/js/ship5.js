@@ -357,7 +357,7 @@ $(function () {
     var table_height = $(document).height() - oddheight - document.getElementById("echartdiv").offsetHeight;
     //alert(table_height);
     var defaultColunms = Ship5.initColumn();
-    var table = new BSTable(Ship5.id, Feng.ctxPath + "/ship/list_ship5D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
+    var table = new BSTable(Ship5.id,  "/ship/list_ship5D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
     var queryData = {};
     queryData['str_company'] = $("#str_company").val();
     queryData['dt_start'] = $("#dt_start").val();

@@ -104,7 +104,7 @@ function show_line(data) {
     };
 
 
-    myChart.setOption(option);
+    myChart.setOption(option,true);
     gd_chart = myChart;
     //myChart.on('click',function(param){search_table(param);})
 }

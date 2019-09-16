@@ -11,8 +11,8 @@ guns:
 
 spring:
   profiles:
+#    active: produce
     active: @spring.active@
-
   mvc:
     static-path-pattern: /static/**
     view:

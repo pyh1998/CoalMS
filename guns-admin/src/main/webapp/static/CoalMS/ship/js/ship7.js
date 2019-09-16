@@ -56,7 +56,7 @@ Ship7Q.search = function () {
     if (!CustomizeParameters.autoSearch_switch) {
         Ship7Q.table.refresh({
             query: queryData,
-            url: Feng.ctxPath + Ship7Q.bootstrapTableUrl
+            url:  Ship7Q.bootstrapTableUrl
         });
     } else {
         Ship7Q.table.refresh({query: queryData});

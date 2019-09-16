@@ -229,7 +229,7 @@ $(function () {
     var table_height = $(document).height() - oddheight - document.getElementById("echartdiv").offsetHeight;
     //alert(table_height);
     var defaultColunms = Train4.initColumn();
-    var table = new BSTable(Train4.id, Feng.ctxPath + "/train/search3D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
+    var table = new BSTable(Train4.id,  "/train/search3D", CustomizeParameters.formatGlobalTableColumn(defaultColunms), table_height);
     table.setPaginationType("client");
     table.formatNoMatches_displaywords = CustomizeParameters.autoSearch_switch ? CustomizeParameters.formatNoMatches_displaywords : CustomizeParameters.formatNoMatches_nosearch_displaywords;
     // table.showFooter = CustomizeParameters.bootstrap_table_footerFormatter_switch;

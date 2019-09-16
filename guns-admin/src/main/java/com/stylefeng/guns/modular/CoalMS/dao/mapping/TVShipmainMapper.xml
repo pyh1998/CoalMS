@@ -118,8 +118,11 @@ CASE
 FROM
 	T_V_SHIPMAIN
       where 1=1
-      <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-          and   FCOUNTTIMEDTM between #{dt_start} and #{dt_end}
+      <if test="(dt_start != null and dt_start != '')">
+          AND FCOUNTTIMEDTM &gt;= #{dt_start}
+      </if>
+      <if test="(dt_end != null and dt_end != '') ">
+          AND FCOUNTTIMEDTM &lt;= #{dt_end}
       </if>
 	) AS PANGSHEN
 	) AS AAA
@@ -206,9 +209,12 @@ FROM
     <if test="(str_company != null and str_company != '')">
 	AND COMPANY = #{str_company}
     </if>
-    <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '')">
-    AND FCOUNTTIMEDTM between #{dt_start} and  #{dt_end}
-    </if>
+      <if test="(dt_start != null and dt_start != '')">
+          AND FCOUNTTIMEDTM &gt;= #{dt_start}
+      </if>
+      <if test="(dt_end != null and dt_end != '') ">
+          AND FCOUNTTIMEDTM &lt;= #{dt_end}
+      </if>
 	) AS PANGSHEN)AS AAA
 	group by FBELONGMONTH)AS BBB
   </select>
@@ -268,8 +274,11 @@ FROM
         <if test="(str_company != null and str_company != '') ">
             AND COMPANY = #{str_company}
         </if>
-        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        <if test="(dt_start != null and dt_start != '')">
+            AND FCOUNTTIMEDTM &gt;= #{dt_start}
+        </if>
+        <if test="(dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM &lt;= #{dt_end}
         </if>
         )AS PANGSHEN
     </select>
@@ -370,8 +379,11 @@ FROM
         <if test="(str_company != null and str_company != '') ">
             AND COMPANY = #{str_company}
         </if>
-        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        <if test="(dt_start != null and dt_start != '')">
+            AND FCOUNTTIMEDTM &gt;= #{dt_start}
+        </if>
+        <if test="(dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM &lt;= #{dt_end}
         </if>
     </select>
 
@@ -614,8 +626,11 @@ FROM
         <if test="(str_fshipyearnumvcr != null and str_fshipyearnumvcr != '') ">
             AND FSHIPYEARNUMVCR = #{str_fshipyearnumvcr}
         </if>
-        <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-            AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+        <if test="(dt_start != null and dt_start != '')">
+            AND FCOUNTTIMEDTM &gt;= #{dt_start}
+        </if>
+        <if test="(dt_end != null and dt_end != '') ">
+            AND FCOUNTTIMEDTM &lt;= #{dt_end}
         </if>
     </select>
 
@@ -642,8 +657,11 @@ FROM
             <if test="(str_shipno != null and str_shipno != '') ">
                 AND FSHIPYEARNUMVCR = #{str_shipno}
             </if>
-            <if test="(dt_start != null and dt_start != '') and (dt_end != null and dt_end != '') ">
-                AND FCOUNTTIMEDTM BETWEEN #{dt_start} AND  #{dt_end}
+            <if test="(dt_start != null and dt_start != '')">
+                AND FCOUNTTIMEDTM &gt;= #{dt_start}
+            </if>
+            <if test="(dt_end != null and dt_end != '') ">
+                AND FCOUNTTIMEDTM &lt;= #{dt_end}
             </if>
         </if>
     </select>
